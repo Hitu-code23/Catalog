@@ -82,6 +82,33 @@
     .service-price small { font-size:.42em; font-weight:400; letter-spacing:.08em; }
     .service-tag { padding:6px 10px; border:1px solid rgba(12,12,12,.24); border-radius:999px; }
 
+
+    .care { position:relative; z-index:4; padding:115px 20px 135px; background:radial-gradient(circle at 18% 18%,rgba(196,255,57,.12),transparent 28%),linear-gradient(145deg,#111 0%,#0C0C0C 58%,#19011f 100%); overflow:hidden; }
+    .care::before { content:""; position:absolute; width:clamp(260px,38vw,560px); aspect-ratio:1; right:-12%; top:8%; border:1px solid rgba(196,255,57,.18); border-radius:48% 52% 43% 57% / 55% 44% 56% 45%; transform:rotate(22deg); pointer-events:none; }
+    .care-inner { position:relative; z-index:1; width:min(1160px,100%); margin:0 auto; }
+    .care-kicker { display:flex; align-items:center; gap:14px; margin-bottom:28px; color:var(--lime); font-size:11px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; }
+    .care-kicker::before { content:""; width:42px; height:1px; background:var(--lime); }
+    .care-header { display:grid; grid-template-columns:minmax(0,1fr) minmax(260px,390px); gap:40px; align-items:end; }
+    .care-title { max-width:850px; font-size:clamp(56px,10vw,142px); font-weight:900; line-height:.8; letter-spacing:-.085em; text-transform:uppercase; }
+    .care-intro { color:rgba(215,226,234,.68); font-size:clamp(16px,1.7vw,21px); font-weight:300; line-height:1.35; }
+    .care-card { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr); gap:32px; margin-top:72px; padding:30px; border:1px solid rgba(215,226,234,.22); border-radius:48px; background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.025) 45%,rgba(196,255,57,.06)); box-shadow:0 30px 90px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.12); }
+    .care-card-main { min-width:0; }
+    .care-price { display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:28px; color:var(--white); font-size:clamp(48px,7vw,100px); font-weight:800; line-height:.85; letter-spacing:-.08em; }
+    .care-price small { color:var(--lime); font-size:clamp(15px,1.8vw,22px); font-weight:500; letter-spacing:.12em; }
+    .care-card h3 { margin-bottom:19px; color:var(--white); font-size:clamp(22px,2.2vw,32px); font-weight:500; letter-spacing:.04em; text-transform:uppercase; }
+    .care-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px 24px; list-style:none; }
+    .care-list li { position:relative; padding-left:19px; color:rgba(215,226,234,.75); font-size:14px; font-weight:300; line-height:1.35; }
+    .care-list li::before { content:""; position:absolute; left:0; top:.46em; width:7px; height:7px; border-radius:50%; background:var(--lime); box-shadow:0 0 12px rgba(196,255,57,.5); }
+    .care-aside { display:flex; flex-direction:column; justify-content:space-between; min-width:0; padding:24px; border-radius:34px; background:rgba(12,12,12,.6); }
+    .care-aside .eyebrow { margin-bottom:20px; }
+    .care-quote { color:var(--white); font-size:clamp(26px,3.5vw,50px); font-weight:600; line-height:.95; letter-spacing:-.045em; text-transform:uppercase; }
+    .care-note { margin-top:24px; color:rgba(215,226,234,.58); font-size:13px; font-weight:300; line-height:1.45; }
+    .care-cta { align-self:flex-start; margin-top:30px; }
+    .care-exclusions { margin-top:28px; padding:23px 24px; border:1px solid rgba(215,226,234,.13); border-radius:28px; background:rgba(255,255,255,.025); }
+    .care-exclusions h4 { margin-bottom:14px; color:var(--white); font-size:12px; font-weight:500; letter-spacing:.15em; text-transform:uppercase; }
+    .care-exclusions p { color:rgba(215,226,234,.52); font-size:13px; font-weight:300; line-height:1.5; }
+    .care-exclusions strong { color:rgba(215,226,234,.72); font-weight:400; }
+
     .projects { position:relative; z-index:5; margin-top:-48px; padding:112px 20px 130px; border-radius:60px 60px 0 0; background:var(--black); }
     .projects .section-title { text-align:center; }
     .project-stack { width:min(1160px,100%); margin:70px auto 0; }
@@ -134,6 +161,21 @@
       .services,.projects { padding-left:16px; padding-right:16px; border-radius:38px 38px 0 0; }
       .services { padding-top:84px; padding-bottom:105px; }
       .projects { margin-top:-30px; padding-top:84px; padding-bottom:110px; }
+
+      .care { padding:84px 16px 104px; }
+      .care-header { display:block; }
+      .care-title { font-size:clamp(58px,17vw,100px); }
+      .care-intro { margin-top:28px; font-size:16px; }
+      .care-card { grid-template-columns:1fr; gap:18px; margin-top:48px; padding:17px; border-radius:31px; }
+      .care-price { gap:8px; margin-bottom:28px; font-size:clamp(46px,15vw,76px); }
+      .care-price small { font-size:14px; }
+      .care-card h3 { font-size:21px; }
+      .care-list { grid-template-columns:1fr; gap:11px; }
+      .care-list li { font-size:13px; }
+      .care-aside { padding:22px 18px; border-radius:23px; }
+      .care-quote { font-size:36px; }
+      .care-cta { width:100%; margin-top:28px; }
+
       .service-list { margin-top:52px; }
       .service-item { grid-template-columns:68px 1fr; gap:17px; padding:27px 0; }
       .service-number { font-size:60px; }
@@ -198,6 +240,49 @@
       <article class="service-item" data-reveal><div class="service-number">02</div><div><h3 class="service-name">Professional Business Website</h3><p class="service-desc">Exactly 8 pages with premium custom design, mobile and desktop optimization, WhatsApp, Google Maps, social media integration, lead forms, SEO, Analytics setup, speed optimization, and 10–14 day delivery.</p><div class="service-meta"><span class="service-price">AED 2,999</span><span class="service-tag">8 pages</span><span>10–14 day delivery</span></div></div></article>
       <article class="service-item" data-reveal><div class="service-number">03</div><div><h3 class="service-name">Premium Website</h3><p class="service-desc">Custom UI/UX, advanced animations, advanced forms, booking functionality, advanced SEO structure, analytics, performance optimization, custom integrations, and premium responsive design.</p><div class="service-meta"><span class="service-price">AED 5,000</span><span class="service-tag">Premium</span><span>14–21 day delivery</span></div></div></article>
       <article class="service-item" data-reveal><div class="service-number">04</div><div><h3 class="service-name">AI Creative Content</h3><p class="service-desc">AI-assisted promotional visuals, AI-generated creative concepts, social-media-ready assets, creative direction, and professional editing/refinement.</p><div class="service-meta"><span class="service-price">AED 600 <small>/ PROJECT</small></span><span class="service-tag">Creative direction</span></div></div></article>
+    </div>
+  </section>
+
+
+  <section class="care" id="website-care">
+    <div class="care-inner">
+      <div class="care-kicker">Optional after-launch service</div>
+      <div class="care-header">
+        <h2 class="care-title hero-heading" data-reveal>Website Care</h2>
+        <p class="care-intro" data-reveal>Keep your website updated, monitored and maintained without having to worry about the technical details.</p>
+      </div>
+      <div class="care-card" data-reveal>
+        <div class="care-card-main">
+          <div class="care-price">AED 500 <small>/ MONTH</small></div>
+          <h3>What&apos;s included</h3>
+          <ul class="care-list">
+            <li>Website updates &amp; content changes</li>
+            <li>Text and image replacements</li>
+            <li>Minor layout adjustments</li>
+            <li>Website backups</li>
+            <li>Security and technical checks</li>
+            <li>Broken-link checks</li>
+            <li>Mobile responsiveness checks</li>
+            <li>Performance monitoring</li>
+            <li>Basic SEO maintenance</li>
+            <li>WhatsApp/contact-form testing</li>
+            <li>Minor bug fixes</li>
+            <li>Monthly website health check</li>
+          </ul>
+          <div class="care-exclusions">
+            <h4>What&apos;s not included</h4>
+            <p><strong>Quoted separately:</strong> complete website redesigns, new website pages, major new functionality, custom development projects, large-scale UI/UX changes, paid advertising, domain fees, hosting fees, paid plugins, third-party software or subscription costs, and major integrations.</p>
+          </div>
+        </div>
+        <div class="care-aside">
+          <div>
+            <div class="eyebrow">HB VISUALS / ONGOING SUPPORT</div>
+            <p class="care-quote">Your website is live.<br /><span class="hero-heading">We keep it running.</span></p>
+            <p class="care-note">A premium recurring maintenance service for clients who want their digital presence kept sharp after launch.</p>
+          </div>
+          <a class="contact-btn care-cta" href="https://wa.me/971557858540" target="_blank" rel="noopener">Get Website Care</a>
+        </div>
+      </div>
     </div>
   </section>
 
