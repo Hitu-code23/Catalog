@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0C0C0C" />
+  <meta name="description" content="HB Visuals — striking websites and AI creative content for ambitious brands." />
+  <title>HB Visuals — Digital Creator Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --black:#0C0C0C; --white:#D7E2EA; --lime:#c4ff39; --purple:#B600A8; --line:rgba(215,226,234,.18); --ease:cubic-bezier(.25,.1,.25,1); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { background:var(--black); scroll-behavior:smooth; }
+    body { background:var(--black); color:var(--white); font-family:'Kanit',sans-serif; overflow-x:clip; }
+    a { color:inherit; text-decoration:none; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    a:focus-visible { outline:2px solid var(--lime); outline-offset:4px; }
+    img { display:block; max-width:100%; }
+    ::selection { background:var(--lime); color:var(--black); }
+    .wrap { width:100%; overflow-x:clip; }
+    .container { width:min(1280px,calc(100% - 48px)); margin:0 auto; }
+    .hero-heading { background:linear-gradient(180deg,#646973 0%,#BBCCD7 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+    .eyebrow { color:rgba(215,226,234,.62); font-size:11px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; }
+
+    .hero { min-height:100svh; height:900px; max-height:1000px; display:flex; flex-direction:column; justify-content:space-between; position:relative; padding:24px 24px 38px; overflow:hidden; }
+    .hero::before { content:""; position:absolute; inset:18% 17% 12%; border:1px solid rgba(215,226,234,.05); border-radius:50%; transform:rotate(-14deg); pointer-events:none; }
+    .nav { position:relative; z-index:5; display:grid; grid-template-columns:repeat(4,1fr); align-items:center; gap:16px; color:var(--white); text-transform:uppercase; }
+    .nav a { font-size:clamp(12px,1.4vw,20px); font-weight:500; letter-spacing:.13em; opacity:.92; transition:opacity .2s ease,color .2s ease; }
+    .nav a:hover { opacity:.7; color:var(--lime); }
+    .nav a:nth-child(2),.nav a:nth-child(3) { text-align:center; }
+    .nav a:last-child { text-align:right; }
+    .brand { position:absolute; top:calc(100% + 18px); left:0; color:var(--lime); font-size:10px!important; letter-spacing:.2em!important; }
+    .hero-center { position:relative; z-index:2; display:flex; align-items:center; justify-content:center; flex:1; min-height:0; }
+    .hero-title { width:100%; overflow:hidden; font-size:clamp(76px,15.8vw,245px); font-weight:900; line-height:.78; letter-spacing:-.085em; text-align:center; text-transform:uppercase; white-space:nowrap; }
+    .hero-title .small { display:block; font-size:.46em; letter-spacing:-.07em; }
+    .hero-orb { position:absolute; z-index:-1; width:min(37vw,490px); aspect-ratio:1; border-radius:48% 52% 43% 57% / 55% 44% 56% 45%; background:radial-gradient(circle at 28% 22%,#fff3ff 0 4%,transparent 19%),linear-gradient(135deg,#92cde8,#d1ecdd 42%,#f8aec8 73%,#c681d2); box-shadow:inset -30px -36px 55px rgba(70,25,120,.22),inset 24px 24px 44px rgba(255,255,255,.28),24px 28px 0 rgba(0,0,0,.28),0 50px 90px rgba(0,0,0,.4); transform:translateY(14%) rotate(-15deg); animation:float 8s ease-in-out infinite; }
+    .hero-orb::before { content:"HB"; position:absolute; inset:16%; display:grid; place-items:center; border:1px solid rgba(255,255,255,.42); border-radius:42% 51% 46% 54%; color:rgba(12,12,12,.35); font-size:clamp(30px,5vw,72px); font-weight:800; transform:rotate(16deg); }
+    .hero-orb::after { content:""; position:absolute; width:30%; height:12%; top:17%; left:18%; border-radius:50%; background:rgba(255,255,255,.35); filter:blur(12px); transform:rotate(-30deg); }
+    @keyframes float { 50% { transform:translateY(8%) rotate(-8deg); } }
+    .hero-shape { position:absolute; border-radius:50%; background:var(--lime); box-shadow:0 0 35px rgba(196,255,57,.25); }
+    .hero-shape.one { width:clamp(38px,5vw,78px); aspect-ratio:1; left:18%; bottom:26%; }
+    .hero-shape.two { width:12px; height:12px; right:19%; top:28%; }
+    .hero-shape.three { width:34px; height:34px; right:13%; bottom:24%; background:transparent; border:1px solid var(--white); box-shadow:none; }
+    .hero-shape.three::after { content:"+"; position:absolute; inset:0; display:grid; place-items:center; color:var(--white); font-size:25px; font-weight:300; }
+    .hero-bottom { position:relative; z-index:4; display:flex; align-items:end; justify-content:space-between; gap:24px; }
+    .hero-bottom p { max-width:270px; color:var(--white); font-size:clamp(13px,1.4vw,22px); font-weight:300; line-height:1.05; letter-spacing:.035em; text-transform:uppercase; }
+    .contact-btn { display:inline-flex; align-items:center; justify-content:center; gap:14px; padding:13px 30px; border:2px solid white; border-radius:999px; background:linear-gradient(123deg,#18011F 7%,#B600A8 37%,#7621B0 72%,#BE4C00 100%); box-shadow:0 4px 4px rgba(181,1,167,.25),4px 4px 12px #7721B1 inset; color:white; font-size:clamp(12px,1.1vw,16px); font-weight:500; letter-spacing:.17em; text-transform:uppercase; transition:transform .22s var(--ease),filter .22s ease; }
+    .contact-btn::after { content:"↗"; font-size:19px; line-height:0; }
+    .contact-btn:hover { transform:translateY(-4px) scale(1.02); filter:saturate(1.2); }
+    .scroll-label { position:absolute; left:4px; bottom:40%; color:rgba(215,226,234,.45); font-size:10px; letter-spacing:.2em; text-transform:uppercase; writing-mode:vertical-rl; transform:rotate(180deg); }
+
+    .marquee { padding:150px 0 42px; background:var(--black); overflow:hidden; }
+    .marquee-row { display:flex; gap:12px; width:max-content; margin-bottom:12px; will-change:transform; }
+    .marquee-row:last-child { margin-bottom:0; }
+    .marquee-row img { width:clamp(210px,32vw,420px); height:clamp(145px,21vw,270px); flex:none; object-fit:cover; border-radius:16px; background:#191919; }
+
+    .about { min-height:100svh; display:flex; align-items:center; justify-content:center; position:relative; padding:130px 20px; overflow:hidden; text-align:center; }
+    .about::before { content:""; position:absolute; width:75vw; aspect-ratio:1; border:1px solid rgba(215,226,234,.07); border-radius:50%; }
+    .about-art { position:absolute; width:clamp(90px,15vw,210px); opacity:.9; pointer-events:none; filter:drop-shadow(0 20px 20px rgba(0,0,0,.35)); }
+    .about-art.tl { top:4%; left:4%; }
+    .about-art.bl { bottom:8%; left:10%; width:clamp(80px,13vw,180px); }
+    .about-art.tr { top:4%; right:4%; }
+    .about-art.br { bottom:8%; right:10%; width:clamp(100px,16vw,220px); }
+    .about-inner { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:46px; max-width:700px; }
+    .section-title { font-size:clamp(64px,12vw,160px); font-weight:900; line-height:.78; letter-spacing:-.08em; text-transform:uppercase; }
+    .about-copy { max-width:560px; color:var(--white); font-size:clamp(16px,2vw,22px); font-weight:500; line-height:1.45; }
+    .about-copy span { transition:opacity .2s ease; }
+    .about .contact-btn { margin-top:20px; }
+
+    .services { position:relative; z-index:3; padding:105px 20px 125px; border-radius:60px 60px 0 0; background:#fff; color:var(--black); }
+    .services .section-title { color:var(--black); text-align:center; }
+    .service-list { width:min(1060px,100%); margin:70px auto 0; }
+    .service-item { display:grid; grid-template-columns:clamp(90px,15vw,190px) 1fr; gap:32px; align-items:start; padding:36px 0; border-bottom:1px solid rgba(12,12,12,.15); }
+    .service-item:first-child { border-top:1px solid rgba(12,12,12,.15); }
+    .service-number { color:var(--black); font-size:clamp(58px,10vw,140px); font-weight:900; line-height:.72; letter-spacing:-.09em; }
+    .service-name { margin-bottom:10px; font-size:clamp(20px,2.2vw,34px); font-weight:500; line-height:1; letter-spacing:.06em; text-transform:uppercase; }
+    .service-desc { max-width:690px; color:rgba(12,12,12,.62); font-size:clamp(14px,1.6vw,20px); font-weight:300; line-height:1.45; }
+    .service-meta { display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; margin-top:22px; color:rgba(12,12,12,.65); font-size:12px; font-weight:500; letter-spacing:.11em; text-transform:uppercase; }
+    .service-price { color:var(--black); font-size:clamp(22px,2.5vw,38px); font-weight:600; letter-spacing:-.05em; }
+    .service-price small { font-size:.42em; font-weight:400; letter-spacing:.08em; }
+    .service-tag { padding:6px 10px; border:1px solid rgba(12,12,12,.24); border-radius:999px; }
+
+    .projects { position:relative; z-index:5; margin-top:-48px; padding:112px 20px 130px; border-radius:60px 60px 0 0; background:var(--black); }
+    .projects .section-title { text-align:center; }
+    .project-stack { width:min(1160px,100%); margin:70px auto 0; }
+    .project-shell { height:85vh; min-height:620px; position:relative; }
+    .project-card { position:sticky; top:105px; height:calc(85vh - 40px); min-height:560px; display:flex; flex-direction:column; justify-content:space-between; padding:24px; border:2px solid var(--white); border-radius:54px; background:var(--black); transform-origin:top center; transition:transform .2s linear; overflow:hidden; }
+    .project-top { display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:18px; }
+    .project-index { color:var(--white); font-size:clamp(54px,8vw,118px); font-weight:900; line-height:.7; letter-spacing:-.1em; }
+    .project-type { color:rgba(215,226,234,.6); font-size:12px; font-weight:400; letter-spacing:.16em; text-transform:uppercase; }
+    .project-name { display:block; margin-top:9px; color:var(--white); font-size:clamp(22px,3vw,45px); font-weight:500; letter-spacing:-.05em; text-transform:uppercase; }
+    .live-btn { display:inline-flex; align-items:center; gap:10px; padding:11px 18px; border:2px solid var(--white); border-radius:999px; color:var(--white); font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; transition:background .2s ease,color .2s ease; }
+    .live-btn::after { content:"↗"; font-size:16px; }
+    .live-btn:hover { background:var(--white); color:var(--black); }
+    .project-grid { display:grid; grid-template-columns:40% 60%; gap:12px; height:70%; margin-top:20px; }
+    .project-left { display:grid; grid-template-rows:42% 58%; gap:12px; min-height:0; }
+    .project-grid img { width:100%; height:100%; object-fit:cover; border-radius:42px; background:#202020; }
+    .project-right { min-height:0; }
+    .project-note { display:flex; justify-content:space-between; align-items:center; margin-top:16px; color:rgba(215,226,234,.6); font-size:11px; letter-spacing:.13em; text-transform:uppercase; }
+    .project-note strong { color:var(--lime); font-weight:500; }
+
+    .footer { position:relative; z-index:7; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:30px 24px 105px; border-top:1px solid var(--line); background:var(--black); color:rgba(215,226,234,.55); font-size:11px; letter-spacing:.13em; text-transform:uppercase; }
+    .footer strong { color:var(--white); font-size:14px; }
+    .mobile-wa { display:none; }
+    [data-reveal] { opacity:0; transform:translateY(30px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
+    [data-reveal].in { opacity:1; transform:none; }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.001ms!important; transition-duration:.001ms!important; scroll-behavior:auto!important; } }
+
+    @media (max-width:767px) {
+      .container { width:calc(100% - 32px); }
+      .hero { height:100svh; min-height:690px; padding:18px 16px 24px; }
+      .nav { grid-template-columns:repeat(4,1fr); gap:8px; }
+      .nav a { font-size:10px; letter-spacing:.08em; }
+      .brand { top:calc(100% + 10px); font-size:8px!important; }
+      .hero-title { font-size:clamp(57px,16.4vw,110px); white-space:normal; line-height:.8; }
+      .hero-title .small { font-size:.45em; }
+      .hero-orb { width:230px; transform:translateY(8%) rotate(-15deg); }
+      .hero-shape.one { left:8%; bottom:25%; }
+      .hero-shape.two { right:13%; top:25%; }
+      .hero-shape.three { right:9%; bottom:28%; }
+      .hero-bottom { gap:12px; align-items:end; }
+      .hero-bottom p { max-width:150px; font-size:12px; }
+      .contact-btn { padding:12px 18px; gap:8px; font-size:10px; letter-spacing:.12em; }
+      .scroll-label { display:none; }
+      .marquee { padding-top:90px; }
+      .marquee-row img { width:210px; height:145px; border-radius:12px; }
+      .about { min-height:760px; padding:100px 16px; }
+      .about-art.tl,.about-art.tr { width:90px; }
+      .about-art.bl,.about-art.br { width:95px; }
+      .about-inner { gap:32px; }
+      .about-copy { font-size:16px; }
+      .services,.projects { padding-left:16px; padding-right:16px; border-radius:38px 38px 0 0; }
+      .services { padding-top:84px; padding-bottom:105px; }
+      .projects { margin-top:-30px; padding-top:84px; padding-bottom:110px; }
+      .service-list { margin-top:52px; }
+      .service-item { grid-template-columns:68px 1fr; gap:17px; padding:27px 0; }
+      .service-number { font-size:60px; }
+      .service-name { font-size:19px; letter-spacing:.04em; }
+      .service-desc { font-size:13px; }
+      .service-meta { gap:7px 10px; font-size:9px; }
+      .service-price { font-size:25px; }
+      .project-stack { margin-top:50px; }
+      .project-shell { height:75vh; min-height:540px; }
+      .project-card { top:76px; height:calc(75vh - 30px); min-height:500px; padding:15px; border-radius:31px; }
+      .project-top { grid-template-columns:52px 1fr; gap:12px; }
+      .project-index { font-size:56px; }
+      .project-type { font-size:9px; }
+      .project-name { font-size:21px; margin-top:6px; }
+      .live-btn { grid-column:1 / -1; justify-self:start; padding:8px 13px; font-size:9px; border-width:1px; }
+      .project-grid { height:66%; grid-template-columns:42% 58%; gap:7px; margin-top:12px; }
+      .project-left { gap:7px; }
+      .project-grid img { border-radius:23px; }
+      .project-note { margin-top:10px; font-size:8px; }
+      .footer { padding:24px 16px 100px; flex-direction:column; align-items:flex-start; font-size:9px; }
+      .mobile-wa { position:fixed; z-index:30; right:12px; bottom:max(12px,env(safe-area-inset-bottom)); left:12px; display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:62px; padding:10px 11px 10px 14px; border:1px solid rgba(215,226,234,.28); border-radius:18px; background:rgba(12,12,12,.92); box-shadow:0 14px 45px rgba(0,0,0,.5); backdrop-filter:blur(18px); transition:opacity .25s var(--ease),transform .25s var(--ease); }
+      .mobile-wa.hidden { opacity:0; transform:translateY(130%); pointer-events:none; }
+      .mobile-wa-copy { display:flex; align-items:center; gap:10px; color:var(--white); font-size:10px; font-weight:600; line-height:1.05; letter-spacing:.09em; text-transform:uppercase; }
+      .mobile-wa-copy small { display:block; margin-top:4px; color:rgba(215,226,234,.6); font-size:9px; font-weight:400; letter-spacing:0; text-transform:none; }
+      .wa-icon { display:grid; flex:0 0 39px; place-items:center; width:39px; height:39px; border:1px solid var(--lime); border-radius:50%; color:var(--lime); }
+      .wa-icon svg { width:18px; height:18px; fill:currentColor; }
+      .mobile-wa-arrow { display:grid; flex:0 0 40px; place-items:center; width:40px; height:40px; border-radius:50%; background:var(--lime); color:var(--black); font-size:20px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero" id="top">
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#about">About</a><a href="#services">Price</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      <a class="brand" href="#top" aria-label="HB Visuals home">HB VISUALS</a>
+    </nav>
+    <div class="hero-center">
+      <div class="hero-orb" aria-hidden="true"></div><span class="hero-shape one" aria-hidden="true"></span><span class="hero-shape two" aria-hidden="true"></span><span class="hero-shape three" aria-hidden="true"></span>
+      <h1 class="hero-title hero-heading" data-reveal><span class="small">Hi, i&apos;m</span>HB Visuals</h1>
+    </div>
+    <div class="hero-bottom"><p data-reveal>a digital studio driven by crafting striking and unforgettable projects</p><a class="contact-btn" href="https://wa.me/971557858540" target="_blank" rel="noopener" data-reveal>Contact HB Visuals</a></div>
+    <span class="scroll-label">Scroll to explore</span>
+  </section>
+
+  <section class="marquee" aria-label="HB Visuals visual work preview">
+    <div class="marquee-row row-one"></div><div class="marquee-row row-two"></div>
+  </section>
+
+  <section class="about" id="about">
+    <img class="about-art tl" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" alt="" loading="lazy" />
+    <img class="about-art bl" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png" alt="" loading="lazy" />
+    <img class="about-art tr" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png" alt="" loading="lazy" />
+    <img class="about-art br" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png" alt="" loading="lazy" />
+    <div class="about-inner"><h2 class="section-title hero-heading" data-reveal>About us</h2><p class="about-copy" data-copy>HB Visuals creates premium websites and AI-assisted creative content for businesses that want to stand out and present their best image. From a clear first page to a complete digital presence, we make the work striking, responsive, and ready for the next move.</p><a class="contact-btn" href="mailto:hitin.banga23@gmail.com" data-reveal>Start a conversation</a></div>
+  </section>
+
+  <section class="services" id="services">
+    <h2 class="section-title" data-reveal>Services</h2>
+    <div class="service-list">
+      <article class="service-item" data-reveal><div class="service-number">01</div><div><h3 class="service-name">Starter Business Website</h3><p class="service-desc">Exactly 5 pages with premium responsive design, mobile and desktop optimization, WhatsApp, Google Maps, social media integration, contact form, basic SEO setup, and 7-day delivery.</p><div class="service-meta"><span class="service-price">AED 1,599</span><span class="service-tag">5 pages</span><span>7-day delivery</span></div></div></article>
+      <article class="service-item" data-reveal><div class="service-number">02</div><div><h3 class="service-name">Professional Business Website</h3><p class="service-desc">Exactly 8 pages with premium custom design, mobile and desktop optimization, WhatsApp, Google Maps, social media integration, lead forms, SEO, Analytics setup, speed optimization, and 10–14 day delivery.</p><div class="service-meta"><span class="service-price">AED 2,999</span><span class="service-tag">8 pages</span><span>10–14 day delivery</span></div></div></article>
+      <article class="service-item" data-reveal><div class="service-number">03</div><div><h3 class="service-name">Premium Website</h3><p class="service-desc">Custom UI/UX, advanced animations, advanced forms, booking functionality, advanced SEO structure, analytics, performance optimization, custom integrations, and premium responsive design.</p><div class="service-meta"><span class="service-price">AED 5,000</span><span class="service-tag">Premium</span><span>14–21 day delivery</span></div></div></article>
+      <article class="service-item" data-reveal><div class="service-number">04</div><div><h3 class="service-name">AI Creative Content</h3><p class="service-desc">AI-assisted promotional visuals, AI-generated creative concepts, social-media-ready assets, creative direction, and professional editing/refinement.</p><div class="service-meta"><span class="service-price">AED 600 <small>/ PROJECT</small></span><span class="service-tag">Creative direction</span></div></div></article>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <h2 class="section-title hero-heading" data-reveal>Project</h2>
+    <div class="project-stack">
+      <div class="project-shell"><article class="project-card" data-card="0"><div class="project-top"><div class="project-index">01</div><div><div class="project-type">Website direction</div><strong class="project-name">Starter / digital presence</strong></div><a class="live-btn" href="#contact">Enquire</a></div><div class="project-grid"><div class="project-left"><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&amp;w=1280&amp;q=85" alt="HB Visuals website direction preview" loading="lazy" /><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&amp;w=1280&amp;q=85" alt="HB Visuals website design preview" loading="lazy" /></div><div class="project-right"><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&amp;w=1280&amp;q=85" alt="HB Visuals responsive project preview" loading="lazy" /></div></div><div class="project-note"><span>Responsive / editorial / clear</span><strong>HB VISUALS</strong></div></article></div>
+      <div class="project-shell"><article class="project-card" data-card="1"><div class="project-top"><div class="project-index">02</div><div><div class="project-type">AI creative content</div><strong class="project-name">Make the scroll stop</strong></div><a class="live-btn" href="#contact">Enquire</a></div><div class="project-grid"><div class="project-left"><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&amp;w=1280&amp;q=85" alt="AI creative content art direction preview" loading="lazy" /><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&amp;w=1280&amp;q=85" alt="AI promotional visual preview" loading="lazy" /></div><div class="project-right"><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&amp;w=1280&amp;q=85" alt="AI creative campaign preview" loading="lazy" /></div></div><div class="project-note"><span>Concept / direction / refinement</span><strong>AED 600 / PROJECT</strong></div></article></div>
+      <div class="project-shell"><article class="project-card" data-card="2"><div class="project-top"><div class="project-index">03</div><div><div class="project-type">Premium digital experience</div><strong class="project-name">Built for the next move</strong></div><a class="live-btn" href="#contact">Enquire</a></div><div class="project-grid"><div class="project-left"><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&amp;w=1280&amp;q=85" alt="Premium digital experience preview" loading="lazy" /><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&amp;w=1280&amp;q=85" alt="Premium website visual preview" loading="lazy" /></div><div class="project-right"><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&amp;w=1280&amp;q=85" alt="Premium responsive website preview" loading="lazy" /></div></div><div class="project-note"><span>UI / UX / motion / performance</span><strong>AED 5,000</strong></div></article></div>
+    </div>
+  </section>
+
+  <section class="about" id="contact" style="min-height:72svh;padding-top:110px;padding-bottom:160px"><div class="about-inner"><div class="eyebrow">HB VISUALS / DUBAI, UAE</div><h2 class="section-title hero-heading" data-reveal>Let&apos;s build.</h2><p class="about-copy" data-reveal>Have a launch, a new direction, or a brand that needs to show up sharper? Let&apos;s talk about the next good idea.</p><a class="contact-btn" href="mailto:hitin.banga23@gmail.com">Contact HB Visuals</a><a class="contact-btn" href="https://wa.me/971557858540" target="_blank" rel="noopener">WhatsApp us</a><div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;color:rgba(215,226,234,.7);font-size:14px;letter-spacing:.04em"><a href="https://wa.me/971557858540" target="_blank" rel="noopener" aria-label="WhatsApp">+971 55 785 8540</a><a href="mailto:hitin.banga23@gmail.com" aria-label="Email">hitin.banga23@gmail.com</a></div></div></section>
+
+  <footer class="footer"><strong>HB VISUALS</strong><span>Dubai, UAE</span><span>Websites / AI creative content</span></footer>
+  <a class="mobile-wa" href="https://wa.me/971557858540" target="_blank" rel="noopener" aria-label="WhatsApp HB Visuals at +971 55 785 8540"><span class="mobile-wa-copy"><span class="wa-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.75 11.75 0 0 0 12.15 0C5.65 0 .36 5.28.36 11.79c0 2.08.54 4.1 1.57 5.88L.25 24l6.48-1.7a11.8 11.8 0 0 0 5.42 1.3h.01c6.5 0 11.79-5.29 11.79-11.8 0-3.15-1.22-6.1-3.45-8.3ZM12.16 21.6h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.85 1.01 1.03-3.75-.24-.39a9.82 9.82 0 0 1-1.5-5.25C2.23 6.2 6.67 1.97 12.16 1.97c2.62 0 5.08 1.02 6.93 2.86a9.74 9.74 0 0 1 2.88 6.96c0 5.41-4.4 9.81-9.81 9.81Zm5.38-7.35c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.08-.8.37-.28.3-1.04 1.02-1.04 2.5 0 1.48 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.73 2.02-1.43.25-.7.25-1.3.17-1.43-.08-.12-.28-.2-.58-.35Z" /></svg></span><span>WHATSAPP HB VISUALS<small>+971 55 785 8540</small></span></span><span class="mobile-wa-arrow">↗</span></a>
+</div>
+<script>
+  const marqueeImages = [
+    'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif','https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif','https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif','https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif','https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif','https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif','https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif','https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif','https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif','https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif','https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif','https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif','https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif','https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif','https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif','https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif','https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif','https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif','https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif','https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif','https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif'
+  ];
+  const makeTiles = (items) => items.concat(items,items).map((src,i) => `<img src="${src}" alt="" loading="lazy" />`).join('');
+  document.querySelector('.row-one').innerHTML = makeTiles(marqueeImages.slice(0,11));
+  document.querySelector('.row-two').innerHTML = makeTiles(marqueeImages.slice(11));
+  const marquee = document.querySelector('.marquee');
+  const rowOne = document.querySelector('.row-one');
+  const rowTwo = document.querySelector('.row-two');
+  let ticking = false;
+  function moveMarquee() {
+    const rect = marquee.getBoundingClientRect();
+    const offset = Math.max(0,(window.innerHeight - rect.top) * .3);
+    rowOne.style.transform = `translateX(${offset - 240}px)`;
+    rowTwo.style.transform = `translateX(${-offset + 240}px)`;
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => { if (!ticking) { window.requestAnimationFrame(moveMarquee); ticking = true; } }, {passive:true});
+  moveMarquee();
+  const reveal = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); reveal.unobserve(entry.target); } }), {threshold:.12});
+  document.querySelectorAll('[data-reveal]').forEach(el => reveal.observe(el));
+  const copy = document.querySelector('[data-copy]');
+  if (copy) copy.innerHTML = copy.textContent.split('').map((char,i) => `<span style="opacity:${Math.min(1,.22 + i / copy.textContent.length * .78)}">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
+  const cards = document.querySelectorAll('.project-card');
+  const updateCards = () => cards.forEach((card,i) => { const rect = card.getBoundingClientRect(); const progress = Math.max(0,Math.min(1,(window.innerHeight * .62 - rect.top) / (window.innerHeight * .52))); card.style.transform = `scale(${1 - (cards.length - 1 - i) * .03 - progress * .018})`; });
+  window.addEventListener('scroll', () => requestAnimationFrame(updateCards), {passive:true}); updateCards();
+  const mobileBar = document.querySelector('.mobile-wa');
+  const contact = document.querySelector('#contact');
+  if (mobileBar && contact) new IntersectionObserver(([entry]) => mobileBar.classList.toggle('hidden',entry.isIntersecting),{threshold:.2}).observe(contact);
+</script>
+</body>
+</html>
