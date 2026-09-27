@@ -1,335 +1,508 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0C0C0C" />
-  <meta name="description" content="HB Visuals — striking websites and AI creative content for ambitious brands." />
-  <title>HB Visuals — Digital Creator Studio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    :root { --black:#0C0C0C; --white:#D7E2EA; --lime:#c4ff39; --purple:#B600A8; --line:rgba(215,226,234,.18); --ease:cubic-bezier(.25,.1,.25,1); }
-    * { box-sizing:border-box; margin:0; padding:0; }
-    html { background:var(--black); scroll-behavior:smooth; }
-    body { background:var(--black); color:var(--white); font-family:'Kanit',sans-serif; overflow-x:clip; }
-    a { color:inherit; text-decoration:none; }
-    button,a { -webkit-tap-highlight-color:transparent; }
-    a:focus-visible { outline:2px solid var(--lime); outline-offset:4px; }
-    img { display:block; max-width:100%; }
-    ::selection { background:var(--lime); color:var(--black); }
-    .wrap { width:100%; overflow-x:clip; }
-    .container { width:min(1280px,calc(100% - 48px)); margin:0 auto; }
-    .hero-heading { background:linear-gradient(180deg,#646973 0%,#BBCCD7 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
-    .eyebrow { color:rgba(215,226,234,.62); font-size:11px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="HB Visuals — premium websites and AI-assisted creative content for ambitious brands in Dubai and beyond." />
+    <meta name="theme-color" content="#0C0C0C" />
+    <title>HB Visuals — Digital Catalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #0c0c0c;
+        --ink-soft: #151718;
+        --paper: #d7e2ea;
+        --paper-bright: #f0f4f3;
+        --muted: #8a969d;
+        --line: rgba(215, 226, 234, 0.17);
+        --line-dark: rgba(12, 12, 12, 0.16);
+        --acid: #c8ff34;
+        --cyan: #a4d8ff;
+        --pink: #f3a6de;
+        --orange: #ffb26b;
+        --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+        --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      }
 
-    .hero { min-height:100svh; height:900px; max-height:1000px; display:flex; flex-direction:column; justify-content:space-between; position:relative; padding:24px 24px 38px; overflow:hidden; }
-    .hero::before { content:""; position:absolute; inset:18% 17% 12%; border:1px solid rgba(215,226,234,.05); border-radius:50%; transform:rotate(-14deg); pointer-events:none; }
-    .nav { position:relative; z-index:5; display:grid; grid-template-columns:repeat(4,1fr); align-items:center; gap:16px; color:var(--white); text-transform:uppercase; }
-    .nav a { font-size:clamp(12px,1.4vw,20px); font-weight:500; letter-spacing:.13em; opacity:.92; transition:opacity .2s ease,color .2s ease; }
-    .nav a:hover { opacity:.7; color:var(--lime); }
-    .nav a:nth-child(2),.nav a:nth-child(3) { text-align:center; }
-    .nav a:last-child { text-align:right; }
-    .brand { position:absolute; top:calc(100% + 18px); left:0; color:var(--lime); font-size:10px!important; letter-spacing:.2em!important; }
-    .hero-center { position:relative; z-index:2; display:flex; align-items:center; justify-content:center; flex:1; min-height:0; }
-    .hero-title { width:100%; overflow:hidden; font-size:clamp(76px,15.8vw,245px); font-weight:900; line-height:.78; letter-spacing:-.085em; text-align:center; text-transform:uppercase; white-space:nowrap; }
-    .hero-title .small { display:block; font-size:.46em; letter-spacing:-.07em; }
-    .hero-orb { position:absolute; z-index:-1; width:min(37vw,490px); aspect-ratio:1; border-radius:48% 52% 43% 57% / 55% 44% 56% 45%; background:radial-gradient(circle at 28% 22%,#fff3ff 0 4%,transparent 19%),linear-gradient(135deg,#92cde8,#d1ecdd 42%,#f8aec8 73%,#c681d2); box-shadow:inset -30px -36px 55px rgba(70,25,120,.22),inset 24px 24px 44px rgba(255,255,255,.28),24px 28px 0 rgba(0,0,0,.28),0 50px 90px rgba(0,0,0,.4); transform:translateY(14%) rotate(-15deg); animation:float 8s ease-in-out infinite; }
-    .hero-orb::before { content:"HB"; position:absolute; inset:16%; display:grid; place-items:center; border:1px solid rgba(255,255,255,.42); border-radius:42% 51% 46% 54%; color:rgba(12,12,12,.35); font-size:clamp(30px,5vw,72px); font-weight:800; transform:rotate(16deg); }
-    .hero-orb::after { content:""; position:absolute; width:30%; height:12%; top:17%; left:18%; border-radius:50%; background:rgba(255,255,255,.35); filter:blur(12px); transform:rotate(-30deg); }
-    @keyframes float { 50% { transform:translateY(8%) rotate(-8deg); } }
-    .hero-shape { position:absolute; border-radius:50%; background:var(--lime); box-shadow:0 0 35px rgba(196,255,57,.25); }
-    .hero-shape.one { width:clamp(38px,5vw,78px); aspect-ratio:1; left:18%; bottom:26%; }
-    .hero-shape.two { width:12px; height:12px; right:19%; top:28%; }
-    .hero-shape.three { width:34px; height:34px; right:13%; bottom:24%; background:transparent; border:1px solid var(--white); box-shadow:none; }
-    .hero-shape.three::after { content:"+"; position:absolute; inset:0; display:grid; place-items:center; color:var(--white); font-size:25px; font-weight:300; }
-    .hero-bottom { position:relative; z-index:4; display:flex; align-items:end; justify-content:space-between; gap:24px; }
-    .hero-bottom p { max-width:270px; color:var(--white); font-size:clamp(13px,1.4vw,22px); font-weight:300; line-height:1.05; letter-spacing:.035em; text-transform:uppercase; }
-    .contact-btn { display:inline-flex; align-items:center; justify-content:center; gap:14px; padding:13px 30px; border:2px solid white; border-radius:999px; background:linear-gradient(123deg,#18011F 7%,#B600A8 37%,#7621B0 72%,#BE4C00 100%); box-shadow:0 4px 4px rgba(181,1,167,.25),4px 4px 12px #7721B1 inset; color:white; font-size:clamp(12px,1.1vw,16px); font-weight:500; letter-spacing:.17em; text-transform:uppercase; transition:transform .22s var(--ease),filter .22s ease; }
-    .contact-btn::after { content:"↗"; font-size:19px; line-height:0; }
-    .contact-btn:hover { transform:translateY(-4px) scale(1.02); filter:saturate(1.2); }
-    .scroll-label { position:absolute; left:4px; bottom:40%; color:rgba(215,226,234,.45); font-size:10px; letter-spacing:.2em; text-transform:uppercase; writing-mode:vertical-rl; transform:rotate(180deg); }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        overflow-x: hidden;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 20;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+        mix-blend-mode: screen;
+      }
+      a { color: inherit; text-decoration: none; }
+      button, a { -webkit-tap-highlight-color: transparent; }
+      button:focus-visible, a:focus-visible { outline: 2px solid var(--acid); outline-offset: 4px; }
+      ::selection { background: var(--acid); color: var(--ink); }
 
-    .marquee { padding:150px 0 42px; background:var(--black); overflow:hidden; }
-    .marquee-row { display:flex; gap:12px; width:max-content; margin-bottom:12px; will-change:transform; }
-    .marquee-row:last-child { margin-bottom:0; }
-    .marquee-row img { width:clamp(210px,32vw,420px); height:clamp(145px,21vw,270px); flex:none; object-fit:cover; border-radius:16px; background:#191919; }
+      .shell { position: relative; min-height: 100vh; }
+      .container { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+      .eyebrow {
+        display: inline-flex; align-items: center; gap: 10px;
+        color: var(--muted); font: 600 10px/1 Inter, sans-serif;
+        text-transform: uppercase; letter-spacing: .19em;
+      }
+      .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--acid); }
+      .eyebrow--dark { color: rgba(12,12,12,.55); }
+      .eyebrow--dark::before { background: var(--ink); }
+      .display { font-family: Kanit, sans-serif; font-weight: 500; letter-spacing: -.075em; }
 
-    .about { min-height:100svh; display:flex; align-items:center; justify-content:center; position:relative; padding:130px 20px; overflow:hidden; text-align:center; }
-    .about::before { content:""; position:absolute; width:75vw; aspect-ratio:1; border:1px solid rgba(215,226,234,.07); border-radius:50%; }
-    .about-art { position:absolute; width:clamp(90px,15vw,210px); opacity:.9; pointer-events:none; filter:drop-shadow(0 20px 20px rgba(0,0,0,.35)); }
-    .about-art.tl { top:4%; left:4%; }
-    .about-art.bl { bottom:8%; left:10%; width:clamp(80px,13vw,180px); }
-    .about-art.tr { top:4%; right:4%; }
-    .about-art.br { bottom:8%; right:10%; width:clamp(100px,16vw,220px); }
-    .about-inner { position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:46px; max-width:700px; }
-    .section-title { font-size:clamp(64px,12vw,160px); font-weight:900; line-height:.78; letter-spacing:-.08em; text-transform:uppercase; }
-    .about-copy { max-width:560px; color:var(--white); font-size:clamp(16px,2vw,22px); font-weight:500; line-height:1.45; }
-    .about-copy span { transition:opacity .2s ease; }
-    .about .contact-btn { margin-top:20px; }
+      .nav {
+        position: absolute; z-index: 10; top: 0; left: 0; right: 0;
+        padding: 22px 0;
+      }
+      .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+      .brand { display: inline-flex; align-items: center; gap: 12px; font: 600 14px/1 Kanit, sans-serif; letter-spacing: -.02em; }
+      .brand-mark { position: relative; width: 27px; height: 27px; display: inline-block; }
+      .brand-mark::before, .brand-mark::after { content: ""; position: absolute; border: 2px solid var(--paper); }
+      .brand-mark::before { inset: 0 7px 7px 0; border-right: 0; border-bottom: 0; }
+      .brand-mark::after { inset: 7px 0 0 7px; border-left: 0; border-top: 0; border-color: var(--acid); }
+      .nav-links { display: flex; gap: 28px; align-items: center; }
+      .nav-links a { color: #a8b2b8; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; transition: color .25s ease; }
+      .nav-links a:hover { color: var(--paper); }
+      .nav-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+      .nav-cta::after { content: "↗"; color: var(--acid); font-size: 16px; transition: transform .25s var(--ease-out); }
+      .nav-cta:hover::after { transform: translate(3px, -3px); }
 
-    .services { position:relative; z-index:3; padding:105px 20px 125px; border-radius:60px 60px 0 0; background:#fff; color:var(--black); }
-    .services .section-title { color:var(--black); text-align:center; }
-    .service-list { width:min(1060px,100%); margin:70px auto 0; }
-    .service-item { display:grid; grid-template-columns:clamp(90px,15vw,190px) 1fr; gap:32px; align-items:start; padding:36px 0; border-bottom:1px solid rgba(12,12,12,.15); }
-    .service-item:first-child { border-top:1px solid rgba(12,12,12,.15); }
-    .service-number { color:var(--black); font-size:clamp(58px,10vw,140px); font-weight:900; line-height:.72; letter-spacing:-.09em; }
-    .service-name { margin-bottom:10px; font-size:clamp(20px,2.2vw,34px); font-weight:500; line-height:1; letter-spacing:.06em; text-transform:uppercase; }
-    .service-desc { max-width:690px; color:rgba(12,12,12,.62); font-size:clamp(14px,1.6vw,20px); font-weight:300; line-height:1.45; }
-    .service-meta { display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; margin-top:22px; color:rgba(12,12,12,.65); font-size:12px; font-weight:500; letter-spacing:.11em; text-transform:uppercase; }
-    .service-price { color:var(--black); font-size:clamp(22px,2.5vw,38px); font-weight:600; letter-spacing:-.05em; }
-    .service-price small { font-size:.42em; font-weight:400; letter-spacing:.08em; }
-    .service-tag { padding:6px 10px; border:1px solid rgba(12,12,12,.24); border-radius:999px; }
+      .hero { position: relative; min-height: 860px; padding: 164px 0 86px; overflow: hidden; }
+      .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line); }
+      .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 54px; align-items: center; }
+      .hero-copy { position: relative; z-index: 2; }
+      .hero h1 { margin: 28px 0 25px; max-width: 690px; font-size: clamp(68px, 9.2vw, 140px); line-height: .83; }
+      .hero h1 .line { display: block; }
+      .gradient-word { background: linear-gradient(100deg, var(--paper) 4%, var(--cyan) 42%, var(--pink) 79%, var(--orange) 112%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .hero-intro { max-width: 430px; margin: 0; color: #aeb9be; font-size: 15px; line-height: 1.7; }
+      .hero-intro strong { color: var(--paper); font-weight: 500; }
+      .hero-actions { display: flex; align-items: center; gap: 18px; margin-top: 38px; }
+      .btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 52px; padding: 0 22px; border: 1px solid transparent; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; transition: transform .2s var(--ease-out), background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease; }
+      .btn:active { transform: scale(.97); }
+      .btn-primary { background: var(--acid); color: var(--ink); box-shadow: 0 0 0 rgba(200,255,52,0); }
+      .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(200,255,52,.16); }
+      .btn-ghost { border-color: rgba(215,226,234,.25); color: var(--paper); }
+      .btn-ghost:hover { border-color: var(--paper); background: rgba(215,226,234,.08); transform: translateY(-3px); }
+      .arrow { font-size: 17px; line-height: 0; }
+      .hero-note { display: flex; gap: 11px; align-items: center; margin-top: 58px; color: var(--muted); font-size: 10px; letter-spacing: .09em; text-transform: uppercase; }
+      .hero-note i { width: 6px; height: 6px; border-radius: 50%; background: var(--acid); box-shadow: 0 0 14px var(--acid); }
 
+      .hero-art { position: relative; min-height: 500px; display: grid; place-items: center; }
+      .art-caption { position: absolute; right: 0; bottom: 18px; max-width: 145px; color: var(--muted); font-size: 10px; line-height: 1.6; text-align: right; text-transform: uppercase; letter-spacing: .09em; }
+      .art-index { position: absolute; top: 36px; right: 28px; color: rgba(215,226,234,.22); font: 500 12px/1 Kanit, sans-serif; letter-spacing: .08em; }
+      .art-index::before { content: "© / 01"; }
+      .orbit { position: absolute; width: min(500px, 96%); aspect-ratio: 1; border: 1px solid rgba(215,226,234,.15); border-radius: 50%; transform: rotate(-23deg); }
+      .orbit::before, .orbit::after { content: ""; position: absolute; border-radius: 50%; }
+      .orbit::before { inset: 8%; border: 1px dashed rgba(215,226,234,.16); }
+      .orbit::after { width: 10px; height: 10px; top: 10%; left: 12%; background: var(--acid); box-shadow: 0 0 18px var(--acid); }
+      .sphere { position: relative; z-index: 1; width: 270px; aspect-ratio: 1; border-radius: 48% 52% 43% 57% / 55% 44% 56% 45%; background: radial-gradient(circle at 29% 24%, #f5e0f3 0 5%, transparent 15%), radial-gradient(circle at 70% 75%, #efb0ca 0 5%, transparent 29%), linear-gradient(135deg, #a4d8ff 0%, #b9dcce 37%, #f7b3c8 70%, #e9a5e1 100%); box-shadow: inset -28px -34px 52px rgba(107,57,125,.2), inset 22px 25px 45px rgba(255,255,255,.28), 25px 28px 0 rgba(0,0,0,.24), 0 50px 80px rgba(0,0,0,.32); transform: rotate(-14deg); }
+      .sphere::before { content: ""; position: absolute; inset: 16% 19% 21% 14%; border: 1px solid rgba(255,255,255,.4); border-radius: 42% 51% 46% 54%; transform: rotate(24deg); }
+      .sphere::after { content: ""; position: absolute; width: 40%; height: 13%; top: 18%; left: 18%; border-radius: 50%; background: rgba(255,255,255,.32); filter: blur(10px); transform: rotate(-30deg); }
+      .cube { position: absolute; z-index: 2; width: 110px; aspect-ratio: 1; right: 12%; top: 14%; border-radius: 18px; background: linear-gradient(135deg, #d7e2ea 0 35%, #8fb4c9 35% 72%, #527084 72%); box-shadow: 22px 24px 0 rgba(0,0,0,.22), 0 24px 42px rgba(0,0,0,.3); transform: rotate(22deg) skewY(-7deg); }
+      .cube::before { content: "HB"; position: absolute; inset: 0; display: grid; place-items: center; color: rgba(12,12,12,.8); font: 600 29px/1 Kanit, sans-serif; letter-spacing: -.08em; transform: skewY(7deg); }
+      .disc { position: absolute; z-index: 0; width: 104px; height: 104px; left: 8%; bottom: 15%; border-radius: 50%; background: var(--acid); box-shadow: 16px 20px 0 rgba(0,0,0,.25); transform: rotate(-15deg); }
+      .disc::after { content: "✦"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--ink); font-size: 32px; }
+      .plus { position: absolute; z-index: 3; right: 8%; bottom: 22%; color: var(--paper); font: 300 42px/1 Kanit, sans-serif; transform: rotate(18deg); }
+      .scroll-cue { position: absolute; left: 0; bottom: 30px; color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .2em; writing-mode: vertical-rl; transform: rotate(180deg); }
+      .scroll-cue::after { content: ""; display: block; width: 1px; height: 50px; margin: 15px auto 0; background: linear-gradient(var(--acid), transparent); }
 
-    .care { position:relative; z-index:4; padding:115px 20px 135px; background:radial-gradient(circle at 18% 18%,rgba(196,255,57,.12),transparent 28%),linear-gradient(145deg,#111 0%,#0C0C0C 58%,#19011f 100%); overflow:hidden; }
-    .care::before { content:""; position:absolute; width:clamp(260px,38vw,560px); aspect-ratio:1; right:-12%; top:8%; border:1px solid rgba(196,255,57,.18); border-radius:48% 52% 43% 57% / 55% 44% 56% 45%; transform:rotate(22deg); pointer-events:none; }
-    .care-inner { position:relative; z-index:1; width:min(1160px,100%); margin:0 auto; }
-    .care-kicker { display:flex; align-items:center; gap:14px; margin-bottom:28px; color:var(--lime); font-size:11px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; }
-    .care-kicker::before { content:""; width:42px; height:1px; background:var(--lime); }
-    .care-header { display:grid; grid-template-columns:minmax(0,1fr) minmax(260px,390px); gap:40px; align-items:end; }
-    .care-title { max-width:850px; font-size:clamp(56px,10vw,142px); font-weight:900; line-height:.8; letter-spacing:-.085em; text-transform:uppercase; }
-    .care-intro { color:rgba(215,226,234,.68); font-size:clamp(16px,1.7vw,21px); font-weight:300; line-height:1.35; }
-    .care-card { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr); gap:32px; margin-top:72px; padding:30px; border:1px solid rgba(215,226,234,.22); border-radius:48px; background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.025) 45%,rgba(196,255,57,.06)); box-shadow:0 30px 90px rgba(0,0,0,.38),inset 0 1px rgba(255,255,255,.12); }
-    .care-card-main { min-width:0; }
-    .care-price { display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:28px; color:var(--white); font-size:clamp(48px,7vw,100px); font-weight:800; line-height:.85; letter-spacing:-.08em; }
-    .care-price small { color:var(--lime); font-size:clamp(15px,1.8vw,22px); font-weight:500; letter-spacing:.12em; }
-    .care-card h3 { margin-bottom:19px; color:var(--white); font-size:clamp(22px,2.2vw,32px); font-weight:500; letter-spacing:.04em; text-transform:uppercase; }
-    .care-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px 24px; list-style:none; }
-    .care-list li { position:relative; padding-left:19px; color:rgba(215,226,234,.75); font-size:14px; font-weight:300; line-height:1.35; }
-    .care-list li::before { content:""; position:absolute; left:0; top:.46em; width:7px; height:7px; border-radius:50%; background:var(--lime); box-shadow:0 0 12px rgba(196,255,57,.5); }
-    .care-aside { display:flex; flex-direction:column; justify-content:space-between; min-width:0; padding:24px; border-radius:34px; background:rgba(12,12,12,.6); }
-    .care-aside .eyebrow { margin-bottom:20px; }
-    .care-quote { color:var(--white); font-size:clamp(26px,3.5vw,50px); font-weight:600; line-height:.95; letter-spacing:-.045em; text-transform:uppercase; }
-    .care-note { margin-top:24px; color:rgba(215,226,234,.58); font-size:13px; font-weight:300; line-height:1.45; }
-    .care-cta { align-self:flex-start; margin-top:30px; }
-    .care-exclusions { margin-top:28px; padding:23px 24px; border:1px solid rgba(215,226,234,.13); border-radius:28px; background:rgba(255,255,255,.025); }
-    .care-exclusions h4 { margin-bottom:14px; color:var(--white); font-size:12px; font-weight:500; letter-spacing:.15em; text-transform:uppercase; }
-    .care-exclusions p { color:rgba(215,226,234,.52); font-size:13px; font-weight:300; line-height:1.5; }
-    .care-exclusions strong { color:rgba(215,226,234,.72); font-weight:400; }
+      .marquee { position: relative; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px 0; }
+      .marquee-track { display: flex; width: max-content; animation: marquee 26s linear infinite; }
+      .marquee-item { display: flex; align-items: center; gap: 33px; padding-right: 33px; color: rgba(215,226,234,.45); font: 500 12px/1 Kanit, sans-serif; text-transform: uppercase; letter-spacing: .17em; white-space: nowrap; }
+      .marquee-item::after { content: "✦"; color: var(--acid); font-size: 13px; }
+      @keyframes marquee { to { transform: translateX(-50%); } }
 
-    .projects { position:relative; z-index:5; margin-top:-48px; padding:112px 20px 130px; border-radius:60px 60px 0 0; background:var(--black); }
-    .projects .section-title { text-align:center; }
-    .project-stack { width:min(1160px,100%); margin:70px auto 0; }
-    .project-shell { height:85vh; min-height:620px; position:relative; }
-    .project-card { position:sticky; top:105px; height:calc(85vh - 40px); min-height:560px; display:flex; flex-direction:column; justify-content:space-between; padding:24px; border:2px solid var(--white); border-radius:54px; background:var(--black); transform-origin:top center; transition:transform .2s linear; overflow:hidden; }
-    .project-top { display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:18px; }
-    .project-index { color:var(--white); font-size:clamp(54px,8vw,118px); font-weight:900; line-height:.7; letter-spacing:-.1em; }
-    .project-type { color:rgba(215,226,234,.6); font-size:12px; font-weight:400; letter-spacing:.16em; text-transform:uppercase; }
-    .project-name { display:block; margin-top:9px; color:var(--white); font-size:clamp(22px,3vw,45px); font-weight:500; letter-spacing:-.05em; text-transform:uppercase; }
-    .live-btn { display:inline-flex; align-items:center; gap:10px; padding:11px 18px; border:2px solid var(--white); border-radius:999px; color:var(--white); font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; transition:background .2s ease,color .2s ease; }
-    .live-btn::after { content:"↗"; font-size:16px; }
-    .live-btn:hover { background:var(--white); color:var(--black); }
-    .project-grid { display:grid; grid-template-columns:40% 60%; gap:12px; height:70%; margin-top:20px; }
-    .project-left { display:grid; grid-template-rows:42% 58%; gap:12px; min-height:0; }
-    .project-grid img { width:100%; height:100%; object-fit:cover; border-radius:42px; background:#202020; }
-    .project-right { min-height:0; }
-    .project-note { display:flex; justify-content:space-between; align-items:center; margin-top:16px; color:rgba(215,226,234,.6); font-size:11px; letter-spacing:.13em; text-transform:uppercase; }
-    .project-note strong { color:var(--lime); font-weight:500; }
+      .section { padding: 135px 0; position: relative; }
+      .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 70px; }
+      .section-title { margin: 20px 0 0; max-width: 710px; font-size: clamp(52px, 6.6vw, 94px); line-height: .86; }
+      .section-summary { max-width: 240px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+      .services { background: var(--paper); color: var(--ink); }
+      .services .section-title { background: linear-gradient(100deg, var(--ink) 18%, #447f9c 68%, #bd6b9d 105%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .services .section-summary { color: rgba(12,12,12,.6); }
+      .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-dark); }
+      .service { min-height: 270px; padding: 28px 28px 30px 0; border-right: 1px solid var(--line-dark); }
+      .service + .service { padding-left: 28px; }
+      .service:last-child { border-right: 0; }
+      .service-num { display: inline-flex; align-items: center; justify-content: center; width: 31px; height: 31px; margin-bottom: 65px; border: 1px solid rgba(12,12,12,.38); border-radius: 50%; font: 500 11px/1 Kanit, sans-serif; }
+      .service h3 { margin: 0 0 12px; font: 500 30px/.98 Kanit, sans-serif; letter-spacing: -.05em; }
+      .service p { max-width: 240px; margin: 0; color: rgba(12,12,12,.6); font-size: 12px; line-height: 1.65; }
+      .service-tail { display: flex; align-items: center; gap: 8px; margin-top: 24px; color: rgba(12,12,12,.62); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+      .service-tail::before { content: ""; width: 20px; height: 1px; background: var(--ink); }
 
-    .footer { position:relative; z-index:7; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:30px 24px 105px; border-top:1px solid var(--line); background:var(--black); color:rgba(215,226,234,.55); font-size:11px; letter-spacing:.13em; text-transform:uppercase; }
-    .footer strong { color:var(--white); font-size:14px; }
-    .mobile-wa { display:none; }
-    [data-reveal] { opacity:0; transform:translateY(30px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
-    [data-reveal].in { opacity:1; transform:none; }
-    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.001ms!important; transition-duration:.001ms!important; scroll-behavior:auto!important; } }
-
-    @media (max-width:767px) {
-      .container { width:calc(100% - 32px); }
-      .hero { height:100svh; min-height:690px; padding:18px 16px 24px; }
-      .nav { grid-template-columns:repeat(4,1fr); gap:8px; }
-      .nav a { font-size:10px; letter-spacing:.08em; }
-      .brand { top:calc(100% + 10px); font-size:8px!important; }
-      .hero-title { font-size:clamp(57px,16.4vw,110px); white-space:normal; line-height:.8; }
-      .hero-title .small { font-size:.45em; }
-      .hero-orb { width:230px; transform:translateY(8%) rotate(-15deg); }
-      .hero-shape.one { left:8%; bottom:25%; }
-      .hero-shape.two { right:13%; top:25%; }
-      .hero-shape.three { right:9%; bottom:28%; }
-      .hero-bottom { gap:12px; align-items:end; }
-      .hero-bottom p { max-width:150px; font-size:12px; }
-      .contact-btn { padding:12px 18px; gap:8px; font-size:10px; letter-spacing:.12em; }
-      .scroll-label { display:none; }
-      .marquee { padding-top:90px; }
-      .marquee-row img { width:210px; height:145px; border-radius:12px; }
-      .about { min-height:760px; padding:100px 16px; }
-      .about-art.tl,.about-art.tr { width:90px; }
-      .about-art.bl,.about-art.br { width:95px; }
-      .about-inner { gap:32px; }
-      .about-copy { font-size:16px; }
-      .services,.projects { padding-left:16px; padding-right:16px; border-radius:38px 38px 0 0; }
-      .services { padding-top:84px; padding-bottom:105px; }
-      .projects { margin-top:-30px; padding-top:84px; padding-bottom:110px; }
-
-      .care { padding:84px 16px 104px; }
-      .care-header { display:block; }
-      .care-title { font-size:clamp(58px,17vw,100px); }
-      .care-intro { margin-top:28px; font-size:16px; }
-      .care-card { grid-template-columns:1fr; gap:18px; margin-top:48px; padding:17px; border-radius:31px; }
-      .care-price { gap:8px; margin-bottom:28px; font-size:clamp(46px,15vw,76px); }
-      .care-price small { font-size:14px; }
-      .care-card h3 { font-size:21px; }
-      .care-list { grid-template-columns:1fr; gap:11px; }
-      .care-list li { font-size:13px; }
-      .care-aside { padding:22px 18px; border-radius:23px; }
-      .care-quote { font-size:36px; }
-      .care-cta { width:100%; margin-top:28px; }
-
-      .service-list { margin-top:52px; }
-      .service-item { grid-template-columns:68px 1fr; gap:17px; padding:27px 0; }
-      .service-number { font-size:60px; }
-      .service-name { font-size:19px; letter-spacing:.04em; }
-      .service-desc { font-size:13px; }
-      .service-meta { gap:7px 10px; font-size:9px; }
-      .service-price { font-size:25px; }
-      .project-stack { margin-top:50px; }
-      .project-shell { height:75vh; min-height:540px; }
-      .project-card { top:76px; height:calc(75vh - 30px); min-height:500px; padding:15px; border-radius:31px; }
-      .project-top { grid-template-columns:52px 1fr; gap:12px; }
-      .project-index { font-size:56px; }
-      .project-type { font-size:9px; }
-      .project-name { font-size:21px; margin-top:6px; }
-      .live-btn { grid-column:1 / -1; justify-self:start; padding:8px 13px; font-size:9px; border-width:1px; }
-      .project-grid { height:66%; grid-template-columns:42% 58%; gap:7px; margin-top:12px; }
-      .project-left { gap:7px; }
-      .project-grid img { border-radius:23px; }
-      .project-note { margin-top:10px; font-size:8px; }
-      .footer { padding:24px 16px 100px; flex-direction:column; align-items:flex-start; font-size:9px; }
-      .mobile-wa { position:fixed; z-index:30; right:12px; bottom:max(12px,env(safe-area-inset-bottom)); left:12px; display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:62px; padding:10px 11px 10px 14px; border:1px solid rgba(215,226,234,.28); border-radius:18px; background:rgba(12,12,12,.92); box-shadow:0 14px 45px rgba(0,0,0,.5); backdrop-filter:blur(18px); transition:opacity .25s var(--ease),transform .25s var(--ease); }
-      .mobile-wa.hidden { opacity:0; transform:translateY(130%); pointer-events:none; }
-      .mobile-wa-copy { display:flex; align-items:center; gap:10px; color:var(--white); font-size:10px; font-weight:600; line-height:1.05; letter-spacing:.09em; text-transform:uppercase; }
-      .mobile-wa-copy small { display:block; margin-top:4px; color:rgba(215,226,234,.6); font-size:9px; font-weight:400; letter-spacing:0; text-transform:none; }
-      .wa-icon { display:grid; flex:0 0 39px; place-items:center; width:39px; height:39px; border:1px solid var(--lime); border-radius:50%; color:var(--lime); }
-      .wa-icon svg { width:18px; height:18px; fill:currentColor; }
-      .mobile-wa-arrow { display:grid; flex:0 0 40px; place-items:center; width:40px; height:40px; border-radius:50%; background:var(--lime); color:var(--black); font-size:20px; }
-    }
-  </style>
-</head>
-<body>
-<div class="wrap">
-  <section class="hero" id="top">
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="#about">About</a><a href="#services">Price</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
-      <a class="brand" href="#top" aria-label="HB Visuals home">HB VISUALS</a>
-    </nav>
-    <div class="hero-center">
-      <div class="hero-orb" aria-hidden="true"></div><span class="hero-shape one" aria-hidden="true"></span><span class="hero-shape two" aria-hidden="true"></span><span class="hero-shape three" aria-hidden="true"></span>
-      <h1 class="hero-title hero-heading" data-reveal><span class="small">Hi, i&apos;m</span>HB Visuals</h1>
-    </div>
-    <div class="hero-bottom"><p data-reveal>a digital studio driven by crafting striking and unforgettable projects</p><a class="contact-btn" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener" data-reveal>Contact HB Visuals</a></div>
-    <span class="scroll-label">Scroll to explore</span>
-  </section>
-
-  <section class="marquee" aria-label="HB Visuals visual work preview">
-    <div class="marquee-row row-one"></div><div class="marquee-row row-two"></div>
-  </section>
-
-  <section class="about" id="about">
-    <img class="about-art tl" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" alt="" loading="lazy" />
-    <img class="about-art bl" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png" alt="" loading="lazy" />
-    <img class="about-art tr" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png" alt="" loading="lazy" />
-    <img class="about-art br" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png" alt="" loading="lazy" />
-    <div class="about-inner"><h2 class="section-title hero-heading" data-reveal>About us</h2><p class="about-copy" data-copy>HB Visuals creates premium websites and AI-assisted creative content for businesses that want to stand out and present their best image. From a clear first page to a complete digital presence, we make the work striking, responsive, and ready for the next move.</p><a class="contact-btn" href="mailto:hitin.banga23@gmail.com" data-reveal>Start a conversation</a></div>
-  </section>
-
-  <section class="services" id="services">
-    <h2 class="section-title" data-reveal>Services</h2>
-    <div class="service-list">
-      <article class="service-item" data-reveal><div class="service-number">01</div><div><h3 class="service-name">Starter Business Website</h3><p class="service-desc">Exactly 5 pages with premium responsive design, mobile and desktop optimization, WhatsApp, Google Maps, social media integration, contact form, basic SEO setup, and 7-day delivery.</p><div class="service-meta"><span class="service-price">AED 1,599</span><span class="service-tag">5 pages</span><span>7-day delivery</span></div></div></article>
-      <article class="service-item" data-reveal><div class="service-number">02</div><div><h3 class="service-name">Professional Business Website</h3><p class="service-desc">Exactly 8 pages with premium custom design, mobile and desktop optimization, WhatsApp, Google Maps, social media integration, lead forms, SEO, Analytics setup, speed optimization, and 10–14 day delivery.</p><div class="service-meta"><span class="service-price">AED 2,999</span><span class="service-tag">8 pages</span><span>10–14 day delivery</span></div></div></article>
-      <article class="service-item" data-reveal><div class="service-number">03</div><div><h3 class="service-name">Premium Website</h3><p class="service-desc">Custom UI/UX, advanced animations, advanced forms, booking functionality, advanced SEO structure, analytics, performance optimization, custom integrations, and premium responsive design.</p><div class="service-meta"><span class="service-price">AED 5,000</span><span class="service-tag">Premium</span><span>14–21 day delivery</span></div></div></article>
-      <article class="service-item" data-reveal><div class="service-number">04</div><div><h3 class="service-name">AI Creative Content</h3><p class="service-desc">AI-assisted promotional visuals, AI-generated creative concepts, social-media-ready assets, creative direction, and professional editing/refinement.</p><div class="service-meta"><span class="service-price">AED 600 <small>/ PROJECT</small></span><span class="service-tag">Creative direction</span></div></div></article>
-    </div>
-  </section>
+      .packages { background: var(--ink); }
+      .package-intro { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 58px; }
+      .package-intro .section-title { color: var(--paper); }
+      .package-intro .section-title em { color: var(--acid); font-style: normal; }
+      .package-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; }
+      .package { position: sticky; top: 26px; min-height: 640px; display: flex; flex-direction: column; overflow: hidden; padding: 25px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(155deg, rgba(215,226,234,.09), rgba(215,226,234,.025)); transition: transform .3s var(--ease-out), border-color .3s ease, box-shadow .3s ease; }
+      .package:nth-child(2) { top: 48px; background: linear-gradient(155deg, rgba(200,255,52,.13), rgba(215,226,234,.04) 55%); }
+      .package:nth-child(3) { top: 70px; background: linear-gradient(155deg, rgba(243,166,222,.14), rgba(215,226,234,.035)); }
+      .package:hover { border-color: rgba(215,226,234,.45); transform: translateY(-8px); box-shadow: 0 24px 50px rgba(0,0,0,.25); }
+      .package-top { display: flex; align-items: center; justify-content: space-between; gap: 15px; color: var(--muted); font: 600 10px/1 Inter, sans-serif; letter-spacing: .15em; text-transform: uppercase; }
+      .package-badge { color: var(--acid); }
+      .package:nth-child(3) .package-badge { color: var(--pink); }
+      .package h3 { min-height: 66px; margin: 30px 0 16px; color: var(--paper); font: 500 35px/.9 Kanit, sans-serif; letter-spacing: -.055em; }
+      .package-scope { color: var(--acid); font: 600 11px/1 Inter, sans-serif; letter-spacing: .15em; text-transform: uppercase; }
+      .package:nth-child(3) .package-scope { color: var(--pink); }
+      .package-price { margin: 0; color: var(--paper); font: 500 clamp(44px, 4vw, 60px)/.9 Kanit, sans-serif; letter-spacing: -.07em; }
+      .package-price small { color: var(--muted); font: 500 12px/1 Inter, sans-serif; letter-spacing: .02em; }
+      .package-rule { height: 1px; margin: 27px 0 22px; background: var(--line); }
+      .package-list { display: grid; gap: 13px; margin: 0; padding: 0; list-style: none; color: #b7c2c7; font-size: 12px; line-height: 1.35; }
+      .package-list li { display: flex; gap: 10px; }
+      .package-list li::before { content: "↳"; color: var(--acid); }
+      .package:nth-child(3) .package-list li::before { color: var(--pink); }
+      .package-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 35px; color: var(--muted); font-size: 9px; line-height: 1.4; letter-spacing: .1em; text-transform: uppercase; }
+      .package-foot strong { color: var(--paper); font-weight: 600; }
 
 
-  <section class="care" id="website-care">
-    <div class="care-inner">
-      <div class="care-kicker">Optional after-launch service</div>
-      <div class="care-header">
-        <h2 class="care-title hero-heading" data-reveal>Website Care</h2>
-        <p class="care-intro" data-reveal>Keep your website updated, monitored and maintained without having to worry about the technical details.</p>
-      </div>
-      <div class="care-card" data-reveal>
-        <div class="care-card-main">
-          <div class="care-price">AED 500 <small>/ MONTH</small></div>
-          <h3>What&apos;s included</h3>
-          <ul class="care-list">
-            <li>Website updates &amp; content changes</li>
-            <li>Text and image replacements</li>
-            <li>Minor layout adjustments</li>
-            <li>Website backups</li>
-            <li>Security and technical checks</li>
-            <li>Broken-link checks</li>
-            <li>Mobile responsiveness checks</li>
-            <li>Performance monitoring</li>
-            <li>Basic SEO maintenance</li>
-            <li>WhatsApp/contact-form testing</li>
-            <li>Minor bug fixes</li>
-            <li>Monthly website health check</li>
-          </ul>
-          <div class="care-exclusions">
-            <h4>What&apos;s not included</h4>
-            <p><strong>Quoted separately:</strong> complete website redesigns, new website pages, major new functionality, custom development projects, large-scale UI/UX changes, paid advertising, domain fees, hosting fees, paid plugins, third-party software or subscription costs, and major integrations.</p>
+      .care { background: var(--ink-soft); color: var(--paper); overflow: hidden; }
+      .care-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 68px; align-items: start; }
+      .care-copy .section-title { color: var(--paper); }
+      .care-copy .section-title em { color: var(--acid); font-style: normal; }
+      .care-summary { max-width: 410px; margin: 28px 0 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+      .care-price { display: flex; align-items: baseline; gap: 12px; margin-top: 38px; }
+      .care-price strong { color: var(--paper); font: 500 clamp(52px, 6vw, 88px)/.85 Kanit, sans-serif; letter-spacing: -.07em; }
+      .care-price span { color: var(--acid); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+      .care-actions { margin-top: 31px; }
+      .care-card { padding: 28px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(145deg, rgba(200,255,52,.12), rgba(215,226,234,.035) 58%); box-shadow: 0 24px 55px rgba(0,0,0,.2); }
+      .care-card h3 { margin: 0 0 21px; color: var(--paper); font: 500 30px/.98 Kanit, sans-serif; letter-spacing: -.05em; }
+      .care-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px 24px; margin: 0; padding: 0; list-style: none; color: #b7c2c7; font-size: 12px; line-height: 1.4; }
+      .care-list li { display: flex; gap: 10px; }
+      .care-list li::before { content: "✦"; color: var(--acid); }
+      .care-exclusions { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.65; }
+      .care-exclusions strong { display: block; margin-bottom: 8px; color: var(--paper); font: 600 10px/1 Inter, sans-serif; letter-spacing: .15em; text-transform: uppercase; }
+
+      .creative { background: var(--paper-bright); color: var(--ink); overflow: hidden; }
+      .creative-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 85px; align-items: center; }
+      .creative-copy .section-title { color: var(--ink); }
+      .creative-copy .section-title span { display: block; color: #477d9a; }
+      .creative-copy p { max-width: 390px; margin: 28px 0 0; color: rgba(12,12,12,.63); font-size: 14px; line-height: 1.75; }
+      .creative-list { display: grid; gap: 9px; max-width: 390px; margin: 23px 0 0; padding: 0; list-style: none; color: rgba(12,12,12,.7); font-size: 12px; }
+      .creative-list li { display: flex; gap: 10px; }
+      .creative-list li::before { content: "✦"; color: #477d9a; }
+      .creative-price { display: flex; align-items: baseline; gap: 12px; margin-top: 39px; }
+      .creative-price strong { font: 500 clamp(54px, 6vw, 88px)/.85 Kanit, sans-serif; letter-spacing: -.07em; }
+      .creative-price span { color: rgba(12,12,12,.56); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+      .creative-actions { margin-top: 32px; }
+      .btn-dark { background: var(--ink); color: var(--paper); }
+      .btn-dark:hover { background: #30404a; transform: translateY(-3px); box-shadow: 0 12px 30px rgba(12,12,12,.16); }
+      .creative-art { position: relative; min-height: 480px; }
+      .creative-card { position: absolute; display: grid; place-items: center; overflow: hidden; border-radius: 26px; box-shadow: 24px 28px 0 rgba(12,12,12,.08); }
+      .creative-card--one { width: 55%; height: 310px; left: 2%; top: 10%; z-index: 1; background: linear-gradient(135deg, #f7c6e5, #b6d9ed 62%, #c8ff34); transform: rotate(-8deg); }
+      .creative-card--two { width: 51%; height: 270px; right: 2%; top: 30%; z-index: 2; background: var(--ink); transform: rotate(11deg); }
+      .creative-card--three { width: 43%; height: 185px; left: 27%; bottom: 0; z-index: 3; background: #ffb26b; transform: rotate(-5deg); }
+      .creative-card--one::before { content: "CREATE\A OUTSIDE\A THE FEED"; white-space: pre; position: absolute; left: 26px; bottom: 21px; color: rgba(12,12,12,.76); font: 500 30px/.8 Kanit, sans-serif; letter-spacing: -.07em; }
+      .creative-card--one::after { content: "✳"; position: absolute; top: 22px; right: 23px; color: var(--ink); font-size: 45px; }
+      .creative-card--two::before { content: "HB / 06"; position: absolute; top: 24px; left: 24px; color: var(--acid); font: 600 11px/1 Inter, sans-serif; letter-spacing: .15em; }
+      .creative-card--two::after { content: "AI"; position: absolute; right: 16px; bottom: -36px; color: rgba(215,226,234,.14); font: 600 160px/.8 Kanit, sans-serif; letter-spacing: -.15em; }
+      .creative-card--three::before { content: "600"; color: var(--ink); font: 500 82px/.8 Kanit, sans-serif; letter-spacing: -.1em; }
+      .creative-card--three::after { content: "/ PROJECT"; position: absolute; right: 20px; bottom: 21px; color: rgba(12,12,12,.7); font: 600 9px/1 Inter, sans-serif; letter-spacing: .12em; }
+      .orbit-small { position: absolute; left: 20%; top: 3%; width: 320px; height: 190px; border: 1px solid rgba(12,12,12,.23); border-radius: 50%; transform: rotate(25deg); }
+
+      .process { background: var(--ink); }
+      .process .section-title { color: var(--paper); }
+      .process-list { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+      .process-step { padding: 26px 25px 10px 0; border-right: 1px solid var(--line); }
+      .process-step + .process-step { padding-left: 25px; }
+      .process-step:last-child { border: 0; }
+      .process-step b { color: var(--acid); font: 500 12px/1 Kanit, sans-serif; }
+      .process-step h3 { margin: 67px 0 13px; color: var(--paper); font: 500 25px/1 Kanit, sans-serif; letter-spacing: -.045em; }
+      .process-step p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+
+      .contact { position: relative; background: linear-gradient(145deg, #d7e2ea, #eef3f0 56%, #f2bbdc); color: var(--ink); overflow: hidden; }
+      .contact::before { content: "HB"; position: absolute; right: -4vw; bottom: -12vw; color: rgba(12,12,12,.06); font: 500 45vw/.7 Kanit, sans-serif; letter-spacing: -.14em; }
+      .contact-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr .9fr; gap: 65px; }
+      .contact .section-title { color: var(--ink); max-width: 720px; }
+      .contact .section-title span { display: block; color: #5b87a1; }
+      .contact-copy { margin: 25px 0 0; max-width: 425px; color: rgba(12,12,12,.65); font-size: 14px; line-height: 1.75; }
+      .contact-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 35px; }
+      .contact-meta { align-self: end; padding-top: 22px; border-top: 1px solid var(--line-dark); }
+      .contact-meta h3 { margin: 0 0 22px; font: 500 24px/1 Kanit, sans-serif; letter-spacing: -.04em; }
+      .contact-meta p { margin: 0 0 20px; color: rgba(12,12,12,.6); font-size: 12px; line-height: 1.7; }
+      .icon-row { display: grid; gap: 9px; }
+      .contact-link { display: flex; align-items: center; gap: 13px; width: fit-content; color: var(--ink); font-size: 12px; font-weight: 600; transition: color .25s ease, transform .25s var(--ease-out); }
+      .contact-link:hover { color: #487d9a; transform: translateX(4px); }
+      .contact-icon { display: inline-grid; place-items: center; width: 34px; height: 34px; border: 1px solid rgba(12,12,12,.28); border-radius: 50%; transition: transform .25s var(--ease-out), opacity .25s ease, box-shadow .25s ease, background .25s ease; }
+      .contact-link:hover .contact-icon { background: var(--paper); opacity: .92; transform: scale(1.08); box-shadow: 0 0 18px rgba(255,255,255,.4); }
+      .contact-icon svg { width: 16px; height: 16px; fill: currentColor; stroke: currentColor; }
+      .contact-icon.email svg { fill: none; stroke-width: 1.7; }
+      .contact-icon.instagram svg { fill: none; stroke-width: 1.7; }
+
+      .footer { background: var(--ink); color: var(--paper); padding: 24px 0 95px; }
+      .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+      .footer-brand { color: var(--paper); font: 600 14px/1 Kanit, sans-serif; letter-spacing: -.02em; }
+      .mobile-cta { display: none; }
+      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+      [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .75s var(--ease-out), transform .75s var(--ease-out); }
+      [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+      .delay-1 { transition-delay: .09s; } .delay-2 { transition-delay: .18s; } .delay-3 { transition-delay: .27s; }
+
+      @media (max-width: 900px) {
+        .hero { min-height: auto; padding-top: 140px; }
+        .hero-grid, .creative-grid, .contact-grid { grid-template-columns: 1fr; }
+        .hero-art { min-height: 450px; margin-top: 18px; }
+        .creative-art { min-height: 450px; margin-top: -16px; }
+        .contact-grid { gap: 60px; }
+        .contact-meta { max-width: 460px; }
+        .package-grid { gap: 12px; }
+        .package { padding: 20px; }
+        .package h3 { font-size: 30px; }
+      }
+      @media (max-width: 680px) {
+        .container { width: min(100% - 32px, 520px); }
+        .nav { padding: 17px 0; }
+        .nav-links { display: none; }
+        .nav-cta { font-size: 10px; }
+        .hero { padding: 118px 0 55px; }
+        .hero h1 { margin-top: 23px; font-size: clamp(64px, 18vw, 104px); }
+        .hero-intro { font-size: 14px; }
+        .hero-actions { flex-wrap: wrap; margin-top: 28px; }
+        .hero-actions .btn { min-height: 47px; padding: 0 17px; }
+        .hero-note { margin-top: 42px; }
+        .hero-art { min-height: 355px; margin-top: 7px; }
+        .sphere { width: 195px; }
+        .orbit { width: 330px; }
+        .cube { width: 78px; border-radius: 13px; }
+        .disc { width: 77px; height: 77px; }
+        .plus { font-size: 31px; }
+        .art-index { top: 18px; right: 5px; }
+        .art-caption { right: 3px; bottom: 4px; font-size: 9px; }
+        .section { padding: 88px 0; }
+        .section-head, .package-intro { display: block; margin-bottom: 45px; }
+        .section-title { margin-top: 17px; font-size: clamp(52px, 16vw, 78px); }
+        .section-summary { margin-top: 23px; }
+        .service-grid, .process-list { grid-template-columns: 1fr; }
+        .service, .service + .service { min-height: auto; padding: 25px 0; border-right: 0; border-bottom: 1px solid var(--line-dark); }
+        .service:last-child { border-bottom: 0; }
+        .service-num { margin-bottom: 29px; }
+        .service h3 { font-size: 28px; }
+        .package-grid { display: grid; grid-template-columns: 1fr; gap: 13px; }
+        .package, .package:nth-child(2), .package:nth-child(3) { position: relative; top: auto; min-height: 560px; }
+        .package h3 { min-height: auto; margin-top: 42px; }
+
+        .care-grid { grid-template-columns: 1fr; gap: 35px; }
+        .care-list { grid-template-columns: 1fr; }
+        .care-card { padding: 22px; }
+        .care-actions .btn { width: 100%; }
+        .creative-grid { gap: 35px; }
+        .creative-art { min-height: 350px; }
+        .creative-card--one { height: 230px; }
+        .creative-card--two { height: 200px; }
+        .creative-card--three { height: 135px; }
+        .creative-card--one::before { font-size: 22px; }
+        .creative-card--three::before { font-size: 58px; }
+        .orbit-small { width: 230px; height: 140px; }
+        .process-step, .process-step + .process-step { padding: 24px 0 30px; border-right: 0; border-bottom: 1px solid var(--line); }
+        .process-step:last-child { border-bottom: 0; }
+        .process-step h3 { margin-top: 32px; }
+        .contact-actions { gap: 10px; }
+        .contact-actions .btn { width: 100%; }
+        .footer { padding-bottom: 86px; }
+        .footer-inner { align-items: flex-start; flex-direction: column; gap: 10px; }
+        .mobile-cta { position: fixed; z-index: 30; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); left: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 66px; padding: 10px 10px 10px 14px; border: 1px solid rgba(215,226,234,.28); border-radius: 18px; background: rgba(12,12,12,.9); box-shadow: 0 14px 45px rgba(0,0,0,.42), 0 0 0 1px rgba(200,255,52,.05); backdrop-filter: blur(18px); transition: opacity .25s var(--ease-out), transform .25s var(--ease-out); }
+        .mobile-cta.is-hidden { opacity: 0; transform: translateY(130%); pointer-events: none; }
+        .mobile-cta-main { display: flex; align-items: center; gap: 10px; color: var(--paper); font-size: 10px; font-weight: 700; line-height: 1.15; letter-spacing: .1em; text-transform: uppercase; }
+        .mobile-cta-main small { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; font-weight: 500; letter-spacing: .03em; text-transform: none; }
+        .mobile-cta .contact-icon { width: 40px; height: 40px; flex: 0 0 40px; border-color: rgba(200,255,52,.7); color: var(--acid); }
+        .mobile-cta .contact-icon svg { width: 18px; height: 18px; }
+        .mobile-cta .arrow { display: grid; place-items: center; width: 42px; height: 42px; flex: 0 0 42px; border-radius: 50%; background: var(--acid); color: var(--ink); font-size: 19px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="nav">
+        <div class="container nav-inner">
+          <a class="brand" href="#top" aria-label="HB Visuals home"><span class="brand-mark" aria-hidden="true"></span><span>HB VISUALS</span></a>
+          <nav class="nav-links" aria-label="Primary navigation">
+            <a href="#services">Services</a>
+            <a href="#packages">Packages</a>
+            <a href="#creative">AI Creative</a>
+            <a href="#website-care">Website Care</a>
+          </nav>
+          <a class="nav-cta" href="#contact">Start a project</a>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="container hero-grid">
+            <div class="hero-copy" data-reveal>
+              <span class="eyebrow">Independent digital studio · Dubai, UAE</span>
+              <h1 class="display"><span class="line">Build</span><span class="line gradient-word">a sharper</span><span class="line">presence.</span></h1>
+              <p class="hero-intro">Premium websites and <strong>AI-assisted creative content</strong> for brands that want to move with intention, clarity, and a little more edge.</p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#packages">Explore packages <span class="arrow">↘</span></a>
+                <a class="btn btn-ghost" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener">WhatsApp us <span class="arrow">↗</span></a>
+              </div>
+              <div class="hero-note"><i></i><span>Now booking select Q4 launches</span></div>
+            </div>
+            <div class="hero-art" aria-label="Abstract 3D HB Visuals composition" role="img" data-reveal="" data-delay="1">
+              <span class="art-index" aria-hidden="true"></span>
+              <div class="orbit" aria-hidden="true"></div>
+              <div class="sphere" aria-hidden="true"></div>
+              <div class="cube" aria-hidden="true"></div>
+              <div class="disc" aria-hidden="true"></div>
+              <div class="plus" aria-hidden="true">＋</div>
+              <p class="art-caption">Strategy, design, motion<br />and all the good details.</p>
+            </div>
+          </div>
+          <div class="container scroll-cue" aria-hidden="true">Scroll to explore</div>
+        </section>
+
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span class="marquee-item">Digital experiences with intention</span><span class="marquee-item">Dubai to everywhere</span><span class="marquee-item">Design / direction / delivery</span><span class="marquee-item">Digital experiences with intention</span><span class="marquee-item">Dubai to everywhere</span><span class="marquee-item">Design / direction / delivery</span>
           </div>
         </div>
-        <div class="care-aside">
-          <div>
-            <div class="eyebrow">HB VISUALS / ONGOING SUPPORT</div>
-            <p class="care-quote">Your website is live.<br /><span class="hero-heading">We keep it running.</span></p>
-            <p class="care-note">A premium recurring maintenance service for clients who want their digital presence kept sharp after launch.</p>
+
+        <section class="section services" id="services">
+          <div class="container">
+            <div class="section-head" data-reveal>
+              <div><span class="eyebrow eyebrow--dark">01 / The offering</span><h2 class="section-title display">Good work<br />needs a <em>point of view.</em></h2></div>
+              <p class="section-summary">A small, focused studio for brands that care about how they show up — online, on screen, and in the details.</p>
+            </div>
+            <div class="service-grid">
+              <article class="service" data-reveal><span class="service-num">01</span><h3>Websites<br />with presence</h3><p>Responsive digital homes that make your offer obvious and your brand memorable.</p><div class="service-tail">Web design &amp; development</div></article>
+              <article class="service" data-reveal><span class="service-num">02</span><h3>Creative<br />with momentum</h3><p>Campaign-ready visual systems, social assets, and concepts built to earn attention.</p><div class="service-tail">AI creative content</div></article>
+              <article class="service" data-reveal><span class="service-num">03</span><h3>Built for<br />the next move</h3><p>Thoughtful foundations, clean handovers, and a digital presence ready to grow.</p><div class="service-tail">Strategy &amp; direction</div></article>
+            </div>
           </div>
-          <a class="contact-btn care-cta" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener">Get Website Care</a>
-        </div>
-      </div>
+        </section>
+
+        <section class="section packages" id="packages">
+          <div class="container">
+            <div class="package-intro" data-reveal><div><span class="eyebrow">02 / Website packages</span><h2 class="section-title display">Choose your<br /><em>starting point.</em></h2></div><p class="section-summary">Clear scope. No vague page counts. Every package is designed to move from first call to launch with confidence.</p></div>
+            <div class="package-grid">
+              <article class="package" data-reveal>
+                <div class="package-top"><span>01 / Starter</span><span class="package-badge">Essential</span></div>
+                <div class="package-scope">5 PAGES</div><h3>Starter<br />Business Website</h3>
+                <p class="package-price">AED 1,599</p>
+                <div class="package-rule"></div>
+                <ul class="package-list"><li>EXACTLY 5 pages</li><li>Premium responsive design</li><li>Mobile optimization</li><li>Desktop optimization</li><li>WhatsApp integration</li><li>Google Maps integration</li><li>Social media integration</li><li>Contact form</li><li>Basic SEO setup</li></ul>
+                <div class="package-foot"><span><strong>7-day</strong><br />delivery</span><a href="#contact" aria-label="Choose Starter Business Website">Select ↗</a></div>
+              </article>
+              <article class="package" data-reveal>
+                <div class="package-top"><span>02 / Professional</span><span class="package-badge">Most chosen</span></div>
+                <div class="package-scope">8 PAGES</div><h3>Professional<br />Business Website</h3>
+                <p class="package-price">AED 2,999</p>
+                <div class="package-rule"></div>
+                <ul class="package-list"><li>EXACTLY 8 pages</li><li>Premium custom design</li><li>Mobile + desktop optimization</li><li>WhatsApp integration</li><li>Google Maps</li><li>Social media integration</li><li>Contact / lead forms</li><li>Basic SEO</li><li>Google Analytics setup</li><li>Speed optimization</li></ul>
+                <div class="package-foot"><span><strong>10–14 day</strong><br />delivery</span><a href="#contact" aria-label="Choose Professional Business Website">Select ↗</a></div>
+              </article>
+              <article class="package" data-reveal>
+                <div class="package-top"><span>03 / Premium</span><span class="package-badge">Full expression</span></div>
+                <div class="package-scope">PREMIUM</div><h3>Premium<br />Website</h3>
+                <p class="package-price">AED 5,000</p>
+                <div class="package-rule"></div>
+                <ul class="package-list"><li>Custom UI/UX</li><li>Advanced animations</li><li>Advanced forms</li><li>Booking functionality</li><li>Advanced SEO structure</li><li>Analytics</li><li>Performance optimization</li><li>Custom integrations</li><li>Premium responsive design</li><li>Mobile + desktop optimization</li></ul>
+                <div class="package-foot"><span><strong>14–21 day</strong><br />delivery</span><a href="#contact" aria-label="Choose Premium Website">Select ↗</a></div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+
+        <section class="section care" id="website-care">
+          <div class="container care-grid">
+            <div class="care-copy" data-reveal>
+              <span class="eyebrow">03 / Optional after-launch service</span>
+              <h2 class="section-title display">Your website is live.<br /><em>We keep it running.</em></h2>
+              <p class="care-summary">Keep your website updated, monitored and maintained without having to worry about the technical details.</p>
+              <div class="care-price"><strong>AED 500</strong><span>/ MONTH</span></div>
+              <div class="care-actions"><a class="btn btn-primary" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener">GET WEBSITE CARE <span class="arrow">↗</span></a></div>
+            </div>
+            <div class="care-card" data-reveal data-delay="1">
+              <h3>What&apos;s included</h3>
+              <ul class="care-list">
+                <li>Website updates &amp; content changes</li>
+                <li>Text and image replacements</li>
+                <li>Minor layout adjustments</li>
+                <li>Website backups</li>
+                <li>Security and technical checks</li>
+                <li>Broken-link checks</li>
+                <li>Mobile responsiveness checks</li>
+                <li>Performance monitoring</li>
+                <li>Basic SEO maintenance</li>
+                <li>WhatsApp/contact-form testing</li>
+                <li>Minor bug fixes</li>
+                <li>Monthly website health check</li>
+              </ul>
+              <div class="care-exclusions"><strong>What&apos;s not included</strong>Complete website redesigns, new website pages, major new functionality, custom development projects, large-scale UI/UX changes, paid advertising, domain fees, hosting fees, paid plugins, third-party software or subscription costs, and major integrations are quoted separately.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section creative" id="creative">
+          <div class="container creative-grid">
+            <div class="creative-copy" data-reveal><span class="eyebrow eyebrow--dark">03 / AI CREATIVE CONTENT</span><h2 class="section-title display">Make the<br /><span>scroll stop.</span></h2><p>Concepts, promotional visuals, and social-media-ready assets — AI-assisted, art-directed, and refined until they feel unmistakably yours.</p><ul class="creative-list"><li>AI-assisted promotional visuals</li><li>AI-generated creative concepts</li><li>Social-media-ready assets</li><li>Creative direction</li><li>Professional editing/refinement</li></ul><div class="creative-price"><strong>AED 600</strong><span>/ PROJECT</span></div><div class="creative-actions"><a class="btn btn-dark" href="#contact">Create something new <span class="arrow">↗</span></a></div></div>
+            <div class="creative-art" aria-label="Abstract creative content artwork" role="img" data-reveal="" data-delay="1"><div class="orbit-small" aria-hidden="true"></div><div class="creative-card creative-card--one" aria-hidden="true"></div><div class="creative-card creative-card--two" aria-hidden="true"></div><div class="creative-card creative-card--three" aria-hidden="true"></div></div>
+          </div>
+        </section>
+
+        <section class="section process">
+          <div class="container">
+            <div class="section-head" data-reveal><div><span class="eyebrow">04 / How it works</span><h2 class="section-title display">Simple on<br />purpose.</h2></div><p class="section-summary">Less theatre. More thinking, making, and meaningful progress every week.</p></div>
+            <div class="process-list">
+              <article class="process-step" data-reveal><b>01</b><h3>Align</h3><p>We get clear on your offer, audience, ambition, and the feeling your brand should leave behind.</p></article>
+              <article class="process-step" data-reveal><b>02</b><h3>Shape</h3><p>We turn the direction into a visual system, a sharp structure, and an experience people can use.</p></article>
+              <article class="process-step" data-reveal><b>03</b><h3>Build</h3><p>We make the work responsive, polished, and ready for the real world — not just the moodboard.</p></article>
+              <article class="process-step" data-reveal><b>04</b><h3>Launch</h3><p>You go live with a clear handover, considered details, and a digital presence built for the next chapter.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section contact" id="contact">
+          <div class="container contact-grid">
+            <div data-reveal><span class="eyebrow eyebrow--dark">05 / Let’s make it real</span><h2 class="section-title display">Your next<br /><span>good idea</span> starts here.</h2><p class="contact-copy">Tell us what you’re building, where you’re going, and what needs to feel different. We’ll come back with a thoughtful next step.</p><div class="contact-actions"><a class="btn btn-dark" href="mailto:hitin.banga23@gmail.com">CONTACT HB VISUALS <span class="arrow">↗</span></a><a class="btn btn-primary" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener">WHATSAPP US <span class="arrow">↗</span></a></div></div>
+            <div class="contact-meta" data-reveal><h3>HB VISUALS</h3><p>Dubai, UAE<br />Independent creative direction for digital-first brands.</p><div class="icon-row">
+              <a class="contact-link" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener"><span class="contact-icon" role="img" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.75 11.75 0 0 0 12.15 0C5.65 0 .36 5.28.36 11.79c0 2.08.54 4.1 1.57 5.88L.25 24l6.48-1.7a11.8 11.8 0 0 0 5.42 1.3h.01c6.5 0 11.79-5.29 11.79-11.8 0-3.15-1.22-6.1-3.45-8.3ZM12.16 21.6h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.85 1.01 1.03-3.75-.24-.39a9.82 9.82 0 0 1-1.5-5.25C2.23 6.2 6.67 1.97 12.16 1.97c2.62 0 5.08 1.02 6.93 2.86a9.74 9.74 0 0 1 2.88 6.96c0 5.41-4.4 9.81-9.81 9.81Zm5.38-7.35c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.2-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.08-.8.37-.28.3-1.04 1.02-1.04 2.5 0 1.48 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.73 2.02-1.43.25-.7.25-1.3.17-1.43-.08-.12-.28-.2-.58-.35Z" /></svg></span><span>+971 55 785 8540</span></a>
+              <a class="contact-link" href="mailto:hitin.banga23@gmail.com"><span class="contact-icon email" role="img" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg></span><span>hitin.banga23@gmail.com</span></a>
+              <a class="contact-link" href="https://www.instagram.com/hitin23?stkn=c2Juc3IzeWg2emI5&amp;utm_source=qr" target="_blank" rel="noopener"><span class="contact-icon instagram" role="img" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r=".75" fill="currentColor" stroke="none"></circle></svg></span><span>@hitin23</span></a>
+            </div></div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer"><div class="container footer-inner"><span class="footer-brand">HB VISUALS</span><span>Dubai, UAE · Digital catalog / 2026</span><span>Made with intent ↗</span></div></footer>
+      <a class="mobile-cta" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener" aria-label="WhatsApp HB Visuals at +971 55 785 8540"><span class="mobile-cta-main"><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.75 11.75 0 0 0 12.15 0C5.65 0 .36 5.28.36 11.79c0 2.08.54 4.1 1.57 5.88L.25 24l6.48-1.7a11.8 11.8 0 0 0 5.42 1.3h.01c6.5 0 11.79-5.29 11.79-11.8 0-3.15-1.22-6.1-3.45-8.3ZM12.16 21.6h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.85 1.01 1.03-3.75-.24-.39a9.82 9.82 0 0 1-1.5-5.25C2.23 6.2 6.67 1.97 12.16 1.97c2.62 0 5.08 1.02 6.93 2.86a9.74 9.74 0 0 1 2.88 6.96c0 5.41-4.4 9.81-9.81 9.81Zm5.38-7.35c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.08-.8.37-.28.3-1.04 1.02-1.04 2.5 0 1.48 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.73 2.02-1.43.25-.7.25-1.3.17-1.43-.08-.12-.28-.2-.58-.35Z" /></svg></span><span>WHATSAPP HB VISUALS<small>+971 55 785 8540</small></span></span><span class="arrow">↗</span></a>
     </div>
-  </section>
-
-  <section class="projects" id="projects">
-    <h2 class="section-title hero-heading" data-reveal>Project</h2>
-    <div class="project-stack">
-      <div class="project-shell"><article class="project-card" data-card="0"><div class="project-top"><div class="project-index">01</div><div><div class="project-type">Website direction</div><strong class="project-name">Starter / digital presence</strong></div><a class="live-btn" href="#contact">Enquire</a></div><div class="project-grid"><div class="project-left"><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&amp;w=1280&amp;q=85" alt="HB Visuals website direction preview" loading="lazy" /><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&amp;w=1280&amp;q=85" alt="HB Visuals website design preview" loading="lazy" /></div><div class="project-right"><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&amp;w=1280&amp;q=85" alt="HB Visuals responsive project preview" loading="lazy" /></div></div><div class="project-note"><span>Responsive / editorial / clear</span><strong>HB VISUALS</strong></div></article></div>
-      <div class="project-shell"><article class="project-card" data-card="1"><div class="project-top"><div class="project-index">02</div><div><div class="project-type">AI creative content</div><strong class="project-name">Make the scroll stop</strong></div><a class="live-btn" href="#contact">Enquire</a></div><div class="project-grid"><div class="project-left"><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&amp;w=1280&amp;q=85" alt="AI creative content art direction preview" loading="lazy" /><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&amp;w=1280&amp;q=85" alt="AI promotional visual preview" loading="lazy" /></div><div class="project-right"><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&amp;w=1280&amp;q=85" alt="AI creative campaign preview" loading="lazy" /></div></div><div class="project-note"><span>Concept / direction / refinement</span><strong>AED 600 / PROJECT</strong></div></article></div>
-      <div class="project-shell"><article class="project-card" data-card="2"><div class="project-top"><div class="project-index">03</div><div><div class="project-type">Premium digital experience</div><strong class="project-name">Built for the next move</strong></div><a class="live-btn" href="#contact">Enquire</a></div><div class="project-grid"><div class="project-left"><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&amp;w=1280&amp;q=85" alt="Premium digital experience preview" loading="lazy" /><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&amp;w=1280&amp;q=85" alt="Premium website visual preview" loading="lazy" /></div><div class="project-right"><img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&amp;w=1280&amp;q=85" alt="Premium responsive website preview" loading="lazy" /></div></div><div class="project-note"><span>UI / UX / motion / performance</span><strong>AED 5,000</strong></div></article></div>
-    </div>
-  </section>
-
-  <section class="about" id="contact" style="min-height:72svh;padding-top:110px;padding-bottom:160px"><div class="about-inner"><div class="eyebrow">HB VISUALS / DUBAI, UAE</div><h2 class="section-title hero-heading" data-reveal>Let&apos;s build.</h2><p class="about-copy" data-reveal>Have a launch, a new direction, or a brand that needs to show up sharper? Let&apos;s talk about the next good idea.</p><a class="contact-btn" href="mailto:hitin.banga23@gmail.com">Contact HB Visuals</a><a class="contact-btn" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener">WhatsApp us</a><div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;color:rgba(215,226,234,.7);font-size:14px;letter-spacing:.04em"><a href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener" aria-label="WhatsApp">+971 55 785 8540</a><a href="mailto:hitin.banga23@gmail.com" aria-label="Email">hitin.banga23@gmail.com</a></div></div></section>
-
-  <footer class="footer"><strong>HB VISUALS</strong><span>Dubai, UAE</span><span>Websites / AI creative content</span></footer>
-  <a class="mobile-wa" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener" aria-label="WhatsApp HB Visuals at +971 55 785 8540"><span class="mobile-wa-copy"><span class="wa-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.75 11.75 0 0 0 12.15 0C5.65 0 .36 5.28.36 11.79c0 2.08.54 4.1 1.57 5.88L.25 24l6.48-1.7a11.8 11.8 0 0 0 5.42 1.3h.01c6.5 0 11.79-5.29 11.79-11.8 0-3.15-1.22-6.1-3.45-8.3ZM12.16 21.6h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.85 1.01 1.03-3.75-.24-.39a9.82 9.82 0 0 1-1.5-5.25C2.23 6.2 6.67 1.97 12.16 1.97c2.62 0 5.08 1.02 6.93 2.86a9.74 9.74 0 0 1 2.88 6.96c0 5.41-4.4 9.81-9.81 9.81Zm5.38-7.35c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.08-.8.37-.28.3-1.04 1.02-1.04 2.5 0 1.48 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.73 2.02-1.43.25-.7.25-1.3.17-1.43-.08-.12-.28-.2-.58-.35Z" /></svg></span><span>WHATSAPP HB VISUALS<small>+971 55 785 8540</small></span></span><span class="mobile-wa-arrow">↗</span></a>
-</div>
-<script>
-  const marqueeImages = [
-    'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif','https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif','https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif','https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif','https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif','https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif','https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif','https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif','https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif','https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif','https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif','https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif','https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif','https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif','https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif','https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif','https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif','https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif','https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif','https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif','https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif'
-  ];
-  const makeTiles = (items) => items.concat(items,items).map((src,i) => `<img src="${src}" alt="" loading="lazy" />`).join('');
-  document.querySelector('.row-one').innerHTML = makeTiles(marqueeImages.slice(0,11));
-  document.querySelector('.row-two').innerHTML = makeTiles(marqueeImages.slice(11));
-  const marquee = document.querySelector('.marquee');
-  const rowOne = document.querySelector('.row-one');
-  const rowTwo = document.querySelector('.row-two');
-  let ticking = false;
-  function moveMarquee() {
-    const rect = marquee.getBoundingClientRect();
-    const offset = Math.max(0,(window.innerHeight - rect.top) * .3);
-    rowOne.style.transform = `translateX(${offset - 240}px)`;
-    rowTwo.style.transform = `translateX(${-offset + 240}px)`;
-    ticking = false;
-  }
-  window.addEventListener('scroll', () => { if (!ticking) { window.requestAnimationFrame(moveMarquee); ticking = true; } }, {passive:true});
-  moveMarquee();
-  const reveal = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); reveal.unobserve(entry.target); } }), {threshold:.12});
-  document.querySelectorAll('[data-reveal]').forEach(el => reveal.observe(el));
-  const copy = document.querySelector('[data-copy]');
-  if (copy) copy.innerHTML = copy.textContent.split('').map((char,i) => `<span style="opacity:${Math.min(1,.22 + i / copy.textContent.length * .78)}">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
-  const cards = document.querySelectorAll('.project-card');
-  const updateCards = () => cards.forEach((card,i) => { const rect = card.getBoundingClientRect(); const progress = Math.max(0,Math.min(1,(window.innerHeight * .62 - rect.top) / (window.innerHeight * .52))); card.style.transform = `scale(${1 - (cards.length - 1 - i) * .03 - progress * .018})`; });
-  window.addEventListener('scroll', () => requestAnimationFrame(updateCards), {passive:true}); updateCards();
-  const mobileBar = document.querySelector('.mobile-wa');
-  const contact = document.querySelector('#contact');
-  if (mobileBar && contact) new IntersectionObserver(([entry]) => mobileBar.classList.toggle('hidden',entry.isIntersecting),{threshold:.2}).observe(contact);
-</script>
-</body>
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.dataset.delay;
+            if (delay) entry.target.style.transitionDelay = `${Number(delay) * 90}ms`;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+      const mobileCta = document.querySelector('.mobile-cta');
+      const contactSection = document.querySelector('#contact');
+      if (mobileCta && contactSection) {
+        const ctaObserver = new IntersectionObserver(([entry]) => {
+          mobileCta.classList.toggle('is-hidden', entry.isIntersecting);
+        }, { threshold: 0.18 });
+        ctaObserver.observe(contactSection);
+      }
+    </script>
+  </body>
 </html>
