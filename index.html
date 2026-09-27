@@ -212,6 +212,23 @@
       .creative-card--three::after { content: "/ PROJECT"; position: absolute; right: 20px; bottom: 21px; color: rgba(12,12,12,.7); font: 600 9px/1 Kanit, sans-serif; letter-spacing: .12em; }
       .orbit-small { position: absolute; left: 20%; top: 3%; width: 320px; height: 190px; border: 1px solid rgba(12,12,12,.23); border-radius: 50%; transform: rotate(25deg); }
 
+      .automations { background: var(--ink); color: var(--paper); overflow: hidden; }
+      .automations-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 68px; align-items: start; }
+      .automations-copy .section-title { color: var(--paper); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+      .automations-copy .section-title em { color: var(--cyan); font-style: normal; -webkit-text-fill-color: var(--cyan); background: none; }
+      .automations-summary { max-width: 410px; margin: 28px 0 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+      .automations-price { display: flex; align-items: baseline; gap: 12px; margin-top: 38px; }
+      .automations-price strong { color: var(--paper); font: 500 clamp(52px, 6vw, 88px)/.85 Kanit, sans-serif; letter-spacing: -.07em; }
+      .automations-price span { color: var(--cyan); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+      .automations-actions { margin-top: 31px; }
+      .automations-card { padding: 28px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(145deg, rgba(164,216,255,.14), rgba(215,226,234,.035) 58%); box-shadow: 0 24px 55px rgba(0,0,0,.2); }
+      .automations-card h3 { margin: 0 0 21px; color: var(--paper); font: 500 30px/.98 Kanit, sans-serif; letter-spacing: -.05em; }
+      .automations-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px 24px; margin: 0; padding: 0; list-style: none; color: #b7c2c7; font-size: 12px; line-height: 1.4; }
+      .automations-list li { display: flex; gap: 10px; }
+      .automations-list li::before { content: "✦"; color: var(--cyan); }
+      .automations-delivery { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.65; }
+      .automations-delivery strong { display: block; margin-bottom: 8px; color: var(--paper); font: 600 10px/1 Kanit, sans-serif; letter-spacing: .15em; text-transform: uppercase; }
+
       .process { background: var(--ink); }
       .process .section-title { color: var(--paper); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
       .process-list { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
@@ -311,6 +328,10 @@
         .care-list { grid-template-columns: 1fr; }
         .care-card { padding: 22px; }
         .care-actions .btn { width: 100%; }
+        .automations-grid { grid-template-columns: 1fr; gap: 35px; }
+        .automations-list { grid-template-columns: 1fr; }
+        .automations-card { padding: 22px; }
+        .automations-actions .btn { width: 100%; }
         .creative-grid { gap: 35px; }
         .creative-art { min-height: 350px; }
         .creative-card--one { height: 230px; }
@@ -482,6 +503,33 @@
           <div class="container creative-grid">
             <div class="creative-copy" data-reveal><span class="eyebrow eyebrow--dark">03 / AI CREATIVE CONTENT</span><h2 class="section-title display">Make the<br /><span>scroll stop.</span></h2><p>Concepts, promotional visuals, and social-media-ready assets — AI-assisted, art-directed, and refined until they feel unmistakably yours.</p><ul class="creative-list"><li>AI-assisted promotional visuals</li><li>AI-generated creative concepts</li><li>Social-media-ready assets</li><li>Creative direction</li><li>Professional editing/refinement</li></ul><div class="creative-price"><strong>AED 600</strong><span>/ PROJECT</span></div><div class="creative-actions"><a class="btn btn-dark" href="#contact">Create something new <span class="arrow">↗</span></a></div></div>
             <div class="creative-art" aria-label="Abstract creative content artwork" role="img" data-reveal="" data-delay="1"><div class="orbit-small" aria-hidden="true"></div><div class="creative-card creative-card--one" aria-hidden="true"></div><div class="creative-card creative-card--two" aria-hidden="true"></div><div class="creative-card creative-card--three" aria-hidden="true"></div></div>
+          </div>
+        </section>
+
+        <section class="section automations" id="automations">
+          <div class="container automations-grid">
+            <div class="automations-copy" data-reveal>
+              <span class="eyebrow">AI Automations</span>
+              <h2 class="section-title display">Let AI handle<br /><em>the busywork.</em></h2>
+              <p class="automations-summary">From first message to booked appointment — automated systems that qualify leads, follow up, and keep things moving, so your business runs even when you’re not behind the screen.</p>
+              <div class="automations-price"><strong>AED 6,000</strong><span>Starting / project</span></div>
+              <div class="automations-actions"><a class="btn btn-primary" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20AI%20Automations%20starting%20from%20AED%206%2C000%20%2F%20project." target="_blank" rel="noopener">BUILD MY AUTOMATION <span class="arrow">↗</span></a></div>
+            </div>
+            <div class="automations-card" data-reveal data-delay="1">
+              <h3>What&apos;s included</h3>
+              <ul class="automations-list">
+                <li>AI customer support</li>
+                <li>WhatsApp lead automation</li>
+                <li>Lead capture &amp; qualification</li>
+                <li>Automated follow-ups</li>
+                <li>Appointment / booking automation</li>
+                <li>CRM workflows</li>
+                <li>Email automation</li>
+                <li>AI agents</li>
+                <li>Business-app integrations</li>
+              </ul>
+              <div class="automations-delivery"><strong>Delivery</strong>20–25 days from kickoff to launch.</div>
+            </div>
           </div>
         </section>
 
