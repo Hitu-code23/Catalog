@@ -132,20 +132,20 @@
       .services { background: var(--paper); color: var(--ink); }
       .services .section-title { background: linear-gradient(100deg, var(--ink) 18%, #447f9c 68%, #bd6b9d 105%); -webkit-background-clip: text; background-clip: text; color: transparent; }
       .services .section-summary { color: rgba(12,12,12,.6); }
-      .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-dark); }
-      .service { min-height: 270px; padding: 28px 28px 30px 0; border-right: 1px solid var(--line-dark); }
-      .service + .service { padding-left: 28px; }
-      .service:last-child { border-right: 0; }
-      .service-num { display: inline-flex; align-items: center; justify-content: center; width: 31px; height: 31px; margin-bottom: 65px; border: 1px solid rgba(12,12,12,.38); border-radius: 50%; font: 500 11px/1 Kanit, sans-serif; }
-      .service h3 { margin: 0 0 12px; font: 500 30px/.98 Kanit, sans-serif; letter-spacing: -.05em; }
-      .service p { max-width: 240px; margin: 0; color: rgba(12,12,12,.6); font-size: 12px; line-height: 1.65; }
+      .service-list { display: flex; flex-direction: column; border-top: 1px solid var(--line-dark); }
+      .service-row { display: flex; align-items: flex-start; gap: 32px; padding: 44px 0; border-bottom: 1px solid var(--line-dark); }
+      .service-row:last-child { border-bottom: 0; }
+      .service-row-num { flex: 0 0 auto; min-width: 96px; color: var(--ink); font: 900 clamp(3rem, 8vw, 6.5rem)/1 Kanit, sans-serif; letter-spacing: -.04em; }
+      .service-row-body h3 { margin: 6px 0 10px; font: 500 clamp(22px, 3.2vw, 34px)/1.05 Kanit, sans-serif; letter-spacing: -.03em; text-transform: uppercase; }
+      .service-row-body p { max-width: 560px; margin: 0; color: rgba(12,12,12,.62); font-size: 13px; line-height: 1.7; }
+      .service-row .service-tail { margin-top: 18px; }
       .service-tail { display: flex; align-items: center; gap: 8px; margin-top: 24px; color: rgba(12,12,12,.62); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
       .service-tail::before { content: ""; width: 20px; height: 1px; background: var(--ink); }
 
       .packages { background: var(--ink); }
       .package-intro { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 58px; }
-      .package-intro .section-title { color: var(--paper); }
-      .package-intro .section-title em { color: var(--acid); font-style: normal; }
+      .package-intro .section-title { color: var(--paper); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+      .package-intro .section-title em { color: var(--acid); font-style: normal; -webkit-text-fill-color: var(--acid); background: none; }
       .package-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; }
       .package { position: sticky; top: 26px; min-height: 640px; display: flex; flex-direction: column; overflow: hidden; padding: 25px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(155deg, rgba(215,226,234,.09), rgba(215,226,234,.025)); transition: transform .3s var(--ease-out), border-color .3s ease, box-shadow .3s ease; }
       .package:nth-child(2) { top: 48px; background: linear-gradient(155deg, rgba(200,255,52,.13), rgba(215,226,234,.04) 55%); }
@@ -170,8 +170,8 @@
 
       .care { background: var(--ink-soft); color: var(--paper); overflow: hidden; }
       .care-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 68px; align-items: start; }
-      .care-copy .section-title { color: var(--paper); }
-      .care-copy .section-title em { color: var(--acid); font-style: normal; }
+      .care-copy .section-title { color: var(--paper); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+      .care-copy .section-title em { color: var(--acid); font-style: normal; -webkit-text-fill-color: var(--acid); background: none; }
       .care-summary { max-width: 410px; margin: 28px 0 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
       .care-price { display: flex; align-items: baseline; gap: 12px; margin-top: 38px; }
       .care-price strong { color: var(--paper); font: 500 clamp(52px, 6vw, 88px)/.85 Kanit, sans-serif; letter-spacing: -.07em; }
@@ -213,7 +213,7 @@
       .orbit-small { position: absolute; left: 20%; top: 3%; width: 320px; height: 190px; border: 1px solid rgba(12,12,12,.23); border-radius: 50%; transform: rotate(25deg); }
 
       .process { background: var(--ink); }
-      .process .section-title { color: var(--paper); }
+      .process .section-title { color: var(--paper); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
       .process-list { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
       .process-step { padding: 26px 25px 10px 0; border-right: 1px solid var(--line); }
       .process-step + .process-step { padding-left: 25px; }
@@ -300,11 +300,9 @@
         .section-head, .package-intro { display: block; margin-bottom: 45px; }
         .section-title { margin-top: 17px; font-size: clamp(52px, 16vw, 78px); }
         .section-summary { margin-top: 23px; }
-        .service-grid, .process-list { grid-template-columns: 1fr; }
-        .service, .service + .service { min-height: auto; padding: 25px 0; border-right: 0; border-bottom: 1px solid var(--line-dark); }
-        .service:last-child { border-bottom: 0; }
-        .service-num { margin-bottom: 29px; }
-        .service h3 { font-size: 28px; }
+        .process-list { grid-template-columns: 1fr; }
+        .service-row { flex-direction: column; gap: 10px; padding: 30px 0; }
+        .service-row-num { min-width: auto; font-size: clamp(2.2rem, 13vw, 3.4rem); }
         .package-grid { display: grid; grid-template-columns: 1fr; gap: 13px; }
         .package, .package:nth-child(2), .package:nth-child(3) { position: relative; top: auto; min-height: 560px; }
         .package h3 { min-height: auto; margin-top: 42px; }
@@ -388,10 +386,31 @@
               <div><span class="eyebrow eyebrow--dark">01 / The offering</span><h2 class="section-title display">Good work<br />needs a <em>point of view.</em></h2></div>
               <p class="section-summary">A small, focused studio for brands that care about how they show up — online, on screen, and in the details.</p>
             </div>
-            <div class="service-grid">
-              <article class="service" data-reveal><span class="service-num">01</span><h3>Websites<br />with presence</h3><p>Responsive digital homes that make your offer obvious and your brand memorable.</p><div class="service-tail">Web design &amp; development</div></article>
-              <article class="service" data-reveal><span class="service-num">02</span><h3>Creative<br />with momentum</h3><p>Campaign-ready visual systems, social assets, and concepts built to earn attention.</p><div class="service-tail">AI creative content</div></article>
-              <article class="service" data-reveal><span class="service-num">03</span><h3>Built for<br />the next move</h3><p>Thoughtful foundations, clean handovers, and a digital presence ready to grow.</p><div class="service-tail">Strategy &amp; direction</div></article>
+            <div class="service-list">
+              <article class="service-row" data-reveal data-delay="0">
+                <span class="service-row-num">01</span>
+                <div class="service-row-body">
+                  <h3>Websites with presence</h3>
+                  <p>Responsive digital homes that make your offer obvious and your brand memorable.</p>
+                  <div class="service-tail">Web design &amp; development</div>
+                </div>
+              </article>
+              <article class="service-row" data-reveal data-delay="1">
+                <span class="service-row-num">02</span>
+                <div class="service-row-body">
+                  <h3>Creative with momentum</h3>
+                  <p>Campaign-ready visual systems, social assets, and concepts built to earn attention.</p>
+                  <div class="service-tail">AI creative content</div>
+                </div>
+              </article>
+              <article class="service-row" data-reveal data-delay="2">
+                <span class="service-row-num">03</span>
+                <div class="service-row-body">
+                  <h3>Built for the next move</h3>
+                  <p>Thoughtful foundations, clean handovers, and a digital presence ready to grow.</p>
+                  <div class="service-tail">Strategy &amp; direction</div>
+                </div>
+              </article>
             </div>
           </div>
         </section>
@@ -400,7 +419,7 @@
           <div class="container">
             <div class="package-intro" data-reveal><div><span class="eyebrow">02 / Website packages</span><h2 class="section-title display">Choose your<br /><em>starting point.</em></h2></div><p class="section-summary">Clear scope. No vague page counts. Every package is designed to move from first call to launch with confidence.</p></div>
             <div class="package-grid">
-              <article class="package" data-reveal>
+              <article class="package" data-reveal data-delay="0">
                 <div class="package-top"><span>01 / Starter</span><span class="package-badge">Essential</span></div>
                 <div class="package-scope">5 PAGES</div><h3>Starter<br />Business Website</h3>
                 <p class="package-price">AED 1,599</p>
@@ -408,7 +427,7 @@
                 <ul class="package-list"><li>EXACTLY 5 pages</li><li>Premium responsive design</li><li>Mobile optimization</li><li>Desktop optimization</li><li>WhatsApp integration</li><li>Google Maps integration</li><li>Social media integration</li><li>Contact form</li><li>Basic SEO setup</li></ul>
                 <div class="package-foot"><span><strong>7-day</strong><br />delivery</span><a href="#contact" aria-label="Choose Starter Business Website">Select ↗</a></div>
               </article>
-              <article class="package" data-reveal>
+              <article class="package" data-reveal data-delay="1">
                 <div class="package-top"><span>02 / Professional</span><span class="package-badge">Most chosen</span></div>
                 <div class="package-scope">8 PAGES</div><h3>Professional<br />Business Website</h3>
                 <p class="package-price">AED 2,999</p>
@@ -416,7 +435,7 @@
                 <ul class="package-list"><li>EXACTLY 8 pages</li><li>Premium custom design</li><li>Mobile + desktop optimization</li><li>WhatsApp integration</li><li>Google Maps</li><li>Social media integration</li><li>Contact / lead forms</li><li>Basic SEO</li><li>Google Analytics setup</li><li>Speed optimization</li></ul>
                 <div class="package-foot"><span><strong>10–14 day</strong><br />delivery</span><a href="#contact" aria-label="Choose Professional Business Website">Select ↗</a></div>
               </article>
-              <article class="package" data-reveal>
+              <article class="package" data-reveal data-delay="2">
                 <div class="package-top"><span>03 / Premium</span><span class="package-badge">Full expression</span></div>
                 <div class="package-scope">PREMIUM</div><h3>Premium<br />Website</h3>
                 <p class="package-price">AED 5,000</p>
@@ -470,10 +489,10 @@
           <div class="container">
             <div class="section-head" data-reveal><div><span class="eyebrow">04 / How it works</span><h2 class="section-title display">Simple on<br />purpose.</h2></div><p class="section-summary">Less theatre. More thinking, making, and meaningful progress every week.</p></div>
             <div class="process-list">
-              <article class="process-step" data-reveal><b>01</b><h3>Align</h3><p>We get clear on your offer, audience, ambition, and the feeling your brand should leave behind.</p></article>
-              <article class="process-step" data-reveal><b>02</b><h3>Shape</h3><p>We turn the direction into a visual system, a sharp structure, and an experience people can use.</p></article>
-              <article class="process-step" data-reveal><b>03</b><h3>Build</h3><p>We make the work responsive, polished, and ready for the real world — not just the moodboard.</p></article>
-              <article class="process-step" data-reveal><b>04</b><h3>Launch</h3><p>You go live with a clear handover, considered details, and a digital presence built for the next chapter.</p></article>
+              <article class="process-step" data-reveal data-delay="0"><b>01</b><h3>Align</h3><p>We get clear on your offer, audience, ambition, and the feeling your brand should leave behind.</p></article>
+              <article class="process-step" data-reveal data-delay="1"><b>02</b><h3>Shape</h3><p>We turn the direction into a visual system, a sharp structure, and an experience people can use.</p></article>
+              <article class="process-step" data-reveal data-delay="2"><b>03</b><h3>Build</h3><p>We make the work responsive, polished, and ready for the real world — not just the moodboard.</p></article>
+              <article class="process-step" data-reveal data-delay="3"><b>04</b><h3>Launch</h3><p>You go live with a clear handover, considered details, and a digital presence built for the next chapter.</p></article>
             </div>
           </div>
         </section>
