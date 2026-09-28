@@ -384,6 +384,9 @@
       .hbv-submit { margin-top: 6px; width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 16px 24px; border: 2px solid #fff; outline: 2px solid #fff; outline-offset: -3px; border-radius: 999px; background: linear-gradient(123deg,#18011F 7%,#B600A8 37%,#7621B0 72%,#BE4C00 100%); box-shadow: 0 4px 4px rgba(181,1,167,.25), 4px 4px 12px #7721B1 inset; color: #fff; font: 500 14px/1 Kanit, sans-serif; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; transition: transform .22s var(--ease-out), filter .22s ease; }
       .hbv-submit:hover { transform: translateY(-3px); filter: saturate(1.2); }
       .hbv-submit:disabled { opacity: .6; cursor: progress; transform: none; }
+      .hbv-submit-icon { display: inline-grid; place-items: center; width: 32px; height: 32px; flex: 0 0 32px; border-radius: 50%; background: var(--acid); color: var(--ink); box-shadow: 0 0 18px rgba(200,255,52,.45); transition: transform .25s var(--ease-out); }
+      .hbv-submit-icon svg { width: 16px; height: 16px; }
+      .hbv-submit:not(:disabled):hover .hbv-submit-icon { transform: translate(2px, -2px); }
       .hbv-note { margin: 4px 0 0; color: var(--muted); font-size: 11px; line-height: 1.6; text-align: center; }
       .hbv-error { display: none; padding: 12px 14px; border: 1px solid rgba(255,107,107,.4); border-radius: 12px; background: rgba(255,107,107,.08); color: #ffb3b3; font-size: 12px; line-height: 1.6; }
       .hbv-error.is-visible { display: block; }
@@ -649,7 +652,7 @@
                     <textarea id="hbvRequirements" name="requirements" required placeholder="Tell us about your business, your goals, and what you want to build."></textarea>
                   </div>
                   <div class="hbv-error" id="hbvError" role="alert"></div>
-                  <button type="submit" class="hbv-submit" id="hbvSubmitBtn">Send inquiry <span aria-hidden="true">↗</span></button>
+                  <button type="submit" class="hbv-submit" id="hbvSubmitBtn"><span class="hbv-submit-label">Send inquiry</span><span class="hbv-submit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span></button>
                   <p class="hbv-note">We’ll get back to you shortly.</p>
                 </form>
               </div>
@@ -742,7 +745,7 @@
       const hbvServiceSelect = document.getElementById('hbvService');
       const hbvSubmitBtn = document.getElementById('hbvSubmitBtn');
       const hbvError = document.getElementById('hbvError');
-      const hbvSubmitLabel = 'Send inquiry <span aria-hidden="true">↗</span>';
+      const hbvSubmitText = hbvSubmitBtn.querySelector('.hbv-submit-label');
 
       function hbvShowForm() {
         hbvFormPanel.style.display = '';
@@ -790,7 +793,7 @@
         }
 
         hbvSubmitBtn.disabled = true;
-        hbvSubmitBtn.textContent = 'Sending…';
+        hbvSubmitText.textContent = 'Sending…';
 
         const payload = Object.fromEntries(new FormData(hbvForm).entries());
         payload.access_key = HBV_ACCESS_KEY;
@@ -817,7 +820,7 @@
           hbvShowError('Something went wrong sending your inquiry. Please try again, or WhatsApp us at +971 55 785 8540.');
         } finally {
           hbvSubmitBtn.disabled = false;
-          hbvSubmitBtn.innerHTML = hbvSubmitLabel;
+          hbvSubmitText.textContent = 'Send inquiry';
         }
       });
     </script>
