@@ -360,6 +360,42 @@
         .hero-button-icon-wrap { width: 30px; height: 30px; flex-basis: 30px; border-radius: 9px; }
         .hero-button-icon { width: 18px; height: 18px; }
       }
+      /* HB Visuals — Universal Inquiry Modal */
+      .hbv-modal-overlay { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(12,12,12,.72); backdrop-filter: blur(6px); }
+      .hbv-modal-overlay.is-open { display: flex; }
+      .hbv-modal { position: relative; width: min(600px, 100%); max-height: 90vh; overflow-y: auto; padding: 40px; border: 1px solid var(--line); border-radius: 28px; background: linear-gradient(165deg, #17181a, #0c0c0c 60%); box-shadow: 0 40px 90px rgba(0,0,0,.5); animation: hbv-modal-in .35s var(--ease-out) both; }
+      @keyframes hbv-modal-in { from { opacity: 0; transform: translateY(24px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+      .hbv-modal-close { position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; display: inline-grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--paper); font-size: 15px; cursor: pointer; transition: transform .2s var(--ease-out), border-color .2s ease, color .2s ease; }
+      .hbv-modal-close:hover { border-color: var(--acid); color: var(--acid); transform: rotate(90deg); }
+      .hbv-modal-eyebrow { color: var(--acid); font: 600 10px/1 Kanit, sans-serif; letter-spacing: .19em; text-transform: uppercase; }
+      .hbv-modal h2 { margin: 14px 0 8px; max-width: 90%; font-family: Kanit, sans-serif; font-weight: 500; letter-spacing: -.04em; font-size: clamp(28px, 5vw, 40px); line-height: 1.05; color: var(--paper); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+      .hbv-modal-sub { margin: 0 0 28px; max-width: 420px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+      .hbv-form { display: grid; gap: 18px; }
+      .hbv-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+      .hbv-field { display: grid; gap: 8px; }
+      .hbv-field label { color: var(--muted); font: 600 10px/1 Kanit, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+      .hbv-field input, .hbv-field select, .hbv-field textarea { width: 100%; padding: 13px 15px; border: 1px solid var(--line); border-radius: 12px; background: rgba(215,226,234,.05); color: var(--paper); font: 400 14px/1.4 Kanit, sans-serif; transition: border-color .2s ease, box-shadow .2s ease; }
+      .hbv-field textarea { resize: vertical; min-height: 96px; }
+      .hbv-field input::placeholder, .hbv-field textarea::placeholder { color: rgba(215,226,234,.35); }
+      .hbv-field input:focus, .hbv-field select:focus, .hbv-field textarea:focus { outline: none; border-color: var(--acid); box-shadow: 0 0 0 3px rgba(200,255,52,.15); }
+      .hbv-field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%238a969d' stroke-width='1.6'%3E%3Cpath d='m5 8 5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+      .hbv-field select option { background: #151718; color: var(--paper); }
+      .hbv-hp { position: absolute; left: -9999px; opacity: 0; }
+      .hbv-submit { margin-top: 6px; width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 16px 24px; border: 2px solid #fff; outline: 2px solid #fff; outline-offset: -3px; border-radius: 999px; background: linear-gradient(123deg,#18011F 7%,#B600A8 37%,#7621B0 72%,#BE4C00 100%); box-shadow: 0 4px 4px rgba(181,1,167,.25), 4px 4px 12px #7721B1 inset; color: #fff; font: 500 14px/1 Kanit, sans-serif; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; transition: transform .22s var(--ease-out), filter .22s ease; }
+      .hbv-submit:hover { transform: translateY(-3px); filter: saturate(1.2); }
+      .hbv-submit:disabled { opacity: .6; cursor: progress; transform: none; }
+      .hbv-note { margin: 12px 0 0; color: var(--muted); font-size: 11px; line-height: 1.6; text-align: center; }
+      .hbv-error { display: none; margin-top: 4px; padding: 12px 14px; border: 1px solid rgba(255,107,107,.4); border-radius: 12px; background: rgba(255,107,107,.08); color: #ffb3b3; font-size: 12px; line-height: 1.6; }
+      .hbv-error.is-visible { display: block; }
+      .hbv-success { display: none; text-align: center; padding: 20px 0 6px; }
+      .hbv-success.is-visible { display: block; animation: hbv-modal-in .4s var(--ease-out) both; }
+      .hbv-success-icon { display: inline-grid; place-items: center; width: 64px; height: 64px; margin-bottom: 20px; border-radius: 50%; background: rgba(200,255,52,.12); color: var(--acid); }
+      .hbv-success h3 { margin: 0 0 10px; color: var(--paper); font: 500 26px/1.1 Kanit, sans-serif; letter-spacing: -.03em; }
+      .hbv-success p { margin: 0 auto 24px; max-width: 340px; color: var(--muted); font-size: 13px; line-height: 1.65; }
+      @media (max-width: 640px) {
+        .hbv-modal { padding: 30px 22px; border-radius: 22px; }
+        .hbv-row { grid-template-columns: 1fr; gap: 18px; }
+      }
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
       }
@@ -446,7 +482,7 @@
                 <p class="package-price">AED 1,599</p>
                 <div class="package-rule"></div>
                 <ul class="package-list"><li>EXACTLY 5 pages</li><li>Premium responsive design</li><li>Mobile optimization</li><li>Desktop optimization</li><li>WhatsApp integration</li><li>Google Maps integration</li><li>Social media integration</li><li>Contact form</li><li>Basic SEO setup</li></ul>
-                <div class="package-foot"><span><strong>7-day</strong><br />delivery</span><a href="#contact" aria-label="Choose Starter Business Website">Select ↗</a></div>
+                <div class="package-foot"><span><strong>7-day</strong><br />delivery</span><a href="#contact" class="js-open-inquiry" data-service="Starter Business Website" aria-label="Choose Starter Business Website">Select ↗</a></div>
               </article>
               <article class="package" data-reveal data-delay="1">
                 <div class="package-top"><span>02 / Professional</span><span class="package-badge">Most chosen</span></div>
@@ -454,7 +490,7 @@
                 <p class="package-price">AED 2,999</p>
                 <div class="package-rule"></div>
                 <ul class="package-list"><li>EXACTLY 8 pages</li><li>Premium custom design</li><li>Mobile + desktop optimization</li><li>WhatsApp integration</li><li>Google Maps</li><li>Social media integration</li><li>Contact / lead forms</li><li>Basic SEO</li><li>Google Analytics setup</li><li>Speed optimization</li></ul>
-                <div class="package-foot"><span><strong>10–14 day</strong><br />delivery</span><a href="#contact" aria-label="Choose Professional Business Website">Select ↗</a></div>
+                <div class="package-foot"><span><strong>10–14 day</strong><br />delivery</span><a href="#contact" class="js-open-inquiry" data-service="Professional Business Website" aria-label="Choose Professional Business Website">Select ↗</a></div>
               </article>
               <article class="package" data-reveal data-delay="2">
                 <div class="package-top"><span>03 / Premium</span><span class="package-badge">Full expression</span></div>
@@ -462,7 +498,7 @@
                 <p class="package-price">AED 5,000</p>
                 <div class="package-rule"></div>
                 <ul class="package-list"><li>Custom UI/UX</li><li>Advanced animations</li><li>Advanced forms</li><li>Booking functionality</li><li>Advanced SEO structure</li><li>Analytics</li><li>Performance optimization</li><li>Custom integrations</li><li>Premium responsive design</li><li>Mobile + desktop optimization</li></ul>
-                <div class="package-foot"><span><strong>14–21 day</strong><br />delivery</span><a href="#contact" aria-label="Choose Premium Website">Select ↗</a></div>
+                <div class="package-foot"><span><strong>14–21 day</strong><br />delivery</span><a href="#contact" class="js-open-inquiry" data-service="Premium Website" aria-label="Choose Premium Website">Select ↗</a></div>
               </article>
             </div>
           </div>
@@ -476,7 +512,7 @@
               <h2 class="section-title display">Your website is live.<br /><em>We keep it running.</em></h2>
               <p class="care-summary">Keep your website updated, monitored and maintained without having to worry about the technical details.</p>
               <div class="care-price"><strong>AED 500</strong><span>/ MONTH</span></div>
-              <div class="care-actions"><a class="btn btn-primary" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener">GET WEBSITE CARE <span class="arrow">↗</span></a></div>
+              <div class="care-actions"><a class="btn btn-primary js-open-inquiry" data-service="Website Care" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener">GET WEBSITE CARE <span class="arrow">↗</span></a></div>
             </div>
             <div class="care-card" data-reveal data-delay="1">
               <h3>What&apos;s included</h3>
@@ -501,7 +537,7 @@
 
         <section class="section creative" id="creative">
           <div class="container creative-grid">
-            <div class="creative-copy" data-reveal><span class="eyebrow eyebrow--dark">03 / AI CREATIVE CONTENT</span><h2 class="section-title display">Make the<br /><span>scroll stop.</span></h2><p>Concepts, promotional visuals, and social-media-ready assets — AI-assisted, art-directed, and refined until they feel unmistakably yours.</p><ul class="creative-list"><li>AI-assisted promotional visuals</li><li>AI-generated creative concepts</li><li>Social-media-ready assets</li><li>Creative direction</li><li>Professional editing/refinement</li></ul><div class="creative-price"><strong>AED 600</strong><span>/ PROJECT</span></div><div class="creative-actions"><a class="btn btn-dark" href="#contact">Create something new <span class="arrow">↗</span></a></div></div>
+            <div class="creative-copy" data-reveal><span class="eyebrow eyebrow--dark">03 / AI CREATIVE CONTENT</span><h2 class="section-title display">Make the<br /><span>scroll stop.</span></h2><p>Concepts, promotional visuals, and social-media-ready assets — AI-assisted, art-directed, and refined until they feel unmistakably yours.</p><ul class="creative-list"><li>AI-assisted promotional visuals</li><li>AI-generated creative concepts</li><li>Social-media-ready assets</li><li>Creative direction</li><li>Professional editing/refinement</li></ul><div class="creative-price"><strong>AED 600</strong><span>/ PROJECT</span></div><div class="creative-actions"><a class="btn btn-dark js-open-inquiry" data-service="AI Creative Content" href="#contact">Create something new <span class="arrow">↗</span></a></div></div>
             <div class="creative-art" aria-label="Abstract creative content artwork" role="img" data-reveal="" data-delay="1"><div class="orbit-small" aria-hidden="true"></div><div class="creative-card creative-card--one" aria-hidden="true"></div><div class="creative-card creative-card--two" aria-hidden="true"></div><div class="creative-card creative-card--three" aria-hidden="true"></div></div>
           </div>
         </section>
@@ -513,7 +549,7 @@
               <h2 class="section-title display">Let AI handle<br /><em>the busywork.</em></h2>
               <p class="automations-summary">From first message to booked appointment — automated systems that qualify leads, follow up, and keep things moving, so your business runs even when you’re not behind the screen.</p>
               <div class="automations-price"><strong>AED 6,000</strong><span>Starting / project</span></div>
-              <div class="automations-actions"><a class="btn btn-primary" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20AI%20Automations%20starting%20from%20AED%206%2C000%20%2F%20project." target="_blank" rel="noopener">BUILD MY AUTOMATION <span class="arrow">↗</span></a></div>
+              <div class="automations-actions"><a class="btn btn-primary js-open-inquiry" data-service="AI Automations" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20AI%20Automations%20starting%20from%20AED%206%2C000%20%2F%20project." target="_blank" rel="noopener">BUILD MY AUTOMATION <span class="arrow">↗</span></a></div>
             </div>
             <div class="automations-card" data-reveal data-delay="1">
               <h3>What&apos;s included</h3>
@@ -559,6 +595,83 @@
 
       <footer class="footer"><div class="container footer-inner"><span class="footer-brand">HB VISUALS</span><span>Dubai, UAE · Digital catalog / 2026</span><span>Made with intent ↗</span></div></footer>
       <a class="mobile-cta" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener" aria-label="WhatsApp HB Visuals at +971 55 785 8540"><span class="mobile-cta-main"><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.75 11.75 0 0 0 12.15 0C5.65 0 .36 5.28.36 11.79c0 2.08.54 4.1 1.57 5.88L.25 24l6.48-1.7a11.8 11.8 0 0 0 5.42 1.3h.01c6.5 0 11.79-5.29 11.79-11.8 0-3.15-1.22-6.1-3.45-8.3ZM12.16 21.6h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.85 1.01 1.03-3.75-.24-.39a9.82 9.82 0 0 1-1.5-5.25C2.23 6.2 6.67 1.97 12.16 1.97c2.62 0 5.08 1.02 6.93 2.86a9.74 9.74 0 0 1 2.88 6.96c0 5.41-4.4 9.81-9.81 9.81Zm5.38-7.35c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.08-.8.37-.28.3-1.04 1.02-1.04 2.5 0 1.48 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.73 2.02-1.43.25-.7.25-1.3.17-1.43-.08-.12-.28-.2-.58-.35Z" /></svg></span><span>WHATSAPP HB VISUALS<small>+971 55 785 8540</small></span></span><span class="arrow">↗</span></a>
+      <div class="hbv-modal-overlay" id="hbvModalOverlay" role="dialog" aria-modal="true" aria-labelledby="hbvModalTitle">
+        <div class="hbv-modal">
+          <button type="button" class="hbv-modal-close" id="hbvModalClose" aria-label="Close inquiry form">✕</button>
+
+          <div id="hbvFormPanel">
+            <span class="hbv-modal-eyebrow">Start a project</span>
+            <h2 id="hbvModalTitle">Let&apos;s build something real.</h2>
+            <p class="hbv-modal-sub">One form, every service — tell us what you need and we&apos;ll follow up with clear next steps.</p>
+
+            <form class="hbv-form" id="hbvForm" novalidate>
+              <input type="text" name="botcheck" class="hbv-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <div class="hbv-row">
+                <div class="hbv-field">
+                  <label for="hbvName">Full name</label>
+                  <input type="text" id="hbvName" name="name" required autocomplete="name" />
+                </div>
+                <div class="hbv-field">
+                  <label for="hbvBusiness">Business name</label>
+                  <input type="text" id="hbvBusiness" name="business_name" autocomplete="organization" />
+                </div>
+              </div>
+              <div class="hbv-row">
+                <div class="hbv-field">
+                  <label for="hbvEmail">Email</label>
+                  <input type="email" id="hbvEmail" name="email" required autocomplete="email" />
+                </div>
+                <div class="hbv-field">
+                  <label for="hbvWhatsapp">WhatsApp number</label>
+                  <input type="tel" id="hbvWhatsapp" name="whatsapp" required autocomplete="tel" placeholder="+971 5X XXX XXXX" />
+                </div>
+              </div>
+              <div class="hbv-row">
+                <div class="hbv-field">
+                  <label for="hbvService">Service</label>
+                  <select id="hbvService" name="service" required>
+                    <option value="" disabled selected>Select a service</option>
+                    <option value="Starter Business Website">Starter Business Website</option>
+                    <option value="Professional Business Website">Professional Business Website</option>
+                    <option value="Premium Website">Premium Website</option>
+                    <option value="Website Care">Website Care</option>
+                    <option value="AI Creative Content">AI Creative Content</option>
+                    <option value="AI Automations">AI Automations</option>
+                    <option value="Other / Not sure yet">Other / Not sure yet</option>
+                  </select>
+                </div>
+                <div class="hbv-field">
+                  <label for="hbvBudget">Project budget</label>
+                  <select id="hbvBudget" name="budget" required>
+                    <option value="" disabled selected>Select a range</option>
+                    <option value="Under AED 2,000">Under AED 2,000</option>
+                    <option value="AED 2,000 – 5,000">AED 2,000 – 5,000</option>
+                    <option value="AED 5,000 – 10,000">AED 5,000 – 10,000</option>
+                    <option value="AED 10,000+">AED 10,000+</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                  </select>
+                </div>
+              </div>
+              <div class="hbv-field">
+                <label for="hbvRequirements">Project requirements</label>
+                <textarea id="hbvRequirements" name="requirements" required placeholder="Tell us about your business, your goals, and what you want to build."></textarea>
+              </div>
+
+              <div class="hbv-error" id="hbvError" role="alert"></div>
+
+              <button type="submit" class="hbv-submit" id="hbvSubmitBtn">Send inquiry <span aria-hidden="true">↗</span></button>
+              <p class="hbv-note">We typically reply within 24 hours.</p>
+            </form>
+          </div>
+
+          <div class="hbv-success" id="hbvSuccessPanel" role="status">
+            <span class="hbv-success-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <h3>Inquiry received</h3>
+            <p id="hbvSuccessCopy">Thank you — your project details are with our team. We&apos;ll be in touch within 24 hours to discuss next steps.</p>
+            <button type="button" class="hbv-submit" id="hbvSuccessClose" style="width:auto;padding:14px 34px;">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
     <script>
       const observer = new IntersectionObserver((entries) => {
@@ -604,6 +717,109 @@
         }, { threshold: 0.18 });
         ctaObserver.observe(contactSection);
       }
+    </script>
+    <script>
+      /* ============================================================
+         HB VISUALS — UNIVERSAL INQUIRY FORM
+         SETUP (one-time, 2 minutes):
+         1. Go to https://web3forms.com and enter your business email.
+         2. Copy the Access Key they email you.
+         3. Paste it below, replacing YOUR_WEB3FORMS_ACCESS_KEY.
+         Every submission is emailed to that address and stored in your
+         Web3Forms dashboard.
+         ============================================================ */
+      const HBV_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+
+      const hbvOverlay = document.getElementById('hbvModalOverlay');
+      const hbvForm = document.getElementById('hbvForm');
+      const hbvFormPanel = document.getElementById('hbvFormPanel');
+      const hbvSuccessPanel = document.getElementById('hbvSuccessPanel');
+      const hbvServiceSelect = document.getElementById('hbvService');
+      const hbvSubmitBtn = document.getElementById('hbvSubmitBtn');
+      const hbvError = document.getElementById('hbvError');
+      const hbvSubmitLabel = 'Send inquiry <span aria-hidden="true">↗</span>';
+      let hbvLastFocused = null;
+
+      function openInquiryModal(service) {
+        hbvLastFocused = document.activeElement;
+        hbvFormPanel.style.display = '';
+        hbvSuccessPanel.classList.remove('is-visible');
+        hbvError.classList.remove('is-visible');
+        if (service) hbvServiceSelect.value = service;
+        hbvOverlay.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => document.getElementById('hbvName').focus(), 60);
+      }
+
+      function closeInquiryModal() {
+        hbvOverlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+        if (hbvLastFocused && hbvLastFocused.focus) hbvLastFocused.focus();
+      }
+
+      document.querySelectorAll('.js-open-inquiry').forEach((el) => {
+        el.addEventListener('click', (event) => {
+          event.preventDefault();
+          openInquiryModal(el.dataset.service || '');
+        });
+      });
+
+      document.getElementById('hbvModalClose').addEventListener('click', closeInquiryModal);
+      document.getElementById('hbvSuccessClose').addEventListener('click', closeInquiryModal);
+      hbvOverlay.addEventListener('click', (event) => { if (event.target === hbvOverlay) closeInquiryModal(); });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && hbvOverlay.classList.contains('is-open')) closeInquiryModal();
+      });
+
+      function hbvShowError(message) {
+        hbvError.textContent = message;
+        hbvError.classList.add('is-visible');
+      }
+
+      hbvForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        hbvError.classList.remove('is-visible');
+
+        if (!hbvForm.checkValidity()) {
+          hbvForm.reportValidity();
+          return;
+        }
+        if (HBV_ACCESS_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+          hbvShowError('This form is not connected yet. Please WhatsApp us directly at +971 55 785 8540.');
+          return;
+        }
+
+        hbvSubmitBtn.disabled = true;
+        hbvSubmitBtn.textContent = 'Sending…';
+
+        const payload = Object.fromEntries(new FormData(hbvForm).entries());
+        payload.access_key = HBV_ACCESS_KEY;
+        payload.subject = 'New inquiry — ' + (payload.service || 'HB Visuals');
+        payload.from_name = 'HB Visuals Website';
+
+        try {
+          const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const result = await response.json();
+          if (!result.success) throw new Error(result.message || 'Submission failed');
+
+          const firstName = (payload.name || '').trim().split(' ')[0];
+          document.getElementById('hbvSuccessCopy').textContent =
+            'Thank you' + (firstName ? ', ' + firstName : '') + ' — your ' + (payload.service || 'project') +
+            ' inquiry is with our team. We’ll be in touch within 24 hours to discuss next steps.';
+          hbvFormPanel.style.display = 'none';
+          hbvSuccessPanel.classList.add('is-visible');
+          hbvForm.reset();
+        } catch (error) {
+          hbvShowError('Something went wrong sending your inquiry. Please try again, or WhatsApp us at +971 55 785 8540.');
+        } finally {
+          hbvSubmitBtn.disabled = false;
+          hbvSubmitBtn.innerHTML = hbvSubmitLabel;
+        }
+      });
     </script>
   </body>
 </html>
