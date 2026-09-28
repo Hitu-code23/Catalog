@@ -360,6 +360,55 @@
         .hero-button-icon-wrap { width: 30px; height: 30px; flex-basis: 30px; border-radius: 9px; }
         .hero-button-icon { width: 18px; height: 18px; }
       }
+      /* HB Visuals — conversion, mobile navigation, and performance enhancements */
+      .quick-start { padding: 34px 0 22px; background: var(--ink); }
+      .quick-start-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 18px; }
+      .quick-start-title { margin: 0; color: var(--paper); font: 500 clamp(25px, 3vw, 36px)/.95 Kanit, sans-serif; letter-spacing: -.05em; }
+      .quick-start-summary { max-width: 280px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+      .quick-start-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+      .quick-start-link { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 58px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 14px; color: var(--paper); font: 500 12px/1.15 Kanit, sans-serif; letter-spacing: .02em; transition: transform .22s var(--ease-out), border-color .22s ease, background .22s ease; }
+      .quick-start-link span { color: var(--acid); font-size: 17px; }
+      .quick-start-link:hover { border-color: rgba(200,255,52,.7); background: rgba(200,255,52,.08); transform: translateY(-3px); }
+      .trust-strip { display: flex; justify-content: center; gap: 27px; flex-wrap: wrap; padding: 17px 0 4px; color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+      .trust-strip span { display: inline-flex; align-items: center; gap: 8px; }
+      .trust-strip span::before { content: "✦"; color: var(--acid); }
+      .package--recommended { border-color: rgba(200,255,52,.72); box-shadow: 0 0 0 1px rgba(200,255,52,.12), 0 24px 50px rgba(0,0,0,.25); }
+      .package--recommended::before { content: "RECOMMENDED"; position: absolute; top: 0; left: 25px; transform: translateY(-50%); padding: 5px 9px; border-radius: 999px; background: var(--acid); color: var(--ink); font: 700 9px/1 Kanit, sans-serif; letter-spacing: .12em; }
+      .package-best-for { min-height: 31px; margin: 0 0 15px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+      .package-features-toggle { display: none; }
+      .mobile-menu-toggle { display: none; align-items: center; justify-content: center; width: 38px; height: 38px; border: 1px solid rgba(215,226,234,.4); border-radius: 50%; background: transparent; color: var(--paper); cursor: pointer; }
+      .mobile-menu-toggle svg { width: 18px; height: 18px; }
+      .mobile-menu { display: none; }
+      .form-progress { display: flex; align-items: center; gap: 10px; margin: -2px 0 4px; color: var(--acid); font: 600 10px/1 Kanit, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+      .form-progress::after { content: ""; height: 1px; flex: 1; background: var(--line); }
+      .hbv-help { margin: -2px 0 0; color: var(--muted); font-size: 10px; line-height: 1.5; }
+      .hbv-privacy { margin: 0; color: rgba(215,226,234,.48); font-size: 10px; line-height: 1.5; text-align: center; }
+      .section:not(.hero) { content-visibility: auto; contain-intrinsic-size: 700px; }
+
+      @media (max-width: 680px) {
+        .quick-start { padding: 24px 0 12px; }
+        .quick-start-head { display: block; margin-bottom: 15px; }
+        .quick-start-summary { margin-top: 10px; }
+        .quick-start-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+        .quick-start-link { min-height: 52px; padding: 11px 12px; font-size: 11px; }
+        .trust-strip { justify-content: flex-start; gap: 10px 18px; padding-top: 15px; font-size: 9px; }
+        .hero-nav { grid-template-columns: 1fr auto; grid-template-rows: auto; align-items: center; }
+        .hero-brand { grid-column: 1; grid-row: 1; }
+        .mobile-menu-toggle { display: inline-flex; grid-column: 2; grid-row: 1; justify-self: end; }
+        .hero-nav > a:not(.hero-brand) { display: none; }
+        .mobile-menu { position: absolute; z-index: 8; top: 68px; right: 16px; left: 16px; display: grid; gap: 3px; padding: 9px; border: 1px solid var(--line); border-radius: 16px; background: rgba(21,23,24,.97); box-shadow: 0 20px 45px rgba(0,0,0,.42); opacity: 0; pointer-events: none; transform: translateY(-8px); transition: opacity .22s ease, transform .22s var(--ease-out); }
+        .mobile-menu.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        .mobile-menu a { padding: 13px 12px; border-radius: 10px; color: var(--paper); font-size: 11px; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; }
+        .mobile-menu a:hover, .mobile-menu a:focus-visible { background: rgba(200,255,52,.1); color: var(--acid); }
+        .package--recommended::before { left: 20px; }
+        .package-features-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; margin: 0 0 13px; padding: 10px 0; border: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: transparent; color: var(--paper); font: 600 10px/1 Kanit, sans-serif; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; }
+        .package-features-toggle span { color: var(--acid); font-size: 18px; font-weight: 400; }
+        .package-list { max-height: 0; overflow: hidden; transition: max-height .35s var(--ease-out); }
+        .package-list.is-open { max-height: 500px; }
+        .package-best-for { min-height: 0; }
+        .hbv-privacy { font-size: 9px; }
+      }
+
       /* HB Visuals — Universal Inquiry Form (visible section) */
       .inquiry { background: var(--ink-soft); color: var(--paper); overflow: hidden; }
       .inquiry-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 68px; align-items: start; }
@@ -429,9 +478,11 @@
           <nav class="hero-nav" aria-label="Primary navigation">
             <a class="hero-brand" href="#top" aria-label="HB Visuals home"><svg class="hero-logo" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 13V3h10M19 29h10V19" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M3 13v6M13 3h6M19 29v-6M29 19v-6" fill="none" stroke="#c8ff34" stroke-width="2.2"/></svg><span>HB VISUAL</span></a>
             <a href="#services">Services</a><a href="#packages">Packages</a><a href="#creative">AI Creative</a><a href="#website-care">Website Care</a>
+            <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open navigation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button>
+            <div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation"><a href="#services">Services</a><a href="#packages">Packages</a><a href="#creative">AI Creative</a><a href="#website-care">Website Care</a><a href="#inquiry">Start a project</a></div>
           </nav>
           <div class="hero-center">
-            <img class="hero-artwork" src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png" alt="HB Visual 3D artwork" />
+            <img class="hero-artwork" src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png" alt="HB Visual 3D artwork" width="520" height="520" loading="eager" fetchpriority="high" decoding="async" />
             <span class="hero-shape one" aria-hidden="true"></span><span class="hero-shape two" aria-hidden="true"></span><span class="hero-shape three" aria-hidden="true"></span>
             <h1 class="hero-title hero-heading"><span class="small">Hi, we&apos;re</span>HB Visual</h1>
           </div>
@@ -444,6 +495,19 @@
             <span class="marquee-item">Digital experiences with intention</span><span class="marquee-item">Dubai to everywhere</span><span class="marquee-item">Design / direction / delivery</span><span class="marquee-item">Digital experiences with intention</span><span class="marquee-item">Dubai to everywhere</span><span class="marquee-item">Design / direction / delivery</span>
           </div>
         </div>
+
+        <section class="quick-start" aria-labelledby="quick-start-title">
+          <div class="container">
+            <div class="quick-start-head"><h2 class="quick-start-title" id="quick-start-title">What are you looking to build?</h2><p class="quick-start-summary">Choose a starting point and we’ll take you to the right part of the catalog.</p></div>
+            <div class="quick-start-grid">
+              <a class="quick-start-link" href="#packages">A business website <span>↘</span></a>
+              <a class="quick-start-link" href="#automations">An AI automation <span>↘</span></a>
+              <a class="quick-start-link" href="#creative">Creative content <span>↘</span></a>
+              <a class="quick-start-link js-open-inquiry" href="#inquiry" data-service="Other / Not sure yet">Not sure yet <span>↘</span></a>
+            </div>
+            <div class="trust-strip" aria-label="HB Visuals service promises"><span>Clear scope</span><span>Responsive delivery</span><span>Mobile-first thinking</span><span>Thoughtful handover</span></div>
+          </div>
+        </section>
 
         <section class="section services" id="services">
           <div class="container">
@@ -487,25 +551,25 @@
               <article class="package" data-reveal data-delay="0">
                 <div class="package-top"><span>01 / Starter</span><span class="package-badge">Essential</span></div>
                 <div class="package-scope">5 PAGES</div><h3>Starter<br />Business Website</h3>
-                <p class="package-price">AED 1,599</p>
+                <p class="package-best-for">Best for simple service businesses.</p><p class="package-price">AED 1,599</p>
                 <div class="package-rule"></div>
-                <ul class="package-list"><li>EXACTLY 5 pages</li><li>Premium responsive design</li><li>Mobile optimization</li><li>Desktop optimization</li><li>WhatsApp integration</li><li>Google Maps integration</li><li>Social media integration</li><li>Contact form</li><li>Basic SEO setup</li></ul>
+                <button class="package-features-toggle" type="button" aria-expanded="false">View all features <span>+</span></button><ul class="package-list"><li>EXACTLY 5 pages</li><li>Premium responsive design</li><li>Mobile optimization</li><li>Desktop optimization</li><li>WhatsApp integration</li><li>Google Maps integration</li><li>Social media integration</li><li>Contact form</li><li>Basic SEO setup</li></ul>
                 <div class="package-foot"><span><strong>7-day</strong><br />delivery</span><a href="#contact" class="js-open-inquiry" data-service="Starter Business Website" aria-label="Choose Starter Business Website">Select ↗</a></div>
               </article>
-              <article class="package" data-reveal data-delay="1">
+              <article class="package package--recommended" data-reveal data-delay="1">
                 <div class="package-top"><span>02 / Professional</span><span class="package-badge">Most chosen</span></div>
                 <div class="package-scope">8 PAGES</div><h3>Professional<br />Business Website</h3>
-                <p class="package-price">AED 2,999</p>
+                <p class="package-best-for">Best for growing businesses that need a stronger presence.</p><p class="package-price">AED 2,999</p>
                 <div class="package-rule"></div>
-                <ul class="package-list"><li>EXACTLY 8 pages</li><li>Premium custom design</li><li>Mobile + desktop optimization</li><li>WhatsApp integration</li><li>Google Maps</li><li>Social media integration</li><li>Contact / lead forms</li><li>Basic SEO</li><li>Google Analytics setup</li><li>Speed optimization</li></ul>
+                <button class="package-features-toggle" type="button" aria-expanded="false">View all features <span>+</span></button><ul class="package-list"><li>EXACTLY 8 pages</li><li>Premium custom design</li><li>Mobile + desktop optimization</li><li>WhatsApp integration</li><li>Google Maps</li><li>Social media integration</li><li>Contact / lead forms</li><li>Basic SEO</li><li>Google Analytics setup</li><li>Speed optimization</li></ul>
                 <div class="package-foot"><span><strong>10–14 day</strong><br />delivery</span><a href="#contact" class="js-open-inquiry" data-service="Professional Business Website" aria-label="Choose Professional Business Website">Select ↗</a></div>
               </article>
               <article class="package" data-reveal data-delay="2">
                 <div class="package-top"><span>03 / Premium</span><span class="package-badge">Full expression</span></div>
                 <div class="package-scope">PREMIUM</div><h3>Premium<br />Website</h3>
-                <p class="package-price">AED 5,000</p>
+                <p class="package-best-for">Best for custom UX, integrations, and advanced functionality.</p><p class="package-price">AED 5,000</p>
                 <div class="package-rule"></div>
-                <ul class="package-list"><li>Custom UI/UX</li><li>Advanced animations</li><li>Advanced forms</li><li>Booking functionality</li><li>Advanced SEO structure</li><li>Analytics</li><li>Performance optimization</li><li>Custom integrations</li><li>Premium responsive design</li><li>Mobile + desktop optimization</li></ul>
+                <button class="package-features-toggle" type="button" aria-expanded="false">View all features <span>+</span></button><ul class="package-list"><li>Custom UI/UX</li><li>Advanced animations</li><li>Advanced forms</li><li>Booking functionality</li><li>Advanced SEO structure</li><li>Analytics</li><li>Performance optimization</li><li>Custom integrations</li><li>Premium responsive design</li><li>Mobile + desktop optimization</li></ul>
                 <div class="package-foot"><span><strong>14–21 day</strong><br />delivery</span><a href="#contact" class="js-open-inquiry" data-service="Premium Website" aria-label="Choose Premium Website">Select ↗</a></div>
               </article>
             </div>
@@ -545,7 +609,7 @@
 
         <section class="section creative" id="creative">
           <div class="container creative-grid">
-            <div class="creative-copy" data-reveal><span class="eyebrow eyebrow--dark">03 / AI CREATIVE CONTENT</span><h2 class="section-title display">Make the<br /><span>scroll stop.</span></h2><p>Concepts, promotional visuals, and social-media-ready assets — AI-assisted, art-directed, and refined until they feel unmistakably yours.</p><ul class="creative-list"><li>AI-assisted promotional visuals</li><li>AI-generated creative concepts</li><li>Social-media-ready assets</li><li>Creative direction</li><li>Professional editing/refinement</li></ul><div class="creative-price"><strong>AED 600</strong><span>/ PROJECT</span></div><div class="creative-actions"><a class="btn btn-dark js-open-inquiry" data-service="AI Creative Content" href="#contact">Create something new <span class="arrow">↗</span></a></div></div>
+            <div class="creative-copy" data-reveal><span class="eyebrow eyebrow--dark">04 / AI CREATIVE CONTENT</span><h2 class="section-title display">Make the<br /><span>scroll stop.</span></h2><p>Concepts, promotional visuals, and social-media-ready assets — AI-assisted, art-directed, and refined until they feel unmistakably yours.</p><ul class="creative-list"><li>AI-assisted promotional visuals</li><li>AI-generated creative concepts</li><li>Social-media-ready assets</li><li>Creative direction</li><li>Professional editing/refinement</li></ul><div class="creative-price"><strong>AED 600</strong><span>/ PROJECT</span></div><div class="creative-actions"><a class="btn btn-dark js-open-inquiry" data-service="AI Creative Content" href="#contact">Create something new <span class="arrow">↗</span></a></div></div>
             <div class="creative-art" aria-label="Abstract creative content artwork" role="img" data-reveal="" data-delay="1"><div class="orbit-small" aria-hidden="true"></div><div class="creative-card creative-card--one" aria-hidden="true"></div><div class="creative-card creative-card--two" aria-hidden="true"></div><div class="creative-card creative-card--three" aria-hidden="true"></div></div>
           </div>
         </section>
@@ -553,7 +617,7 @@
         <section class="section automations" id="automations">
           <div class="container automations-grid">
             <div class="automations-copy" data-reveal>
-              <span class="eyebrow">AI Automations</span>
+              <span class="eyebrow">05 / AI AUTOMATIONS</span>
               <h2 class="section-title display">Let AI handle<br /><em>the busywork.</em></h2>
               <p class="automations-summary">From first message to booked appointment — automated systems that qualify leads, follow up, and keep things moving, so your business runs even when you’re not behind the screen.</p>
               <div class="automations-price"><strong>AED 6,000</strong><span>Starting / project</span></div>
@@ -579,7 +643,7 @@
 
         <section class="section process">
           <div class="container">
-            <div class="section-head" data-reveal><div><span class="eyebrow">04 / How it works</span><h2 class="section-title display">Simple on<br />purpose.</h2></div><p class="section-summary">Less theatre. More thinking, making, and meaningful progress every week.</p></div>
+            <div class="section-head" data-reveal><div><span class="eyebrow">06 / How it works</span><h2 class="section-title display">Simple on<br />purpose.</h2></div><p class="section-summary">Less theatre. More thinking, making, and meaningful progress every week.</p></div>
             <div class="process-list">
               <article class="process-step" data-reveal data-delay="0"><b>01</b><h3>Align</h3><p>We get clear on your offer, audience, ambition, and the feeling your brand should leave behind.</p></article>
               <article class="process-step" data-reveal data-delay="1"><b>02</b><h3>Shape</h3><p>We turn the direction into a visual system, a sharp structure, and an experience people can use.</p></article>
@@ -592,14 +656,15 @@
         <section class="section inquiry" id="inquiry">
           <div class="container inquiry-grid">
             <div class="inquiry-copy" data-reveal>
-              <span class="eyebrow">Start a project</span>
+              <span class="eyebrow">07 / Start a project</span>
               <h2 class="section-title display">Start your<br /><em>project.</em></h2>
               <p class="inquiry-summary">One form for every service. Tell us what you need and we’ll follow up with clear next steps.</p>
               <p class="inquiry-alt">Prefer to chat? <a href="https://wa.me/971557858540" target="_blank" rel="noopener">WhatsApp us ↗</a></p>
             </div>
             <div class="inquiry-card" data-reveal data-delay="1">
               <div id="hbvFormPanel">
-                <form class="hbv-form" id="hbvForm" novalidate>
+                <form class="hbv-form" id="hbvForm" novalidate aria-describedby="hbvFormNote">
+                  <div class="form-progress" aria-label="Two-part inquiry form">01 / Contact details <span aria-hidden="true">→</span> 02 / Project details</div>
                   <input type="text" name="_gotcha" class="hbv-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
                   <div class="hbv-row">
                     <div class="hbv-field">
@@ -649,11 +714,12 @@
                   </div>
                   <div class="hbv-field">
                     <label for="hbvRequirements">Project requirements</label>
-                    <textarea id="hbvRequirements" name="requirements" required placeholder="Tell us about your business, your goals, and what you want to build."></textarea>
+                    <textarea id="hbvRequirements" name="requirements" required maxlength="1200" aria-describedby="hbvRequirementsHelp" placeholder="Tell us about your business, your goals, and what you want to build."></textarea>
+                    <p class="hbv-help" id="hbvRequirementsHelp">A few sentences about your goals, timeline, and ideal outcome is perfect.</p>
                   </div>
                   <div class="hbv-error" id="hbvError" role="alert"></div>
                   <button type="submit" class="hbv-submit" id="hbvSubmitBtn"><span class="hbv-submit-label">Send inquiry</span><span class="hbv-submit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span></button>
-                  <p class="hbv-note">We’ll get back to you shortly.</p>
+                  <p class="hbv-note" id="hbvFormNote">We usually reply within 1 business day.</p><p class="hbv-privacy">By sending this inquiry, you agree that HB Visuals may use these details to respond to your project request.</p>
                 </form>
               </div>
               <div class="hbv-success" id="hbvSuccessPanel" role="status">
@@ -668,9 +734,9 @@
 
         <section class="section contact" id="contact">
           <div class="container contact-grid">
-            <div data-reveal><span class="eyebrow eyebrow--dark">05 / Let’s make it real</span><h2 class="section-title display">Your next<br /><span>good idea</span> starts here.</h2><p class="contact-copy">Tell us what you’re building, where you’re going, and what needs to feel different. We’ll come back with a thoughtful next step.</p><div class="contact-actions"><a class="btn btn-dark" href="mailto:hitin.banga23@gmail.com">CONTACT HB VISUALS <span class="arrow">↗</span></a><a class="btn btn-primary" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener">WHATSAPP US <span class="arrow">↗</span></a></div></div>
+            <div data-reveal><span class="eyebrow eyebrow--dark">08 / Let’s make it real</span><h2 class="section-title display">Your next<br /><span>good idea</span> starts here.</h2><p class="contact-copy">Tell us what you’re building, where you’re going, and what needs to feel different. We’ll come back with a thoughtful next step.</p><div class="contact-actions"><a class="btn btn-dark" href="mailto:hitin.banga23@gmail.com">CONTACT HB VISUALS <span class="arrow">↗</span></a><a class="btn btn-primary" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">WHATSAPP US <span class="arrow">↗</span></a></div></div>
             <div class="contact-meta" data-reveal><h3>HB VISUALS</h3><p>Dubai, UAE<br />Independent creative direction for digital-first brands.</p><div class="icon-row">
-              <a class="contact-link" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener"><span class="contact-icon" role="img" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.75 11.75 0 0 0 12.15 0C5.65 0 .36 5.28.36 11.79c0 2.08.54 4.1 1.57 5.88L.25 24l6.48-1.7a11.8 11.8 0 0 0 5.42 1.3h.01c6.5 0 11.79-5.29 11.79-11.8 0-3.15-1.22-6.1-3.45-8.3ZM12.16 21.6h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.85 1.01 1.03-3.75-.24-.39a9.82 9.82 0 0 1-1.5-5.25C2.23 6.2 6.67 1.97 12.16 1.97c2.62 0 5.08 1.02 6.93 2.86a9.74 9.74 0 0 1 2.88 6.96c0 5.41-4.4 9.81-9.81 9.81Zm5.38-7.35c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.2-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.08-.8.37-.28.3-1.04 1.02-1.04 2.5 0 1.48 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.73 2.02-1.43.25-.7.25-1.3.17-1.43-.08-.12-.28-.2-.58-.35Z" /></svg></span><span>+971 55 785 8540</span></a>
+              <a class="contact-link" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener"><span class="contact-icon" role="img" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.75 11.75 0 0 0 12.15 0C5.65 0 .36 5.28.36 11.79c0 2.08.54 4.1 1.57 5.88L.25 24l6.48-1.7a11.8 11.8 0 0 0 5.42 1.3h.01c6.5 0 11.79-5.29 11.79-11.8 0-3.15-1.22-6.1-3.45-8.3ZM12.16 21.6h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.85 1.01 1.03-3.75-.24-.39a9.82 9.82 0 0 1-1.5-5.25C2.23 6.2 6.67 1.97 12.16 1.97c2.62 0 5.08 1.02 6.93 2.86a9.74 9.74 0 0 1 2.88 6.96c0 5.41-4.4 9.81-9.81 9.81Zm5.38-7.35c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.2-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.08-.8.37-.28.3-1.04 1.02-1.04 2.5 0 1.48 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.73 2.02-1.43.25-.7.25-1.3.17-1.43-.08-.12-.28-.2-.58-.35Z" /></svg></span><span>+971 55 785 8540</span></a>
               <a class="contact-link" href="mailto:hitin.banga23@gmail.com"><span class="contact-icon email" role="img" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg></span><span>hitin.banga23@gmail.com</span></a>
               <a class="contact-link" href="https://www.instagram.com/hitin23?stkn=c2Juc3IzeWg2emI5&amp;utm_source=qr" target="_blank" rel="noopener"><span class="contact-icon instagram" role="img" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r=".75" fill="currentColor" stroke="none"></circle></svg></span><span>@hitin23</span></a>
             </div></div>
@@ -679,8 +745,34 @@
       </main>
 
       <footer class="footer"><div class="container footer-inner"><span class="footer-brand">HB VISUALS</span><span>Dubai, UAE · Digital catalog / 2026</span><span>Made with intent ↗</span></div></footer>
-      <a class="mobile-cta" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20learn%20more%20about%20Website%20Care%20at%20AED%20500%20%2F%20MONTH." target="_blank" rel="noopener" aria-label="WhatsApp HB Visuals at +971 55 785 8540"><span class="mobile-cta-main"><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.75 11.75 0 0 0 12.15 0C5.65 0 .36 5.28.36 11.79c0 2.08.54 4.1 1.57 5.88L.25 24l6.48-1.7a11.8 11.8 0 0 0 5.42 1.3h.01c6.5 0 11.79-5.29 11.79-11.8 0-3.15-1.22-6.1-3.45-8.3ZM12.16 21.6h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.85 1.01 1.03-3.75-.24-.39a9.82 9.82 0 0 1-1.5-5.25C2.23 6.2 6.67 1.97 12.16 1.97c2.62 0 5.08 1.02 6.93 2.86a9.74 9.74 0 0 1 2.88 6.96c0 5.41-4.4 9.81-9.81 9.81Zm5.38-7.35c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.08-.8.37-.28.3-1.04 1.02-1.04 2.5 0 1.48 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.73 2.02-1.43.25-.7.25-1.3.17-1.43-.08-.12-.28-.2-.58-.35Z" /></svg></span><span>WHATSAPP HB VISUALS<small>+971 55 785 8540</small></span></span><span class="arrow">↗</span></a>
+      <a class="mobile-cta" href="https://wa.me/971557858540?text=Hi%20HB%20Visuals%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" aria-label="WhatsApp HB Visuals at +971 55 785 8540"><span class="mobile-cta-main"><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.75 11.75 0 0 0 12.15 0C5.65 0 .36 5.28.36 11.79c0 2.08.54 4.1 1.57 5.88L.25 24l6.48-1.7a11.8 11.8 0 0 0 5.42 1.3h.01c6.5 0 11.79-5.29 11.79-11.8 0-3.15-1.22-6.1-3.45-8.3ZM12.16 21.6h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.85 1.01 1.03-3.75-.24-.39a9.82 9.82 0 0 1-1.5-5.25C2.23 6.2 6.67 1.97 12.16 1.97c2.62 0 5.08 1.02 6.93 2.86a9.74 9.74 0 0 1 2.88 6.96c0 5.41-4.4 9.81-9.81 9.81Zm5.38-7.35c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.08-.8.37-.28.3-1.04 1.02-1.04 2.5 0 1.48 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.73 2.02-1.43.25-.7.25-1.3.17-1.43-.08-.12-.28-.2-.58-.35Z" /></svg></span><span>WHATSAPP HB VISUALS<small>+971 55 785 8540</small></span></span><span class="arrow">↗</span></a>
     </div>
+    <script>
+      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+          const isOpen = mobileMenu.classList.toggle('is-open');
+          mobileMenuToggle.setAttribute('aria-expanded', String(isOpen));
+          mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+        });
+        mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+          mobileMenu.classList.remove('is-open');
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+          mobileMenuToggle.setAttribute('aria-label', 'Open navigation');
+        }));
+      }
+
+      document.querySelectorAll('.package-features-toggle').forEach((toggle) => {
+        toggle.addEventListener('click', () => {
+          const list = toggle.nextElementSibling;
+          const isOpen = list.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', String(isOpen));
+          toggle.querySelector('span').textContent = isOpen ? '−' : '+';
+          toggle.firstChild.textContent = isOpen ? 'Hide features ' : 'View all features ';
+        });
+      });
+    </script>
     <script>
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
