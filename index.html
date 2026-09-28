@@ -600,7 +600,7 @@
             <div class="inquiry-card" data-reveal data-delay="1">
               <div id="hbvFormPanel">
                 <form class="hbv-form" id="hbvForm" novalidate>
-                  <input type="checkbox" name="botcheck" class="hbv-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                  <input type="text" name="_gotcha" class="hbv-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
                   <div class="hbv-row">
                     <div class="hbv-field">
                       <label for="hbvName">Full name</label>
@@ -728,15 +728,18 @@
     </script>
     <script>
       /* ============================================================
-         HB VISUALS — UNIVERSAL INQUIRY FORM
+         HB VISUALS — UNIVERSAL INQUIRY FORM (powered by Formspree)
          SETUP (one-time, 2 minutes):
-         1. Go to https://web3forms.com and enter your business email.
-         2. Copy the Access Key they email you.
-         3. Paste it below, replacing YOUR_WEB3FORMS_ACCESS_KEY.
-         Every submission is emailed to that address and stored in your
-         Web3Forms dashboard.
+         1. Create a free account at https://formspree.io and click "New Form".
+         2. Set the form's email to your business inbox.
+         3. Copy the form endpoint (looks like https://formspree.io/f/abcdwxyz).
+         4. Paste the endpoint (or just the ID at the end) below,
+            replacing YOUR_FORM_ID.
+         Every submission is saved in your Formspree account and emailed
+         to you.
          ============================================================ */
-      const HBV_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+      const HBV_FORMSPREE = 'https://formspree.io/f/xqpagojy';
+      const hbvEndpoint = HBV_FORMSPREE.indexOf('http') === 0 ? HBV_FORMSPREE : 'https://formspree.io/f/' + HBV_FORMSPREE;
 
       const hbvCard = document.querySelector('.inquiry-card');
       const hbvForm = document.getElementById('hbvForm');
@@ -787,7 +790,7 @@
           hbvForm.reportValidity();
           return;
         }
-        if (HBV_ACCESS_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+        if (HBV_FORMSPREE === 'YOUR_FORM_ID') {
           hbvShowError('This form is not connected yet. Please WhatsApp us directly at +971 55 785 8540.');
           return;
         }
@@ -796,18 +799,15 @@
         hbvSubmitText.textContent = 'Sending…';
 
         const payload = Object.fromEntries(new FormData(hbvForm).entries());
-        payload.access_key = HBV_ACCESS_KEY;
-        payload.subject = 'New inquiry — ' + (payload.service || 'HB Visuals');
-        payload.from_name = 'HB Visuals Website';
+        payload._subject = 'New inquiry — ' + (payload.service || 'HB Visuals');
 
         try {
-          const response = await fetch('https://api.web3forms.com/submit', {
+          const response = await fetch(hbvEndpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
             body: JSON.stringify(payload)
           });
-          const result = await response.json();
-          if (!result.success) throw new Error(result.message || 'Submission failed');
+          if (!response.ok) throw new Error('Submission failed');
 
           const firstName = (payload.name || '').trim().split(' ')[0];
           document.getElementById('hbvSuccessCopy').textContent =
