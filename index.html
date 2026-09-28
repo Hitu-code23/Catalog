@@ -400,9 +400,12 @@
       .quick-start-title { margin: 0; color: var(--paper); font: 500 clamp(25px, 3vw, 36px)/.95 Kanit, sans-serif; letter-spacing: -.05em; }
       .quick-start-summary { max-width: 280px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
       .quick-start-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-      .quick-start-link { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 58px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 14px; color: var(--paper); font: 500 12px/1.15 Kanit, sans-serif; letter-spacing: .02em; transition: transform .22s var(--ease-out), border-color .22s ease, background .22s ease; }
-      .quick-start-link span { color: var(--acid); font-size: 17px; }
+      .quick-start-link { display: flex; align-items: center; justify-content: flex-start; gap: 12px; min-height: 58px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 14px; color: var(--paper); font: 500 12px/1.15 Kanit, sans-serif; letter-spacing: .02em; transition: transform .22s var(--ease-out), border-color .22s ease, background .22s ease; }
+      .quick-start-icon { display: inline-grid; place-items: center; width: 30px; height: 30px; flex: 0 0 30px; border: 1px solid rgba(200,255,52,.42); border-radius: 9px; color: var(--acid); background: rgba(200,255,52,.06); transition: transform .22s var(--ease-out), background .22s ease, border-color .22s ease; }
+      .quick-start-icon svg { width: 18px; height: 18px; }
+      .quick-start-label { color: var(--paper); }
       .quick-start-link:hover { border-color: rgba(200,255,52,.7); background: rgba(200,255,52,.08); transform: translateY(-3px); }
+      .quick-start-link:hover .quick-start-icon { border-color: var(--acid); background: rgba(200,255,52,.14); transform: scale(1.08) rotate(-4deg); }
       .trust-strip { display: flex; justify-content: center; gap: 27px; flex-wrap: wrap; padding: 17px 0 4px; color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
       .trust-strip span { display: inline-flex; align-items: center; gap: 8px; }
       .trust-strip span::before { content: "✦"; color: var(--acid); }
@@ -536,10 +539,10 @@
           <div class="container">
             <div class="quick-start-head"><h2 class="quick-start-title" id="quick-start-title">What are you looking to build?</h2><p class="quick-start-summary">Choose a starting point and we’ll take you to the right part of the catalog.</p></div>
             <div class="quick-start-grid">
-              <a class="quick-start-link" href="#packages">A business website <span>↘</span></a>
-              <a class="quick-start-link" href="#automations">An AI automation <span>↘</span></a>
-              <a class="quick-start-link" href="#creative">Creative content <span>↘</span></a>
-              <a class="quick-start-link js-open-inquiry" href="#inquiry" data-service="Other / Not sure yet">Not sure yet <span>↘</span></a>
+              <a class="quick-start-link" href="#packages"><span class="quick-start-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 8h10M7 12h6"/></svg></span><span class="quick-start-label">A business website</span></a>
+              <a class="quick-start-link" href="#automations"><span class="quick-start-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="m8.2 10.9 7.5-3.8M8.2 13.1l7.5 3.8"/></svg></span><span class="quick-start-label">An AI automation</span></a>
+              <a class="quick-start-link" href="#creative"><span class="quick-start-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3Z"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/></svg></span><span class="quick-start-label">Creative content</span></a>
+              <a class="quick-start-link js-open-inquiry" href="#inquiry" data-service="Other / Not sure yet"><span class="quick-start-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.7 9.2a2.5 2.5 0 1 1 3.9 2.1c-1.1.7-1.6 1.2-1.6 2.4M12 17.2v.1"/></svg></span><span class="quick-start-label">Not sure yet</span></a>
             </div>
             <div class="trust-strip" aria-label="HB Visuals service promises"><span>Clear scope</span><span>Responsive delivery</span><span>Mobile-first thinking</span><span>Thoughtful handover</span></div>
           </div>
