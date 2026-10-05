@@ -164,6 +164,12 @@
       .package:nth-child(3) .package-scope { color: var(--pink); }
       .package-price { margin: 0; color: var(--paper); font: 500 clamp(44px, 4vw, 60px)/.9 Kanit, sans-serif; letter-spacing: -.07em; }
       .package-price small { color: var(--muted); font: 500 12px/1 Kanit, sans-serif; letter-spacing: .02em; }
+      /* HB Visuals — website package launch offer (10% off) */
+      .offer-banner { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin: -20px 0 34px; padding: 13px 18px; border: 1px solid rgba(200,255,52,.45); border-radius: 14px; background: rgba(200,255,52,.07); color: var(--paper); font: 500 12px/1.4 Kanit, sans-serif; letter-spacing: .1em; text-align: center; text-transform: uppercase; }
+      .offer-banner strong { color: var(--acid); font-weight: 700; }
+      .package-deal { display: flex; align-items: center; gap: 12px; margin: 0 0 8px; }
+      .package-offer { padding: 5px 9px; border-radius: 999px; background: var(--acid); color: var(--ink); font: 700 9px/1 Kanit, sans-serif; letter-spacing: .12em; }
+      .package-was { color: var(--muted); font: 500 16px/1 Kanit, sans-serif; letter-spacing: -.02em; text-decoration: line-through; text-decoration-thickness: 1px; }
       .package-rule { height: 1px; margin: 27px 0 22px; background: var(--line); }
       .package-list { display: grid; gap: 13px; margin: 0; padding: 0; list-style: none; color: #b7c2c7; font-size: 12px; line-height: 1.35; }
       .package-list li { display: flex; gap: 10px; }
@@ -494,9 +500,55 @@
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
       }
+
+      /* HB Visuals — top offer banner */
+      .top-offer { position: relative; z-index: 60; overflow: hidden; background: linear-gradient(123deg,#18011F 7%,#B600A8 37%,#7621B0 72%,#BE4C00 100%); border-bottom: 1px solid rgba(255,255,255,.22); box-shadow: 0 8px 28px rgba(118,33,176,.35); color: #fff; font-family: Kanit, sans-serif; }
+      .top-offer[hidden] { display: none; }
+      .top-offer::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(100deg, transparent 35%, rgba(255,255,255,.16) 50%, transparent 65%); transform: translateX(-100%); animation: top-offer-shine 5s ease-in-out infinite; }
+      @keyframes top-offer-shine { 0%, 55% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+      @keyframes top-offer-pulse { 0% { box-shadow: 0 0 0 0 rgba(200,255,52,.7); } 70%, 100% { box-shadow: 0 0 0 9px rgba(200,255,52,0); } }
+      .top-offer-bar { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px 22px; padding: 9px 0; }
+      .top-offer-tag { display: inline-flex; align-items: center; gap: 9px; color: rgba(255,255,255,.88); font: 600 10px/1 Kanit, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+      .top-offer-tag::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--acid); animation: top-offer-pulse 1.8s ease-out infinite; }
+      .top-offer-text { display: inline-flex; align-items: center; gap: 10px; font: 500 14px/1.2 Kanit, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+      .top-offer-pct { padding: 6px 12px; border-radius: 999px; background: var(--acid); color: var(--ink); font: 800 14px/1 Kanit, sans-serif; letter-spacing: .04em; box-shadow: 0 0 20px rgba(200,255,52,.45); }
+      .top-offer-timer { display: inline-flex; align-items: center; gap: 6px; }
+      .top-offer-timer .t { display: grid; justify-items: center; min-width: 42px; padding: 5px 6px 4px; border: 1px solid rgba(255,255,255,.28); border-radius: 9px; background: rgba(12,12,12,.28); backdrop-filter: blur(6px); }
+      .top-offer-timer b { font: 600 15px/1 Kanit, sans-serif; font-variant-numeric: tabular-nums; }
+      .top-offer-timer small { margin-top: 3px; color: rgba(255,255,255,.7); font: 500 7.5px/1 Kanit, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+      .top-offer-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; border-radius: 999px; background: var(--acid); color: var(--ink); font: 700 11px/1 Kanit, sans-serif; letter-spacing: .12em; text-transform: uppercase; box-shadow: 0 0 22px rgba(200,255,52,.4); transition: transform .2s var(--ease-out), box-shadow .2s ease; }
+      .top-offer-btn svg { width: 13px; height: 13px; transition: transform .25s var(--ease-out); }
+      .top-offer-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(200,255,52,.65); }
+      .top-offer-btn:hover svg { transform: translate(2px, -2px); }
+      .top-offer-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+      @media (min-width: 681px) {
+        .top-offer { position: sticky; top: 0; }
+        .shell > header.nav { top: var(--banner-h, 0px); }
+        .inquiry-card { scroll-margin-top: calc(var(--banner-h, 0px) + 84px); }
+      }
+      @media (max-width: 680px) {
+        .top-offer-bar { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 9px 10px; padding: 10px 0; }
+        .top-offer-tag { display: none; }
+        .top-offer-text { grid-column: 1 / -1; font-size: 12px; }
+        .top-offer-pct { padding: 5px 10px; font-size: 12px; }
+        .top-offer-timer { gap: 5px; }
+        .top-offer-timer .t { min-width: 36px; padding: 4px 5px 3px; }
+        .top-offer-timer b { font-size: 13px; }
+        .top-offer-btn { padding: 10px 14px; font-size: 10px; }
+      }
     </style>
   </head>
   <body>
+    <aside class="top-offer" id="topOffer" aria-label="Limited offer">
+      <div class="container">
+        <div class="top-offer-bar">
+          <span class="top-offer-tag">Limited offer</span>
+          <span class="top-offer-text"><strong class="top-offer-pct">10% OFF</strong> all website packages</span>
+          <span class="top-offer-timer" id="topOfferTimer" role="timer" aria-label="Time left on the offer, which ends 25 October"><span class="t"><b data-u="d">00</b><small>days</small></span><span class="t"><b data-u="h">00</b><small>hrs</small></span><span class="t"><b data-u="m">00</b><small>min</small></span><span class="t"><b data-u="s">00</b><small>sec</small></span></span>
+          <a class="top-offer-btn js-open-inquiry" href="#inquiry" data-service="">Claim offer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+      </div>
+    </aside>
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
     <div class="shell">
       <header class="nav">
@@ -586,11 +638,12 @@
         <section class="section packages" id="packages">
           <div class="container">
             <div class="package-intro" data-reveal><div><span class="eyebrow">02 / Website packages</span><h2 class="section-title display">Choose your<br /><em>starting point.</em></h2></div><p class="section-summary">Clear scope. No vague page counts. Every package is designed to move from first call to launch with confidence.</p></div>
+            <p class="offer-banner" data-reveal><strong>10% off</strong> all website packages <span aria-hidden="true">✦</span> Offer valid until 25 October <span aria-hidden="true">✦</span> Prices shown already include the discount</p>
             <div class="package-grid">
               <article class="package" data-reveal data-delay="0">
                 <div class="package-top"><span>01 / Starter</span><span class="package-badge">Essential</span></div>
                 <div class="package-scope">5 PAGES</div><h3>Starter<br />Business Website</h3>
-                <p class="package-best-for">Best for simple service businesses.</p><p class="package-price">AED 1,599</p>
+                <p class="package-best-for">Best for simple service businesses.</p><div class="package-deal"><span class="package-offer">10% OFF</span><s class="package-was">AED 2,099</s></div><p class="package-price">AED 1,889</p>
                 <div class="package-rule"></div>
                 <button class="package-features-toggle" type="button" aria-expanded="false">View all features <span>+</span></button><ul class="package-list"><li>EXACTLY 5 pages</li><li>Premium responsive design</li><li>Mobile optimization</li><li>Desktop optimization</li><li>WhatsApp integration</li><li>Google Maps integration</li><li>Social media integration</li><li>Contact form</li><li>Basic SEO setup</li></ul>
                 <div class="package-foot"><span><strong>7-day</strong><br />delivery</span><a href="#contact" class="js-open-inquiry" data-service="Starter Business Website" aria-label="Choose Starter Business Website">Select ↗</a></div>
@@ -598,7 +651,7 @@
               <article class="package package--recommended" data-reveal data-delay="1">
                 <div class="package-top"><span>02 / Professional</span><span class="package-badge">Most chosen</span></div>
                 <div class="package-scope">8 PAGES</div><h3>Professional<br />Business Website</h3>
-                <p class="package-best-for">Best for growing businesses that need a stronger presence.</p><p class="package-price">AED 2,999</p>
+                <p class="package-best-for">Best for growing businesses that need a stronger presence.</p><div class="package-deal"><span class="package-offer">10% OFF</span><s class="package-was">AED 3,499</s></div><p class="package-price">AED 3,149</p>
                 <div class="package-rule"></div>
                 <button class="package-features-toggle" type="button" aria-expanded="false">View all features <span>+</span></button><ul class="package-list"><li>EXACTLY 8 pages</li><li>Premium custom design</li><li>Mobile + desktop optimization</li><li>WhatsApp integration</li><li>Google Maps</li><li>Social media integration</li><li>Contact / lead forms</li><li>Basic SEO</li><li>Google Analytics setup</li><li>Speed optimization</li></ul>
                 <div class="package-foot"><span><strong>10–14 day</strong><br />delivery</span><a href="#contact" class="js-open-inquiry" data-service="Professional Business Website" aria-label="Choose Professional Business Website">Select ↗</a></div>
@@ -606,7 +659,7 @@
               <article class="package" data-reveal data-delay="2">
                 <div class="package-top"><span>03 / Premium</span><span class="package-badge">Full expression</span></div>
                 <div class="package-scope">PREMIUM</div><h3>Premium<br />Website</h3>
-                <p class="package-best-for">Best for custom UX, integrations, and advanced functionality.</p><p class="package-price">AED 5,000</p>
+                <p class="package-best-for">Best for custom UX, integrations, and advanced functionality.</p><div class="package-deal"><span class="package-offer">10% OFF</span><s class="package-was">AED 5,500</s></div><p class="package-price">AED 4,950</p>
                 <div class="package-rule"></div>
                 <button class="package-features-toggle" type="button" aria-expanded="false">View all features <span>+</span></button><ul class="package-list"><li>Custom UI/UX</li><li>Advanced animations</li><li>Advanced forms</li><li>Booking functionality</li><li>Advanced SEO structure</li><li>Analytics</li><li>Performance optimization</li><li>Custom integrations</li><li>Premium responsive design</li><li>Mobile + desktop optimization</li></ul>
                 <div class="package-foot"><span><strong>14–21 day</strong><br />delivery</span><a href="#contact" class="js-open-inquiry" data-service="Premium Website" aria-label="Choose Premium Website">Select ↗</a></div>
@@ -936,6 +989,12 @@
         hbvShowForm();
         if (service) hbvServiceSelect.value = service;
         hbvCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const realign = () => {
+          const margin = parseFloat(getComputedStyle(hbvCard).scrollMarginTop) || 0;
+          if (Math.abs(hbvCard.getBoundingClientRect().top - margin) > 8) hbvCard.scrollIntoView({ behavior: 'auto', block: 'start' });
+        };
+        setTimeout(realign, 900);
+        setTimeout(realign, 1600);
         if (window.matchMedia('(pointer: fine)').matches) {
           setTimeout(() => document.getElementById('hbvName').focus({ preventScroll: true }), 700);
         }
@@ -999,6 +1058,33 @@
           hbvSubmitText.textContent = 'Send inquiry';
         }
       });
+    </script>
+    <script>
+      /* HB VISUALS — top offer banner: countdown to the end of 25 October 2026 (Dubai time), then the banner hides itself */
+      (function () {
+        const banner = document.getElementById('topOffer');
+        if (!banner) return;
+        const END = Date.parse('2026-10-25T23:59:59+04:00');
+        const units = {};
+        banner.querySelectorAll('[data-u]').forEach((el) => { units[el.dataset.u] = el; });
+        const pad = (n) => String(n).padStart(2, '0');
+        const syncHeight = () => document.documentElement.style.setProperty('--banner-h', banner.hidden ? '0px' : banner.offsetHeight + 'px');
+        let timer;
+        const tick = () => {
+          const diff = END - Date.now();
+          if (diff <= 0) { banner.hidden = true; clearInterval(timer); syncHeight(); return; }
+          const total = Math.floor(diff / 1000);
+          units.d.textContent = pad(Math.floor(total / 86400));
+          units.h.textContent = pad(Math.floor(total % 86400 / 3600));
+          units.m.textContent = pad(Math.floor(total % 3600 / 60));
+          units.s.textContent = pad(total % 60);
+        };
+        tick();
+        timer = setInterval(tick, 1000);
+        syncHeight();
+        if ('ResizeObserver' in window) new ResizeObserver(syncHeight).observe(banner);
+        window.addEventListener('resize', syncHeight);
+      })();
     </script>
   </body>
 </html>
