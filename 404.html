@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Page not found | Velorien</title>
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<meta name="theme-color" content="#0C0C0C" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;600;900&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body { display: grid; place-items: center; padding: 24px 16px; background: radial-gradient(70% 50% at 50% 100%, rgba(124,92,255,.22), transparent 70%), #0a0a0b; color: #d7e2ea; font-family: Kanit, system-ui, sans-serif; text-align: center; }
+  .vl { display: block; height: 34px; margin: 0 auto 48px; color: #fff; overflow: visible; }
+  .spin { transform-box: fill-box; transform-origin: center; animation: spin 9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  h1 { margin: 0; font-weight: 900; font-size: clamp(110px, 30vw, 220px); line-height: .8; letter-spacing: -.08em; background: linear-gradient(180deg, #646973, #bbccd7); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  p { max-width: 380px; margin: 26px auto 0; color: #8a969d; font-size: 15px; line-height: 1.7; }
+  a.btn { display: inline-flex; align-items: center; gap: 12px; margin-top: 32px; padding: 9px 9px 9px 26px; border: 2px solid #fff; outline: 2px solid #fff; outline-offset: -3px; border-radius: 999px; background: linear-gradient(123deg,#0d0626 7%,#2e1a7a 37%,#5b3df5 72%,#a48bff 100%); box-shadow: 0 4px 4px rgba(91,61,245,.3), 4px 4px 12px #6a4cff inset; color: #fff; font: 600 12px/1 Kanit, sans-serif; letter-spacing: .14em; text-decoration: none; text-transform: uppercase; transition: transform .25s cubic-bezier(.23,1,.32,1); }
+  a.btn:hover { transform: translateY(-3px); }
+  a.btn span { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.14); box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
+  a.btn svg { width: 15px; height: 15px; }
+  @media (prefers-reduced-motion: reduce) { .spin { animation: none; } }
+</style>
+</head>
+<body>
+  <main>
+    <a href="/" aria-label="Velorien home"><svg class="vl" viewBox="0 0 1027.6 235" role="img" aria-label="Velorien"><g transform="scale(1.9583)"><g class="spin"><g fill="currentColor">
+    <path d="M0 56V0A56 56 0 0 1 56 56Z"/>
+    <path d="M64 0H120A56 56 0 0 1 64 56Z"/>
+    <path d="M120 64V120A56 56 0 0 1 64 64Z"/>
+    <path d="M56 120H0A56 56 0 0 1 56 64Z"/>
+  </g>
+  <rect x="56" y="56" width="8" height="8" fill="#7C5CFF"/></g></g><g transform="translate(303 67.5)"><g fill="currentColor"><rect x="117.5" y="0" width="13.6" height="100"/><rect x="117.5" y="0" width="61.5" height="13.6"/><rect x="117.5" y="86.4" width="61.5" height="13.6"/><rect x="141.0" y="43.2" width="30" height="13.6"/><rect x="205.8" y="0" width="13.6" height="100"/><rect x="205.8" y="86.4" width="57.6" height="13.6"/><rect x="507.4" y="0" width="13.6" height="100"/><rect x="553.3" y="0" width="13.6" height="100"/><rect x="553.3" y="0" width="61.5" height="13.6"/><rect x="553.3" y="86.4" width="61.5" height="13.6"/><rect x="576.8" y="43.2" width="30" height="13.6"/><rect x="641.6" y="0" width="13.6" height="100"/><rect x="710.9" y="0" width="13.6" height="100"/></g><g fill="none" stroke="currentColor" stroke-width="13.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4"><path d="M6.5 0L47.5 100L88.5 0"/><circle cx="340" cy="50" r="43.2"/><path d="M423.2 100V6.8H454.9A21.6 21.6 0 0 1 454.9 50H423.2"/><path d="M449 50L487 101"/><path d="M648.4 0L717.7 100"/></g><circle cx="340" cy="50" r="7" fill="#7C5CFF"/></g></svg></a>
+    <h1>404</h1>
+    <p>This page wandered off. Let’s get you back to the studio.</p>
+    <a class="btn" href="/">Back to home <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a>
+  </main>
+</body>
+</html>
