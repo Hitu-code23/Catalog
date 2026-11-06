@@ -347,10 +347,273 @@
         .vlc-foot { padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
         html.vlc-lock { overflow: hidden; }
       }
+      /* VELORIEN — selected work: live site cards (each preview is the real website in a scaled frame) */
+      .work { background: radial-gradient(60% 45% at 88% 0%, rgba(124,92,255,.15), transparent 70%), radial-gradient(45% 35% at 0% 100%, rgba(164,216,255,.06), transparent 70%), var(--ink-soft); color: var(--paper); overflow: hidden; }
+      .section.work { content-visibility: visible; }
+      .work .section-title { color: var(--paper); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+      .work .section-title em { color: var(--acid); font-style: normal; -webkit-text-fill-color: var(--acid); background: none; }
+      .work-side { display: grid; justify-items: end; gap: 20px; }
+      .work-side .section-summary { max-width: 290px; text-align: right; }
+      .work-dev { position: relative; display: inline-flex; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: rgba(215,226,234,.04); }
+      .work-dev button { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); font: 600 10px/1 Kanit, sans-serif; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; transition: color .3s ease; }
+      .work-dev button svg { width: 15px; height: 15px; }
+      .work-dev button[aria-pressed="true"] { color: #fff; }
+      .work-dev button:not([aria-pressed="true"]):hover { color: var(--paper); }
+      .work-dev-thumb { position: absolute; z-index: 0; top: 4px; bottom: 4px; left: 0; width: var(--tw, 0); border-radius: 999px; background: linear-gradient(123deg, #2e1a7a 0%, #5b3df5 62%, #a48bff 100%); box-shadow: 0 0 18px rgba(124,92,255,.45), inset 0 0 0 1px rgba(255,255,255,.22); transform: translateX(var(--tx, 4px)); transition: transform .5s var(--ease-out), width .5s var(--ease-out); }
+
+      .work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+      .work-card { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 10px; border: 1px solid var(--line); border-radius: 26px; background: linear-gradient(155deg, rgba(215,226,234,.075), rgba(215,226,234,.02)); transition: opacity .75s var(--ease-out), transform .75s var(--ease-out), border-color .35s ease, box-shadow .45s ease, background .45s ease; }
+      .work-card--feature { grid-column: 1 / -1; }
+      .work-card:hover { border-color: rgba(124,92,255,.5); border-color: color-mix(in srgb, var(--wc) 55%, transparent); box-shadow: 0 30px 70px rgba(0,0,0,.35); background: linear-gradient(155deg, color-mix(in srgb, var(--wc) 12%, transparent), rgba(215,226,234,.02) 60%); }
+
+      .work-frame { position: relative; overflow: hidden; border-radius: 18px; background: #0a0a0b; box-shadow: inset 0 0 0 1px rgba(215,226,234,.08); isolation: isolate; }
+      .work-bar { display: flex; align-items: center; gap: 12px; height: 36px; padding: 0 12px; border-bottom: 1px solid rgba(215,226,234,.08); background: rgba(255,255,255,.035); }
+      .work-dots { display: flex; gap: 5px; }
+      .work-dots i { width: 8px; height: 8px; border-radius: 50%; background: rgba(215,226,234,.17); }
+      .work-url { display: flex; align-items: center; justify-content: center; gap: 6px; flex: 1; min-width: 0; max-width: 340px; margin: 0 auto; padding: 6px 12px; border-radius: 999px; background: rgba(215,226,234,.06); color: #9aa6ad; font: 500 10.5px/1 Kanit, sans-serif; letter-spacing: .03em; white-space: nowrap; }
+      .work-url span { overflow: hidden; text-overflow: ellipsis; }
+      .work-url svg { flex: 0 0 10px; width: 10px; height: 10px; opacity: .7; }
+      .work-live { display: inline-flex; align-items: center; gap: 7px; color: #b9f3cf; font: 600 9px/1 Kanit, sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+      .work-live i, .wv-live i { width: 7px; height: 7px; border-radius: 50%; background: #34d47a; animation: work-pulse 2s ease-out infinite; }
+      @keyframes work-pulse { 0% { box-shadow: 0 0 0 0 rgba(52,212,122,.55); } 70%, 100% { box-shadow: 0 0 0 8px rgba(52,212,122,0); } }
+
+      .work-view { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: radial-gradient(70% 80% at 50% 45%, rgba(124,92,255,.2), transparent 72%), #0b0b0d; background: radial-gradient(70% 80% at 50% 45%, color-mix(in srgb, var(--wc) 24%, transparent), transparent 72%), #0b0b0d; }
+      .work-card--feature .work-view { aspect-ratio: 21 / 9; }
+      .work-view::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(215,226,234,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(215,226,234,.045) 1px, transparent 1px); background-size: 28px 28px; -webkit-mask: radial-gradient(75% 75% at 50% 50%, #000, transparent); mask: radial-gradient(75% 75% at 50% 50%, #000, transparent); opacity: 0; transition: opacity .4s ease; }
+      .work.is-phone .work-view::before { opacity: 1; }
+      .work-screen { position: absolute; left: 0; top: 0; overflow: hidden; background: #0b0b0d; transition: opacity .3s ease, border-radius .3s ease; }
+      .work-screen iframe { display: block; border: 0; background: #fff; transform-origin: 0 0; pointer-events: none; }
+      .work.is-phone .work-screen { border-radius: 24px; box-shadow: 0 0 0 5px #1b1b20, 0 0 0 6px rgba(215,226,234,.16), 0 26px 50px rgba(0,0,0,.55); }
+      .work.is-phone .work-screen::after { content: ""; position: absolute; z-index: 2; top: 7px; left: 50%; width: 30%; height: 10px; margin-left: -15%; border-radius: 10px; background: #050506; }
+      .work.is-switching .work-screen { opacity: 0; }
+
+      .work-skel { position: absolute; inset: 0; z-index: 2; display: grid; place-content: center; justify-items: center; gap: 14px; overflow: hidden; background: inherit; text-align: center; transition: opacity .7s ease, visibility 0s linear .7s; }
+      .work-skel .mkx { --m: 30px; color: #fff; animation: hbv-spin 2.4s linear infinite; }
+      .work-skel .mkx b { background: var(--wc); }
+      .work-skel strong { color: #fff; font: 500 clamp(20px, 2.6vw, 32px)/1 Kanit, sans-serif; letter-spacing: -.045em; }
+      .work-skel small { color: var(--muted); font: 600 9px/1 Kanit, sans-serif; letter-spacing: .2em; text-transform: uppercase; }
+      .work-skel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.06) 50%, transparent 65%); transform: translateX(-100%); animation: work-shine 1.8s ease-in-out infinite; }
+      @keyframes work-shine { to { transform: translateX(100%); } }
+      .work-view.is-loaded .work-skel { opacity: 0; visibility: hidden; }
+      .work-view.is-loaded .work-skel .mkx, .work-view.is-loaded .work-skel::after { animation: none; }
+
+      .work-open { position: absolute; inset: 0; z-index: 3; display: grid; place-items: center; width: 100%; padding: 0; border: 0; border-radius: inherit; background: transparent; cursor: pointer; }
+      .work-open::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 60% at 50% 50%, rgba(6,6,9,.35), rgba(6,6,9,.6)); opacity: 0; transition: opacity .35s ease; }
+      .work-open:focus-visible { outline: 2px solid var(--acid); outline-offset: -2px; }
+      .work-cta { position: relative; display: inline-flex; align-items: center; gap: 11px; padding: 8px 8px 8px 19px; border: 2px solid #fff; outline: 2px solid #fff; outline-offset: -3px; border-radius: 999px; background: linear-gradient(123deg,#0d0626 7%,#2e1a7a 37%,#5b3df5 72%,#a48bff 100%); box-shadow: 0 10px 30px rgba(91,61,245,.45), 4px 4px 12px #6a4cff inset; color: #fff; font: 600 11px/1 Kanit, sans-serif; letter-spacing: .14em; text-transform: uppercase; opacity: 0; transform: translateY(12px) scale(.95); transition: opacity .35s ease, transform .45s var(--ease-out); }
+      .work-cta-ic { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.16); box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
+      .work-cta-ic svg { width: 14px; height: 14px; }
+      .work-card:hover .work-open::before, .work-open:focus-visible::before { opacity: 1; }
+      .work-card:hover .work-cta, .work-open:focus-visible .work-cta { opacity: 1; transform: none; }
+
+      .work-info { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; padding: 20px 10px 8px; }
+      .work-kicker { display: flex; align-items: center; gap: 10px; color: var(--muted); font: 600 9.5px/1.3 Kanit, sans-serif; letter-spacing: .17em; text-transform: uppercase; }
+      .work-kicker b { color: var(--acid); font-weight: 600; }
+      .work-info h3 { margin: 12px 0 0; color: var(--paper); font: 500 clamp(24px, 2.4vw, 32px)/1 Kanit, sans-serif; letter-spacing: -.045em; }
+      .work-info p { max-width: 470px; margin: 10px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.65; }
+      .work-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
+      .work-tags span { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; color: #b7c2c7; font: 600 9px/1 Kanit, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+      .work-tags span:first-child { border-color: rgba(124,92,255,.5); border-color: color-mix(in srgb, var(--wc) 55%, transparent); color: var(--wc); }
+      .work-visit { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 9px; margin-top: 2px; padding: 7px 7px 7px 15px; border: 1px solid rgba(124,92,255,.5); border-radius: 999px; background: rgba(124,92,255,.1); color: #fff; font: 600 10px/1 Kanit, sans-serif; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; transition: background .25s ease, border-color .25s ease, transform .25s var(--ease-out), box-shadow .25s ease; }
+      .work-visit:hover { background: var(--violet); border-color: var(--violet); box-shadow: 0 0 22px rgba(124,92,255,.5); transform: translateY(-2px); }
+      .work-visit:hover .pkg-ic { background: #fff; color: var(--violet); }
+      .work-visit:hover .pkg-ic svg { transform: rotate(45deg); }
+
+      .work-foot { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 44px; padding: 26px 28px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(120deg, rgba(124,92,255,.12), rgba(215,226,234,.03) 60%); }
+      .work-foot p { margin: 0; color: var(--paper); font: 500 clamp(20px, 2.2vw, 28px)/1.05 Kanit, sans-serif; letter-spacing: -.04em; }
+      .work-foot p span { display: block; margin-top: 8px; color: var(--muted); font: 400 12px/1.6 Kanit, sans-serif; letter-spacing: 0; }
+      .work-nav { display: none; }
+
+      @media (hover: none) {
+        .work-open { place-items: end; padding: 12px; }
+        .work-open::before { display: none; }
+        .work-cta { padding: 6px 6px 6px 14px; font-size: 9.5px; opacity: 1; transform: none; box-shadow: 0 8px 22px rgba(0,0,0,.45), 4px 4px 12px #6a4cff inset; }
+        .work-cta-ic { width: 26px; height: 26px; }
+      }
+      @media (max-width: 900px) {
+        .work-card--feature .work-view { aspect-ratio: 16 / 10; }
+        .work-grid { gap: 14px; }
+      }
+      @media (max-width: 760px) and (min-width: 681px) {
+        .work-grid { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 680px) {
+        .work-side { justify-items: start; gap: 22px; margin-top: 23px; }
+        .work-side .section-summary { margin: 0; text-align: left; }
+        .work-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 86%; gap: 12px; margin: 0 -16px; padding: 4px 16px 6px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding: 0 16px; scrollbar-width: none; }
+        .work-grid::-webkit-scrollbar { display: none; }
+        .work-card, .work-card--feature { grid-column: auto; scroll-snap-align: start; padding: 8px; border-radius: 22px; }
+        .work-card[data-reveal] { opacity: 1; transform: none; }
+        .work.is-phone .work-view { aspect-ratio: 4 / 5; }
+        .work-frame { border-radius: 15px; }
+        .work-bar { height: 32px; gap: 8px; padding: 0 10px; }
+        .work-dots { display: none; }
+        .work-url { font-size: 10px; padding: 5px 10px; }
+        .work-info { flex-direction: column; gap: 16px; padding: 16px 6px 6px; }
+        .work-info h3 { font-size: 25px; }
+        .work-info p { font-size: 12px; }
+        .work-nav { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 18px; }
+        .work-count { color: var(--muted); font: 600 10px/1 Kanit, sans-serif; letter-spacing: .16em; font-variant-numeric: tabular-nums; }
+        .work-count b { color: var(--paper); font-weight: 600; }
+        .work-bars { display: flex; flex: 1; gap: 5px; }
+        .work-bars i { flex: 1; height: 3px; border-radius: 3px; background: rgba(215,226,234,.14); transition: background .3s ease; }
+        .work-bars i.is-on { background: var(--acid); box-shadow: 0 0 10px rgba(124,92,255,.6); }
+        .work-arrows { display: flex; gap: 8px; }
+        .work-arrows button { display: inline-grid; place-items: center; width: 38px; height: 38px; border: 1px solid rgba(215,226,234,.3); border-radius: 50%; background: rgba(255,255,255,.04); color: var(--paper); cursor: pointer; }
+        .work-arrows button:disabled { opacity: .35; cursor: default; }
+        .work-arrows svg { width: 16px; height: 16px; }
+        .work-foot { flex-direction: column; align-items: stretch; margin-top: 30px; padding: 22px 20px; }
+        .work-foot .btn { width: 100%; }
+      }
+
+      /* VELORIEN — smart tools (custom AI + web services) */
+      .tools { background: radial-gradient(55% 40% at 0% 0%, rgba(124,92,255,.14), transparent 70%), radial-gradient(50% 40% at 100% 100%, rgba(164,216,255,.08), transparent 70%), var(--ink-soft); color: var(--paper); overflow: hidden; }
+      .tools .section-title { color: var(--paper); background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+      .tools .section-title em { color: var(--acid); font-style: normal; -webkit-text-fill-color: var(--acid); background: none; }
+      .tools .section-summary { max-width: 290px; }
+      .tools-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+      .tool { position: relative; display: flex; min-width: 0; padding: 26px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(155deg, rgba(215,226,234,.075), rgba(215,226,234,.02)); transition: opacity .75s var(--ease-out), transform .75s var(--ease-out), border-color .35s ease, background .35s ease, box-shadow .35s ease; }
+      .tool:hover { border-color: rgba(124,92,255,.55); background: linear-gradient(155deg, rgba(124,92,255,.11), rgba(215,226,234,.02) 60%); box-shadow: 0 24px 55px rgba(0,0,0,.25); }
+      .tool--wide { grid-column: span 2; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 26px; align-items: stretch; background: linear-gradient(145deg, rgba(124,92,255,.13), rgba(215,226,234,.03) 58%); }
+      .tool--right { grid-column: 2 / span 2; }
+      .tool-main { display: flex; flex-direction: column; gap: 13px; min-width: 0; width: 100%; }
+      .tool-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+      .tool-ic { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(124,92,255,.45); border-radius: 13px; background: rgba(124,92,255,.08); color: var(--acid); }
+      .tool-ic svg { width: 22px; height: 22px; }
+      .tool-badge { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; color: #b7c2c7; font: 600 9px/1 Kanit, sans-serif; letter-spacing: .15em; text-transform: uppercase; }
+      .tool h3 { margin: 6px 0 0; color: var(--paper); font: 500 clamp(24px, 2.2vw, 30px)/1 Kanit, sans-serif; letter-spacing: -.045em; }
+      .tool-what { margin: 0; color: #b7c2c7; font-size: 13px; line-height: 1.65; }
+      .tool-rare { margin: 0; padding-top: 13px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; line-height: 1.6; }
+      .tool-rare b { display: block; margin-bottom: 5px; color: var(--acid); font: 600 9.5px/1 Kanit, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+      .tool-best { display: flex; flex-wrap: wrap; gap: 4px 8px; margin: 0; color: #b7c2c7; font-size: 12px; line-height: 1.5; }
+      .tool-best span { color: var(--muted); font: 600 9.5px/1.6 Kanit, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+      .tool-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; margin-top: auto; padding-top: 14px; }
+      .tool-price { display: grid; gap: 6px; min-width: 0; }
+      .tool-price strong { color: var(--paper); font: 500 clamp(28px, 2.6vw, 36px)/.9 Kanit, sans-serif; letter-spacing: -.06em; white-space: nowrap; }
+      .tool-price small { color: var(--muted); font: 600 9.5px/1.3 Kanit, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+      .tool-cta { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 9px; padding: 7px 7px 7px 15px; border: 1px solid rgba(124,92,255,.5); border-radius: 999px; background: rgba(124,92,255,.1); color: #fff; font: 600 10px/1 Kanit, sans-serif; letter-spacing: .14em; text-transform: uppercase; transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s var(--ease-out); }
+      .tool-cta:hover { background: var(--violet); border-color: var(--violet); box-shadow: 0 0 22px rgba(124,92,255,.5); transform: translateY(-2px); }
+      .tool-cta:hover .pkg-ic { background: #fff; color: var(--violet); }
+      .tool-cta:hover .pkg-ic svg { transform: rotate(45deg); }
+      .tool-note { margin: -2px 0 0; color: rgba(215,226,234,.45); font-size: 10.5px; line-height: 1.5; }
+
+      .tool-mock { position: relative; display: flex; flex-direction: column; min-width: 0; overflow: hidden; padding: 14px; border: 1px solid rgba(215,226,234,.14); border-radius: 18px; background: linear-gradient(180deg, #121417, #0d0e10); box-shadow: inset 0 1px 0 rgba(255,255,255,.04); }
+      .tm-head { display: flex; align-items: center; gap: 9px; padding-bottom: 11px; border-bottom: 1px solid rgba(215,226,234,.1); }
+      .tm-av { flex: 0 0 26px; width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #25d366, #128c7e); }
+      .tm-av--ai { background: linear-gradient(123deg, #2e1a7a, #5b3df5 60%, #a48bff); }
+      .tm-head b { color: var(--paper); font: 600 12px/1 Kanit, sans-serif; }
+      .tm-on { color: #34d47a; font-size: 10px; }
+      .tm-lang { margin-left: auto; padding: 4px 8px; border-radius: 999px; background: rgba(215,226,234,.07); color: #b7c2c7; font: 600 9px/1 Kanit, sans-serif; letter-spacing: .08em; }
+      .tm-body { display: flex; flex-direction: column; gap: 8px; padding: 12px 0 22px; }
+      .tm-body p { max-width: 86%; margin: 0; padding: 9px 12px; border-radius: 14px; font-size: 12px; line-height: 1.45; }
+      .tm-in { align-self: flex-end; border-bottom-right-radius: 4px !important; background: #1f6f52; color: #ecfff5; }
+      .tm-out { align-self: flex-start; border-bottom-left-radius: 4px !important; background: rgba(215,226,234,.09); color: var(--paper); }
+      .tm-cap { position: absolute; right: 14px; bottom: 10px; color: rgba(215,226,234,.38); font: 600 8.5px/1 Kanit, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+      .tm-report { padding: 13px 0 24px; color: var(--paper); }
+      .tm-report > b { display: block; margin-bottom: 11px; font: 500 14px/1.3 Kanit, sans-serif; }
+      .tm-report ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+      .tm-report li { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 9px 11px; border-radius: 12px; background: rgba(215,226,234,.06); }
+      .tm-report li span { color: var(--muted); font-size: 11px; }
+      .tm-report li strong { grid-row: span 2; align-self: center; font: 500 20px/1 Kanit, sans-serif; letter-spacing: -.03em; }
+      .tm-report li em { color: #b7c2c7; font-size: 11px; font-style: normal; }
+      .tm-report li em.up { color: #34d47a; }
+      .tm-flag { display: flex; gap: 9px; align-items: flex-start; margin: 10px 0 0; padding: 10px 11px; border: 1px solid rgba(255,178,107,.35); border-radius: 12px; background: rgba(255,178,107,.07); color: #ffd9b3; font-size: 11.5px; line-height: 1.45; }
+      .tm-flag i { flex: 0 0 7px; width: 7px; height: 7px; margin-top: 5px; border-radius: 50%; background: var(--orange); }
+
+      @media (max-width: 1100px) and (min-width: 681px) {
+        .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .tool--wide, .tool--right { grid-column: 1 / -1; }
+        .tools-grid > .tool:last-child { grid-column: 1 / -1; }
+      }
+      @media (max-width: 760px) and (min-width: 681px) {
+        .tool--wide { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 680px) {
+        .tools-grid { grid-template-columns: 1fr; gap: 12px; }
+        .tool, .tool--wide, .tool--right { grid-column: auto; }
+        .tool { padding: 22px; border-radius: 22px; }
+        .tool--wide { grid-template-columns: 1fr; gap: 18px; }
+        .tool-foot { flex-wrap: wrap; }
+      }
+
+      /* full-size live viewer */
+      .wv { position: fixed; inset: 0; z-index: 140; display: grid; place-items: center; padding: 22px; }
+      .wv[hidden] { display: none; }
+      html.wv-lock { overflow: hidden; }
+      .wv-backdrop { position: absolute; inset: 0; background: rgba(6,6,9,.82); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2); }
+      .wv-shell { position: relative; display: flex; flex-direction: column; width: min(1500px, 100%); height: 100%; overflow: hidden; border: 1px solid rgba(215,226,234,.14); border-radius: 22px; background: #0e0e11; box-shadow: 0 40px 120px rgba(0,0,0,.6); }
+      .wv-bar { display: flex; align-items: center; gap: 10px; min-height: 58px; padding: 10px 12px 10px 18px; border-bottom: 1px solid rgba(215,226,234,.1); background: radial-gradient(80% 160% at 0% 0%, rgba(124,92,255,.18), transparent 60%), #111115; }
+      .wv-meta { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+      .wv-live { display: inline-flex; align-items: center; gap: 7px; flex: 0 0 auto; color: #b9f3cf; font: 600 9px/1 Kanit, sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+      .wv-meta b { overflow: hidden; color: #fff; font: 500 19px/1.1 Kanit, sans-serif; letter-spacing: -.035em; white-space: nowrap; text-overflow: ellipsis; }
+      .wv-url { overflow: hidden; color: var(--muted); font-size: 11px; white-space: nowrap; text-overflow: ellipsis; }
+      .wv-ibtn { display: inline-grid; place-items: center; flex: 0 0 38px; width: 38px; height: 38px; padding: 0; border: 1px solid rgba(215,226,234,.24); border-radius: 50%; background: rgba(255,255,255,.04); color: var(--paper); cursor: pointer; transition: background .25s ease, border-color .25s ease, color .25s ease; }
+      .wv-ibtn:hover { border-color: var(--acid); background: rgba(124,92,255,.16); }
+      .wv-ibtn svg { width: 17px; height: 17px; }
+      .wv .work-dev { flex: 0 0 auto; }
+      .wv-open { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 9px; padding: 6px 6px 6px 15px; border: 2px solid #fff; outline: 2px solid #fff; outline-offset: -3px; border-radius: 999px; background: linear-gradient(123deg,#0d0626 7%,#2e1a7a 37%,#5b3df5 72%,#a48bff 100%); color: #fff; font: 600 10px/1 Kanit, sans-serif; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; transition: transform .25s var(--ease-out), filter .25s ease; }
+      .wv-open:hover { transform: translateY(-2px); filter: saturate(1.2); }
+      .wv-open .pkg-ic { width: 26px; height: 26px; background: rgba(255,255,255,.16); box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
+      .wv-stage { position: relative; flex: 1; min-height: 0; overflow: hidden; background-image: radial-gradient(60% 60% at 50% 40%, rgba(124,92,255,.12), transparent 70%), linear-gradient(rgba(215,226,234,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(215,226,234,.035) 1px, transparent 1px); background-size: auto, 32px 32px, 32px 32px; }
+      .wv-screen { position: absolute; overflow: hidden; background: #0b0b0d; }
+      .wv-screen iframe { display: block; border: 0; background: #fff; transform-origin: 0 0; }
+      .wv-stage.is-phone .wv-screen { border-radius: 36px; box-shadow: 0 0 0 8px #1b1b20, 0 0 0 9px rgba(215,226,234,.18), 0 30px 80px rgba(0,0,0,.6); }
+      .wv-stage.is-bare .wv-screen { border-radius: 0; box-shadow: none; }
+      .wv-load { position: absolute; inset: 0; z-index: 2; display: grid; place-content: center; justify-items: center; gap: 14px; background: #0e0e11; color: var(--muted); font: 600 9px/1 Kanit, sans-serif; letter-spacing: .2em; text-transform: uppercase; transition: opacity .5s ease, visibility 0s linear .5s; }
+      .wv-load .mkx { --m: 34px; animation: hbv-spin 2.2s linear infinite; }
+      .wv-stage.is-loaded .wv-load { opacity: 0; visibility: hidden; }
+      .wv-stage.is-loaded .wv-load .mkx { animation: none; }
+      @media (max-width: 680px) {
+        .wv { padding: 0; }
+        .wv-shell { border: 0; border-radius: 0; height: 100%; height: 100dvh; }
+        .wv-bar { gap: 7px; min-height: 0; padding: calc(9px + env(safe-area-inset-top)) 10px 9px; }
+        .wv-meta { gap: 8px; }
+        .wv-meta b { font-size: 16px; }
+        .wv-url, .wv-live span, .wv .work-dev button span, .wv-open > span:first-child { display: none; }
+        .wv .work-dev button { padding: 8px 10px; }
+        .wv-ibtn { flex-basis: 34px; width: 34px; height: 34px; }
+        .wv-open { padding: 4px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .work-live i, .wv-live i, .work-skel .mkx, .work-skel::after, .wv-load .mkx { animation: none; }
+        .work-dev-thumb { transition: none; }
+      }
+
+      /* ---- Arabic / RTL adjustments for the portfolio, viewer and smart tools ---- */
+      .work, .tools { background-color: var(--ink); }
+      .work { background-image: radial-gradient(60% 45% at 12% 0%, rgba(124,92,255,.15), transparent 70%), radial-gradient(45% 35% at 100% 100%, rgba(164,216,255,.06), transparent 70%); }
+      .tools { background-image: radial-gradient(55% 40% at 100% 0%, rgba(124,92,255,.14), transparent 70%), radial-gradient(50% 40% at 0% 100%, rgba(164,216,255,.08), transparent 70%); }
+      .work-side p { max-width: 300px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; text-align: start; }
+      .pkg-ic { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--violet); color: #fff; transition: background .25s ease, color .25s ease; }
+      .pkg-ic svg { width: 12px; height: 12px; transform: scaleX(-1); transition: transform .3s var(--ease-out); }
+      .work-visit:hover .pkg-ic svg, .tool-cta:hover .pkg-ic svg { transform: scaleX(-1) rotate(45deg); }
+      .work-visit, .tool-cta { padding: 7px 15px 7px 7px; }
+      .wv-open { padding: 6px 15px 6px 6px; }
+      .work-cta { padding: 8px 19px 8px 8px; }
+      .work-bar, .work-url, .wv-url, .tm-lang { direction: ltr; }
+      .work-screen, .wv-screen { direction: ltr; }
+      .work-count { direction: ltr; }
+      .tm-lang { margin-left: 0; margin-inline-start: auto; }
+      .tm-in { border-bottom-right-radius: 14px !important; border-bottom-left-radius: 4px !important; }
+      .tm-out { border-bottom-left-radius: 14px !important; border-bottom-right-radius: 4px !important; }
+      .tm-body p { unicode-bidi: plaintext; }
+      .work-info h3 { font-family: Kanit, sans-serif; }
+      .work-kicker, .work-tags span, .work-visit, .work-cta, .work-live, .work-skel small, .work-dev button, .work-count, .work-foot p, .work-foot p span,
+      .tool h3, .tool-badge, .tool-rare b, .tool-best span, .tool-price small, .tool-cta, .tm-cap, .tm-report > b, .tm-head b, .wv-meta, .wv-live, .wv-open, .wv-load {
+        font-family: 'IBM Plex Sans Arabic', Kanit, sans-serif; letter-spacing: 0; text-transform: none;
+      }
+      .work-kicker { font-size: 11.5px; } .work-tags span { font-size: 11px; } .work-visit, .tool-cta { font-size: 12px; } .work-cta { font-size: 13px; }
+      .work-dev button { font-size: 12px; } .tool-badge { font-size: 11px; } .tool-rare b, .tool-best span { font-size: 11px; } .tool-price small { font-size: 11px; }
+      .work-live, .wv-live { font-size: 11px; } .work-skel small, .wv-load { font-size: 11px; } .tm-cap { font-size: 10px; }
+      .tool h3 { font-weight: 600; line-height: 1.25; }
+      .tool-price strong { font-family: 'IBM Plex Sans Arabic', Kanit, sans-serif; letter-spacing: 0; }
+      .tool-price strong .num { font-family: Kanit, sans-serif; letter-spacing: -.04em; }
+      @media (max-width: 1000px) { .top-links .opt { display: none; } }
+      @media (max-width: 680px) { .work-side { margin-top: 18px; } .work-side p { margin: 0; } }
     </style>
   </head>
   <body>
-    <header class="top"><div class="wrap top-in"><a class="brand" href="/ar/" aria-label="Velorien home"><svg class="vl" viewBox="0 0 1027.6 235" aria-hidden="true" focusable="false"><g transform="scale(1.9583)"><g class="vl-spin"><g fill="currentColor"> <path d="M0 56V0A56 56 0 0 1 56 56Z"/> <path d="M64 0H120A56 56 0 0 1 64 56Z"/> <path d="M120 64V120A56 56 0 0 1 64 64Z"/> <path d="M56 120H0A56 56 0 0 1 56 64Z"/> </g> <rect class="vl-core" x="56" y="56" width="8" height="8" fill="#7C5CFF"/></g></g><g transform="translate(303 67.5)"><g fill="currentColor"><rect x="117.5" y="0" width="13.6" height="100"/><rect x="117.5" y="0" width="61.5" height="13.6"/><rect x="117.5" y="86.4" width="61.5" height="13.6"/><rect x="141.0" y="43.2" width="30" height="13.6"/><rect x="205.8" y="0" width="13.6" height="100"/><rect x="205.8" y="86.4" width="57.6" height="13.6"/><rect x="507.4" y="0" width="13.6" height="100"/><rect x="553.3" y="0" width="13.6" height="100"/><rect x="553.3" y="0" width="61.5" height="13.6"/><rect x="553.3" y="86.4" width="61.5" height="13.6"/><rect x="576.8" y="43.2" width="30" height="13.6"/><rect x="641.6" y="0" width="13.6" height="100"/><rect x="710.9" y="0" width="13.6" height="100"/></g><g fill="none" stroke="currentColor" stroke-width="13.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4"><path d="M6.5 0L47.5 100L88.5 0"/><circle cx="340" cy="50" r="43.2"/><path d="M423.2 100V6.8H454.9A21.6 21.6 0 0 1 454.9 50H423.2"/><path d="M449 50L487 101"/><path d="M648.4 0L717.7 100"/></g><circle cx="340" cy="50" r="7" fill="#7C5CFF"/></g></svg></a><nav class="top-links" aria-label="Primary"><a href="/ar/#services">الخدمات</a><a href="/ar/#packages">الباقات</a><a href="/ar/#ai-chat">مساعد الدردشة</a><a href="/ar/#faq">الأسئلة الشائعة</a></nav><a class="lang-sw" href="/" hreflang="en" data-lang-switch data-home="ar" data-cur="ar" data-to="en" aria-label="English – view the site in English"><span class="lang-sw__opt" lang="en">EN</span><span class="lang-sw__opt is-on" lang="ar">ع</span><span class="lang-sw__thumb" aria-hidden="true"></span></a><a class="top-cta" href="https://wa.me/971557858540?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20Velorien%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A8%D8%AF%D8%A1%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 3.5A11.75 11.75 0 0 0 12.15 0C5.65 0 .36 5.28.36 11.79c0 2.08.54 4.1 1.57 5.88L.25 24l6.48-1.7a11.8 11.8 0 0 0 5.42 1.3h.01c6.5 0 11.79-5.29 11.79-11.8 0-3.15-1.22-6.1-3.45-8.3ZM12.16 21.6h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.85 1.01 1.03-3.75-.24-.39a9.82 9.82 0 0 1-1.5-5.25C2.23 6.2 6.67 1.97 12.16 1.97c2.62 0 5.08 1.02 6.93 2.86a9.74 9.74 0 0 1 2.88 6.96c0 5.41-4.4 9.81-9.81 9.81Zm5.38-7.35c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.08-.8.37-.28.3-1.04 1.02-1.04 2.5 0 1.48 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.73 2.02-1.43.25-.7.25-1.3.17-1.43-.08-.12-.28-.2-.58-.35Z"/></svg><span class="t">واتساب</span></a></div></header>
+    <header class="top"><div class="wrap top-in"><a class="brand" href="/ar/" aria-label="Velorien home"><svg class="vl" viewBox="0 0 1027.6 235" aria-hidden="true" focusable="false"><g transform="scale(1.9583)"><g class="vl-spin"><g fill="currentColor"> <path d="M0 56V0A56 56 0 0 1 56 56Z"/> <path d="M64 0H120A56 56 0 0 1 64 56Z"/> <path d="M120 64V120A56 56 0 0 1 64 64Z"/> <path d="M56 120H0A56 56 0 0 1 56 64Z"/> </g> <rect class="vl-core" x="56" y="56" width="8" height="8" fill="#7C5CFF"/></g></g><g transform="translate(303 67.5)"><g fill="currentColor"><rect x="117.5" y="0" width="13.6" height="100"/><rect x="117.5" y="0" width="61.5" height="13.6"/><rect x="117.5" y="86.4" width="61.5" height="13.6"/><rect x="141.0" y="43.2" width="30" height="13.6"/><rect x="205.8" y="0" width="13.6" height="100"/><rect x="205.8" y="86.4" width="57.6" height="13.6"/><rect x="507.4" y="0" width="13.6" height="100"/><rect x="553.3" y="0" width="13.6" height="100"/><rect x="553.3" y="0" width="61.5" height="13.6"/><rect x="553.3" y="86.4" width="61.5" height="13.6"/><rect x="576.8" y="43.2" width="30" height="13.6"/><rect x="641.6" y="0" width="13.6" height="100"/><rect x="710.9" y="0" width="13.6" height="100"/></g><g fill="none" stroke="currentColor" stroke-width="13.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4"><path d="M6.5 0L47.5 100L88.5 0"/><circle cx="340" cy="50" r="43.2"/><path d="M423.2 100V6.8H454.9A21.6 21.6 0 0 1 454.9 50H423.2"/><path d="M449 50L487 101"/><path d="M648.4 0L717.7 100"/></g><circle cx="340" cy="50" r="7" fill="#7C5CFF"/></g></svg></a><nav class="top-links" aria-label="Primary"><a href="/ar/#services">الخدمات</a><a href="/ar/#work">أعمالنا</a><a href="/ar/#packages">الباقات</a><a href="/ar/#tools">أدوات ذكية</a><a class="opt" href="/ar/#ai-chat">مساعد الدردشة</a><a class="opt" href="/ar/#faq">الأسئلة الشائعة</a></nav><a class="lang-sw" href="/" hreflang="en" data-lang-switch data-home="ar" data-cur="ar" data-to="en" aria-label="English – view the site in English"><span class="lang-sw__opt" lang="en">EN</span><span class="lang-sw__opt is-on" lang="ar">ع</span><span class="lang-sw__thumb" aria-hidden="true"></span></a><a class="top-cta" href="https://wa.me/971557858540?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20Velorien%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A8%D8%AF%D8%A1%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 3.5A11.75 11.75 0 0 0 12.15 0C5.65 0 .36 5.28.36 11.79c0 2.08.54 4.1 1.57 5.88L.25 24l6.48-1.7a11.8 11.8 0 0 0 5.42 1.3h.01c6.5 0 11.79-5.29 11.79-11.8 0-3.15-1.22-6.1-3.45-8.3ZM12.16 21.6h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.85 1.01 1.03-3.75-.24-.39a9.82 9.82 0 0 1-1.5-5.25C2.23 6.2 6.67 1.97 12.16 1.97c2.62 0 5.08 1.02 6.93 2.86a9.74 9.74 0 0 1 2.88 6.96c0 5.41-4.4 9.81-9.81 9.81Zm5.38-7.35c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.08-.8.37-.28.3-1.04 1.02-1.04 2.5 0 1.48 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.73 2.02-1.43.25-.7.25-1.3.17-1.43-.08-.12-.28-.2-.58-.35Z"/></svg><span class="t">واتساب</span></a></div></header>
     <main>
       <section class="hero"><div class="wrap">
         <span class="eyebrow">استوديو تصميم مواقع في دبي</span>
@@ -370,6 +633,130 @@
         </div>
       </div></section>
 
+      <section class="sec work" id="work" aria-labelledby="workTitle"><div class="wrap">
+        <div class="head"><div><span class="eyebrow">أعمالنا</span><h2 class="h2 grad" id="workTitle">مواقع حقيقية. <em>تعمل الآن.</em></h2></div>
+          <div class="work-side"><p>ليست لقطات شاشة. كل بطاقة هنا هي الموقع الحقيقي يعمل مباشرة الآن. اضغط على أي بطاقة لاستكشافه بالحجم الكامل.</p>
+            <div class="work-dev" role="group" aria-label="اعرض المواقع على"><span class="work-dev-thumb" aria-hidden="true"></span><button type="button" data-mode="desktop" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><span>كمبيوتر</span></button><button type="button" data-mode="phone" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg><span>جوال</span></button></div>
+          </div>
+        </div>
+        <div class="work-grid" id="workGrid">
+          <article class="work-card work-card--feature" data-url="https://efcars.ae/" data-name="EliteFleet" data-host="efcars.ae" style="--wc:#d8c39a">
+            <div class="work-frame">
+              <div class="work-bar"><span class="work-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="work-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>efcars.ae</span></span><span class="work-live"><i></i>مباشر</span></div>
+              <div class="work-view"><div class="work-skel" aria-hidden="true"><span class="mkx" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i><b></b></span><strong>EliteFleet</strong><small>جارٍ تحميل الموقع</small></div></div>
+              <button class="work-open" type="button" aria-label="استكشف موقع EliteFleet مباشرة"><span class="work-cta">استكشف مباشرة <span class="work-cta-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></span></button>
+            </div>
+            <div class="work-info">
+              <div>
+                <span class="work-kicker"><b class="num">01</b>تأجير سيارات فاخرة · دبي</span>
+                <h3 lang="en" dir="ltr">EliteFleet</h3>
+                <p>صالة عرض سينمائية لشركة تأجير سيارات فاخرة في القوز. رولز رويس وأوروس وG 63، والحجز مباشرة عبر واتساب.</p>
+                <div class="work-tags"><span>عرض الأسطول</span><span>الحجز عبر واتساب</span><span>دومين خاص</span></div>
+              </div>
+              <a class="work-visit" href="https://efcars.ae/" target="_blank" rel="noopener" aria-label="زيارة موقع EliteFleet (يفتح في نافذة جديدة)">زيارة الموقع <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a>
+            </div>
+          </article>
+          <article class="work-card" data-url="https://hitu-code23.github.io/Cortec/" data-name="Cortec Middle East" data-host="hitu-code23.github.io/Cortec" style="--wc:#2fbf71">
+            <div class="work-frame">
+              <div class="work-bar"><span class="work-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="work-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>hitu-code23.github.io/Cortec</span></span><span class="work-live"><i></i>مباشر</span></div>
+              <div class="work-view"><div class="work-skel" aria-hidden="true"><span class="mkx" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i><b></b></span><strong>Cortec Middle East</strong><small>جارٍ تحميل الموقع</small></div></div>
+              <button class="work-open" type="button" aria-label="استكشف موقع Cortec Middle East مباشرة"><span class="work-cta">استكشف مباشرة <span class="work-cta-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></span></button>
+            </div>
+            <div class="work-info">
+              <div>
+                <span class="work-kicker"><b class="num">02</b>صناعي · جبل علي</span>
+                <h3 lang="en" dir="ltr">Cortec Middle East</h3>
+                <p>موقع مؤسسي لشركة حماية من التآكل تخدم قطاعات النفط والغاز والطاقة والبحرية والبنية التحتية في الشرق الأوسط وشمال أفريقيا.</p>
+                <div class="work-tags"><span>عربي + إنجليزي</span><span>طلبات عروض الأسعار</span><span>مؤسسي</span></div>
+              </div>
+              <a class="work-visit" href="https://hitu-code23.github.io/Cortec/" target="_blank" rel="noopener" aria-label="زيارة موقع Cortec Middle East (يفتح في نافذة جديدة)">زيارة الموقع <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a>
+            </div>
+          </article>
+          <article class="work-card" data-url="https://hitu-code23.github.io/Rami-Arabi/" data-name="Rami Arabi Beauty Salon" data-host="hitu-code23.github.io/Rami-Arabi" style="--wc:#c9a978">
+            <div class="work-frame">
+              <div class="work-bar"><span class="work-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="work-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>hitu-code23.github.io/Rami-Arabi</span></span><span class="work-live"><i></i>مباشر</span></div>
+              <div class="work-view"><div class="work-skel" aria-hidden="true"><span class="mkx" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i><b></b></span><strong>Rami Arabi Beauty Salon</strong><small>جارٍ تحميل الموقع</small></div></div>
+              <button class="work-open" type="button" aria-label="استكشف موقع Rami Arabi Beauty Salon مباشرة"><span class="work-cta">استكشف مباشرة <span class="work-cta-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></span></button>
+            </div>
+            <div class="work-info">
+              <div>
+                <span class="work-kicker"><b class="num">03</b>صالون شعر · وسط مدينة دبي</span>
+                <h3 lang="en" dir="ltr">Rami Arabi Beauty Salon</h3>
+                <p>موقع بطابع مجلات الأزياء لصالون شعر داخل أنانتارا داون تاون، مع قائمة الخدمات المميزة وحجز المواعيد.</p>
+                <div class="work-tags"><span>تصميم تحريري</span><span>قائمة الخدمات</span><span>المواعيد</span></div>
+              </div>
+              <a class="work-visit" href="https://hitu-code23.github.io/Rami-Arabi/" target="_blank" rel="noopener" aria-label="زيارة موقع Rami Arabi Beauty Salon (يفتح في نافذة جديدة)">زيارة الموقع <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a>
+            </div>
+          </article>
+          <article class="work-card" data-url="https://hitu-code23.github.io/CPC/" data-name="CPC Dubai" data-host="hitu-code23.github.io/CPC" style="--wc:#9fb6c8">
+            <div class="work-frame">
+              <div class="work-bar"><span class="work-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="work-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>hitu-code23.github.io/CPC</span></span><span class="work-live"><i></i>مباشر</span></div>
+              <div class="work-view"><div class="work-skel" aria-hidden="true"><span class="mkx" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i><b></b></span><strong>CPC Dubai</strong><small>جارٍ تحميل الموقع</small></div></div>
+              <button class="work-open" type="button" aria-label="استكشف موقع CPC Dubai مباشرة"><span class="work-cta">استكشف مباشرة <span class="work-cta-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></span></button>
+            </div>
+            <div class="work-info">
+              <div>
+                <span class="work-kicker"><b class="num">04</b>ورشة تعديل سيارات · دبي</span>
+                <h3 lang="en" dir="ltr">CPC Dubai</h3>
+                <p>موقع سينمائي داكن لورشة تعديل سيارات فاخرة، يتمحور حول أعمالها.</p>
+                <div class="work-tags"><span>تصميم مفاهيمي</span><span>معرض الأعمال</span><span>تمرير سينمائي</span></div>
+              </div>
+              <a class="work-visit" href="https://hitu-code23.github.io/CPC/" target="_blank" rel="noopener" aria-label="زيارة موقع CPC Dubai (يفتح في نافذة جديدة)">زيارة الموقع <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a>
+            </div>
+          </article>
+          <article class="work-card" data-url="https://hitu-code23.github.io/Meet-Cat-Cafe/" data-name="Meet Cat Cafe" data-host="hitu-code23.github.io/Meet-Cat-Cafe" style="--wc:#f2b98a">
+            <div class="work-frame">
+              <div class="work-bar"><span class="work-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="work-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>hitu-code23.github.io/Meet-Cat-Cafe</span></span><span class="work-live"><i></i>مباشر</span></div>
+              <div class="work-view"><div class="work-skel" aria-hidden="true"><span class="mkx" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i><b></b></span><strong>Meet Cat Cafe</strong><small>جارٍ تحميل الموقع</small></div></div>
+              <button class="work-open" type="button" aria-label="استكشف موقع Meet Cat Cafe مباشرة"><span class="work-cta">استكشف مباشرة <span class="work-cta-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></span></button>
+            </div>
+            <div class="work-info">
+              <div>
+                <span class="work-kicker"><b class="num">05</b>مقهى قطط · البرشاء</span>
+                <h3 lang="en" dir="ltr">Meet Cat Cafe</h3>
+                <p>موقع دافئ ومرح لمقهى قطط: تعرّف على القطط، واحجز زيارتك عبر واتساب، وخطط لأعياد الميلاد والساعات الخاصة.</p>
+                <div class="work-tags"><span>تعرّف على القطط</span><span>الحجز عبر واتساب</span><span>مناسبات خاصة</span></div>
+              </div>
+              <a class="work-visit" href="https://hitu-code23.github.io/Meet-Cat-Cafe/" target="_blank" rel="noopener" aria-label="زيارة موقع Meet Cat Cafe (يفتح في نافذة جديدة)">زيارة الموقع <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a>
+            </div>
+          </article>
+          <article class="work-card" data-url="https://hitu-code23.github.io/nail-24-24/" data-name="Nails 24/24" data-host="hitu-code23.github.io/nail-24-24" style="--wc:#f09ab4">
+            <div class="work-frame">
+              <div class="work-bar"><span class="work-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="work-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>hitu-code23.github.io/nail-24-24</span></span><span class="work-live"><i></i>مباشر</span></div>
+              <div class="work-view"><div class="work-skel" aria-hidden="true"><span class="mkx" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i><b></b></span><strong>Nails 24/24</strong><small>جارٍ تحميل الموقع</small></div></div>
+              <button class="work-open" type="button" aria-label="استكشف موقع Nails 24/24 مباشرة"><span class="work-cta">استكشف مباشرة <span class="work-cta-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></span></button>
+            </div>
+            <div class="work-info">
+              <div>
+                <span class="work-kicker"><b class="num">06</b>استوديو أظافر · قرية جميرا الدائرية</span>
+                <h3 lang="en" dir="ltr">Nails 24/24</h3>
+                <p>موقع ناعم بأسلوب Framer لاستوديو أظافر يعمل على مدار الساعة، من الخدمات والتصاميم إلى الحجز في أقل من دقيقة.</p>
+                <div class="work-tags"><span>قائمة الأسعار</span><span>حجز سريع</span><span>معرض التصاميم</span></div>
+              </div>
+              <a class="work-visit" href="https://hitu-code23.github.io/nail-24-24/" target="_blank" rel="noopener" aria-label="زيارة موقع Nails 24/24 (يفتح في نافذة جديدة)">زيارة الموقع <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a>
+            </div>
+          </article>
+          <article class="work-card" data-url="https://hitu-code23.github.io/ZakiPriceList/" data-name="Zaki Salon Price List" data-host="hitu-code23.github.io/ZakiPriceList" style="--wc:#e0b45e">
+            <div class="work-frame">
+              <div class="work-bar"><span class="work-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="work-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>hitu-code23.github.io/ZakiPriceList</span></span><span class="work-live"><i></i>مباشر</span></div>
+              <div class="work-view"><div class="work-skel" aria-hidden="true"><span class="mkx" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i><b></b></span><strong>Zaki Salon Price List</strong><small>جارٍ تحميل الموقع</small></div></div>
+              <button class="work-open" type="button" aria-label="استكشف موقع Zaki Salon Price List مباشرة"><span class="work-cta">استكشف مباشرة <span class="work-cta-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></span></button>
+            </div>
+            <div class="work-info">
+              <div>
+                <span class="work-kicker"><b class="num">07</b>قائمة أسعار صالون · نخلة جميرا</span>
+                <h3 lang="en" dir="ltr">Zaki Salon Price List</h3>
+                <p>قائمة أسعار رقمية لصالون فاخر في نخلة جميرا، مقسّمة بين قسم الرجال وقسم السيدات.</p>
+                <div class="work-tags"><span>رجال + سيدات</span><span>قائمة رقمية</span><span>للجوال أولًا</span></div>
+              </div>
+              <a class="work-visit" href="https://hitu-code23.github.io/ZakiPriceList/" target="_blank" rel="noopener" aria-label="زيارة موقع Zaki Salon Price List (يفتح في نافذة جديدة)">زيارة الموقع <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a>
+            </div>
+          </article>
+        </div>
+        <div class="work-nav"><span class="work-count num"><b>01</b> / 07</span><span class="work-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="work-arrows"><button type="button" data-work-step="-1" aria-label="المشروع السابق"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button><button type="button" data-work-step="1" aria-label="المشروع التالي"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button></span></div>
+        <div class="work-foot"><p>مشروعك قد يكون التالي.<span>كل المواقع أعلاه صممها وبناها Velorien في دبي، للجوال أولًا وبسرعة عالية.</span></p><a class="btn btn-primary" href="#contact">ابدأ مشروعك</a></div>
+      </div></section>
+
       <section class="sec" id="packages"><div class="wrap">
         <div class="head"><div><span class="eyebrow">باقات المواقع</span><h2 class="h2 grad">اختر <em>نقطة البداية.</em></h2></div><p>أسعار ثابتة ونطاق عمل واضح. الصفحة الإضافية بـ<span class="num">300</span> درهم لأي باقة.</p></div>
         <div class="pk-grid"><article class="pk"><span class="pk-tag">أساسية</span><h3>موقع الأعمال المبتدئ</h3><p class="for">مناسب للأعمال الخدمية البسيطة.</p><p class="price"><span class="num">2,099</span> <small>درهم</small></p><ul><li>صفحة هبوط تتضمن خدماتك</li><li>تصميم متجاوب مميز</li><li>واتساب وخرائط Google ووسائل التواصل</li><li>نموذج تواصل</li><li>إعداد أساسي لتحسين محركات البحث</li></ul><div class="pk-foot"><span><strong>7 أيام</strong>مدة التسليم</span><a class="pk-btn" href="https://wa.me/971557858540?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20Velorien%D8%8C%20%D8%A3%D9%86%D8%A7%20%D9%85%D9%87%D8%AA%D9%85%20%D8%A8%D8%A8%D8%A7%D9%82%D8%A9%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D8%A7%D9%84%D9%85%D8%A8%D8%AA%D8%AF%D8%A6." target="_blank" rel="noopener">اختر <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a></div></article><article class="pk pk--rec"><span class="pk-tag">الأكثر طلبًا</span><h3>موقع الأعمال الاحترافي</h3><p class="for">مناسب للأعمال النامية التي تحتاج حضورًا أقوى.</p><p class="price"><span class="num">3,499</span> <small>درهم</small></p><ul><li>4 صفحات بالضبط</li><li>تصميم مخصص مميز</li><li>نماذج تواصل وجمع عملاء</li><li>إعداد Google Analytics</li><li>تحسين السرعة وأساسيات SEO</li></ul><div class="pk-foot"><span><strong>10–14 يومًا</strong>مدة التسليم</span><a class="pk-btn" href="https://wa.me/971557858540?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20Velorien%D8%8C%20%D8%A3%D9%86%D8%A7%20%D9%85%D9%87%D8%AA%D9%85%20%D8%A8%D8%A8%D8%A7%D9%82%D8%A9%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A." target="_blank" rel="noopener">اختر <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a></div></article><article class="pk"><span class="pk-tag">تعبير كامل</span><h3>الموقع المميز</h3><p class="for">مناسب لتجربة مستخدم مخصصة وتكاملات وميزات متقدمة.</p><p class="price"><span class="num">5,500</span> <small>درهم</small></p><ul><li>واجهة وتجربة مستخدم مخصصة وحركات متقدمة</li><li>نظام حجز</li><li>تكاملات مخصصة</li><li>هيكلة متقدمة لتحسين محركات البحث</li><li>يشمل إعداد مساعد الدردشة</li></ul><div class="pk-foot"><span><strong>14–21 يومًا</strong>مدة التسليم</span><a class="pk-btn" href="https://wa.me/971557858540?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20Velorien%D8%8C%20%D8%A3%D9%86%D8%A7%20%D9%85%D9%87%D8%AA%D9%85%20%D8%A8%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%85%D9%88%D9%82%D8%B9%20%D8%A7%D9%84%D9%85%D9%85%D9%8A%D8%B2." target="_blank" rel="noopener">اختر <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a></div></article></div>
@@ -385,6 +772,89 @@
         </div>
       </div></section>
 
+      <section class="sec tools" id="tools" aria-labelledby="toolsTitle"><div class="wrap">
+        <div class="head"><div><span class="eyebrow">أدوات ذكية</span><h2 class="h2 grad" id="toolsTitle">أدوات لا تحصل عليها <em>معظم الشركات.</em></h2></div><p>أدوات ذكاء اصطناعي وويب مخصصة للشركات في دبي. معظم الوكالات لا تقدمها، لأنها تحتاج التصميم والبرمجة والذكاء الاصطناعي معًا.</p></div>
+        <div class="tools-grid">
+          <article class="tool tool--wide">
+            <div class="tool-main">
+              <div class="tool-top"><span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18.5V6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7a2.5 2.5 0 0 1-2.5 2.5H8l-4 2.5Z"/><path d="M8.5 10h.01M12 10h.01M15.5 10h.01"/></svg></span><span class="tool-badge">شهري</span></div>
+              <h3>موظف استقبال ذكي على واتساب</h3>
+              <p class="tool-what">يرد على عملائك عبر واتساب على مدار الساعة بالعربية والإنجليزية والروسية. يعرف أسعارك الحقيقية، ويحجز المواعيد، ويحوّل المحادثة إليك عند الحاجة.</p>
+              <p class="tool-rare"><b>لماذا هي نادرة</b>معظم روبوتات الدردشة قوائم أزرار جامدة. هذا يتحدث مثل أفضل موظفيك.</p>
+              <p class="tool-best"><span>الأنسب لـ</span>الصالونات، العيادات، تأجير السيارات</p>
+              <div class="tool-foot"><div class="tool-price"><strong><span class="num">2,500</span> درهم</strong><small>إعداد + <span class="num">500</span> درهم شهريًا</small></div><a class="tool-cta js-ar-pick" href="#contact" data-service="AI WhatsApp Receptionist" aria-label="اسأل عن موظف استقبال ذكي على واتساب">اسأل <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a></div>
+              <p class="tool-note">رسوم مزود WhatsApp Business API تُحتسب بشكل منفصل.</p>
+            </div><div class="tool-mock" aria-hidden="true"><div class="tm-head"><span class="tm-av"></span><b>نشاطك التجاري</b><span class="tm-on">متصل</span><span class="tm-lang" dir="ltr">ع · EN · RU</span></div><div class="tm-body"><p class="tm-in">مرحبًا، هل يوجد موعد لأظافر جل الليلة؟</p><p class="tm-out">أهلًا! متاح الساعة <span class="num">9:30</span> أو <span class="num">10:15</span> مساءً. مانيكير جل بـ<span class="num">110</span> دراهم. هل أحجز لك <span class="num">9:30</span>؟</p><p class="tm-in"><span class="num">9:30</span> لو سمحت</p><p class="tm-out">تم الحجز ✓ نراك الساعة <span class="num">9:30</span>. أرسل «تغيير» في أي وقت لتعديل الموعد.</p></div><span class="tm-cap">مثال على محادثة</span></div>
+          </article>
+          <article class="tool">
+            <div class="tool-main">
+              <div class="tool-top"><span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 9h17M3.5 14h17M9.5 4v16"/></svg></span><span class="tool-badge">إضافة</span></div>
+              <h3>موقع يتحدّث من Google Sheet</h3>
+              <p class="tool-what">عدّل جدول Google Sheet (السيارات المتاحة، القائمة، الأسعار) ويتحدّث موقعك تلقائيًا، دون تعلّم أي محرر مواقع.</p>
+              <p class="tool-rare"><b>لماذا هي نادرة</b>عادةً تنتظر المصمم عند كل تغيير.</p>
+              <p class="tool-best"><span>الأنسب لـ</span>تأجير السيارات، المقاهي، المطاعم</p>
+              <div class="tool-foot"><div class="tool-price"><strong>+<span class="num">1,000</span> درهم</strong><small>على أي باقة موقع</small></div><a class="tool-cta js-ar-pick" href="#contact" data-service="Sheet-Powered Live Website" aria-label="اسأل عن موقع يتحدّث من Google Sheet">اسأل <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a></div>
+              
+            </div>
+          </article>
+          <article class="tool">
+            <div class="tool-main">
+              <div class="tool-top"><span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8 7.5h8M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/></svg></span><span class="tool-badge">لمرة واحدة</span></div>
+              <h3>حاسبة عروض أسعار فورية</h3>
+              <p class="tool-what">يختار العميل الخيارات ويرى السعر فورًا، ثم يرسله إليك عبر واتساب كعميل محتمل جاهز.</p>
+              <p class="tool-rare"><b>لماذا هي نادرة</b>معظم الشركات ما زالت ترد على كل سؤال عن السعر يدويًا.</p>
+              <p class="tool-best"><span>الأنسب لـ</span>التأجير، الفعاليات، خدمات الشركات</p>
+              <div class="tool-foot"><div class="tool-price"><strong><span class="num">1,500</span> درهم</strong><small>سعر البداية · لمرة واحدة</small></div><a class="tool-cta js-ar-pick" href="#contact" data-service="Instant Quote Calculator" aria-label="اسأل عن حاسبة عروض أسعار فورية">اسأل <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a></div>
+              
+            </div>
+          </article>
+          <article class="tool tool--wide tool--right">
+            <div class="tool-main">
+              <div class="tool-top"><span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3.5" width="16" height="17" rx="2.5"/><path d="M8 15.5v-3M12 15.5v-6M16 15.5v-4.5"/></svg></span><span class="tool-badge">شهري</span></div>
+              <h3>تقرير المدير الذكي اليومي</h3>
+              <p class="tool-what">كل صباح تصلك رسالة واحدة على واتساب: حجوزات الأمس، والعملاء الجدد، والتقييمات، وأي شيء يحتاج انتباهك.</p>
+              <p class="tool-rare"><b>لماذا هي نادرة</b>عادةً لا يحصل أصحاب الأعمال على هذا إلا من برامج مكلفة أو مدير بدوام كامل.</p>
+              <p class="tool-best"><span>الأنسب لـ</span>الصالونات، العيادات، الأعمال متعددة الفروع</p>
+              <div class="tool-foot"><div class="tool-price"><strong><span class="num">3,000</span> درهم</strong><small>إعداد + <span class="num">500</span> درهم شهريًا</small></div><a class="tool-cta js-ar-pick" href="#contact" data-service="AI Manager Daily Report" aria-label="اسأل عن تقرير المدير الذكي اليومي">اسأل <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a></div>
+              
+            </div><div class="tool-mock tool-mock--report" aria-hidden="true"><div class="tm-head"><span class="tm-av tm-av--ai"></span><b>المدير الذكي</b><span class="tm-on"><span class="num">7:30</span> ص</span></div><div class="tm-report"><b>صباح الخير. إليك ملخص الأمس:</b><ul><li><span>الحجوزات</span><strong class="num">23</strong><em class="up"><span class="num">+4</span> عن الأسبوع الماضي</em></li><li><span>عملاء جدد</span><strong class="num">7</strong><em><span class="num">2</span> بانتظار الرد</em></li><li><span>تقييمات Google</span><strong><span class="num">2</span> جديدة</strong><em class="up">كلاهما <span class="num">5★</span></em></li></ul><p class="tm-flag"><i></i>مساء الخميس محجوز بالكامل. هل نفتح موعدًا إضافيًا؟</p></div><span class="tm-cap">مثال على تقرير</span></div>
+          </article>
+          <article class="tool">
+            <div class="tool-main">
+              <div class="tool-top"><span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12 18 6"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span><span class="tool-badge">شهري</span></div>
+              <h3>تقرير مراقبة المنافسين</h3>
+              <p class="tool-what">تقرير شهري عن أسعار منافسيك وعروضهم وتقييماتهم على Google ونشاطهم على وسائل التواصل، مع 3 خطوات عملية.</p>
+              <p class="tool-rare"><b>لماذا هي نادرة</b>العلامات الكبرى تدفع لمستشارين مقابل هذا، والشركات الصغيرة لا تراه أبدًا.</p>
+              <p class="tool-best"><span>الأنسب لـ</span>أي نشاط في منطقة مزدحمة</p>
+              <div class="tool-foot"><div class="tool-price"><strong><span class="num">600</span> درهم</strong><small>شهريًا</small></div><a class="tool-cta js-ar-pick" href="#contact" data-service="Competitor Watch Report" aria-label="اسأل عن تقرير مراقبة المنافسين">اسأل <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a></div>
+              
+            </div>
+          </article>
+          <article class="tool">
+            <div class="tool-main">
+              <div class="tool-top"><span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.8 2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.6-4.8 2.6.9-5.4L4.2 9.5l5.4-.8L12 3.8Z"/></svg></span><span class="tool-badge">شهري</span></div>
+              <h3>تحليل التقييمات ومسودات الردود</h3>
+              <p class="tool-what">يقرأ الذكاء الاصطناعي كل تقييمات Google، ويخبرك بما يحبه عملاؤك وما يشتكون منه، ويكتب ردودًا بأسلوبك لتوافق عليها.</p>
+              <p class="tool-rare"><b>لماذا هي نادرة</b>معظم أصحاب الأعمال يردون على التقييمات متأخرين أو لا يردون أبدًا.</p>
+              <p class="tool-best"><span>الأنسب لـ</span>الصالونات، المقاهي، المطاعم، العيادات</p>
+              <div class="tool-foot"><div class="tool-price"><strong><span class="num">400</span> درهم</strong><small>شهريًا</small></div><a class="tool-cta js-ar-pick" href="#contact" data-service="Review Insights &amp; Replies" aria-label="اسأل عن تحليل التقييمات ومسودات الردود">اسأل <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a></div>
+              
+            </div>
+          </article>
+          <article class="tool">
+            <div class="tool-main">
+              <div class="tool-top"><span class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg></span><span class="tool-badge">لمرة واحدة</span></div>
+              <h3>تجارب ثلاثية الأبعاد وجولات افتراضية</h3>
+              <p class="tool-what">عارض سيارات ثلاثي الأبعاد تفاعلي، أو جولة داخل صالة العرض أو الصالون، أو عرض منتج ثلاثي الأبعاد، مباشرة على موقعك.</p>
+              <p class="tool-rare"><b>لماذا هي نادرة</b>قليل جدًا من الاستوديوهات في دبي يبني رسومات ثلاثية الأبعاد فورية للويب.</p>
+              <p class="tool-best"><span>الأنسب لـ</span>تأجير السيارات، صالات العرض، العقارات، التجزئة</p>
+              <div class="tool-foot"><div class="tool-price"><strong><span class="num">3,000</span> درهم</strong><small>سعر البداية · لمرة واحدة</small></div><a class="tool-cta js-ar-pick" href="#contact" data-service="3D &amp; Virtual Tour Experience" aria-label="اسأل عن تجارب ثلاثية الأبعاد وجولات افتراضية">اسأل <span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a></div>
+              
+            </div>
+          </article>
+        </div>
+      </div></section>
+
       <section class="sec sec--paper" id="faq"><div class="wrap faq-wrap">
         <div><span class="eyebrow eyebrow--dark">معلومات مهمة</span><h2 class="h2">أسئلة <em>شائعة.</em></h2><p style="margin:24px 0 0;color:rgba(12,12,12,.65);font-size:14.5px;line-height:1.8">يدير Velorien المصمم هيتين بانغا (Hitin Banga)، مصمم مواقع وتجربة مستخدم مستقل في دبي. تتعامل مباشرة مع الشخص الذي يصمم موقعك ويبنيه.</p></div>
         <div class="faq-list"><details class="faq-item"><summary>كم تكلفة تصميم موقع إلكتروني في دبي؟</summary><p>تبدأ مواقع الأعمال لدينا من <span class="num">2,099</span> درهم لصفحة الهبوط (الباقة المبتدئة)، و<span class="num">3,499</span> درهم للموقع الاحترافي من 4 صفحات، و<span class="num">5,500</span> درهم للموقع المميز المصمم بالكامل حسب الطلب. الصفحة الإضافية بـ<span class="num">300</span> درهم، وخدمة العناية بالموقع بـ<span class="num">500</span> درهم شهريًا.</p></details><details class="faq-item"><summary>كم يستغرق إنشاء الموقع؟</summary><p>الباقة المبتدئة 7 أيام، والاحترافية من 10 إلى 14 يومًا، والمميزة من 14 إلى 21 يومًا. تبدأ المدة بعد استلام المحتوى والتفاصيل الأساسية، لذلك إرسالها مبكرًا هو أسرع طريق للإطلاق.</p></details><details class="faq-item"><summary>ماذا أحتاج أن أقدّم؟</summary><p>شعارك إن وُجد، والخدمات أو المنتجات التي تقدمها، وبيانات التواصل، وأي صور تريد استخدامها. لست متأكدًا مما لديك؟ راسلنا على واتساب وسنخبرك بما ينقص.</p></details><details class="faq-item"><summary>هل الدومين والاستضافة مشمولان؟</summary><p>تُدفع رسوم الدومين والاستضافة بشكل منفصل لمزود الخدمة. نساعدك في اختيار ما تحتاجه وربطه بموقعك عند الإطلاق.</p></details><details class="faq-item"><summary>كيف يتم الدفع؟</summary><p>نتفق معك على جدول الدفع قبل بدء العمل، وعادةً تكون دفعة مقدمة للبدء والباقي عند الإطلاق.</p></details><details class="faq-item"><summary>هل يمكنكم إضافة مساعد دردشة بالذكاء الاصطناعي لموقعي؟</summary><p>نعم. يرد على عملائك على مدار الساعة بلغتهم ويرسل لك أسماءهم وأرقام واتساب الخاصة بهم. الإعداد بـ<span class="num">1,200</span> درهم ثم <span class="num">200</span> درهم شهريًا، أو <span class="num">150</span> درهم شهريًا مع خدمة العناية بالموقع، والإعداد مشمول مع الموقع المميز.</p></details><details class="faq-item"><summary>هل تعملون مع شركات خارج دبي؟</summary><p>نعم. مقرنا في دبي ونعمل مع عملاء في جميع أنحاء الإمارات وخارجها، ويتم كل شيء عبر واتساب والبريد الإلكتروني والمكالمات.</p></details></div>
@@ -397,7 +867,7 @@
         <form class="form" id="arForm" novalidate>
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);opacity:0;pointer-events:none" />
           <div class="row"><label>الاسم الكامل<input type="text" name="name" required autocomplete="name" /></label><label>رقم واتساب<input type="tel" name="whatsapp" required autocomplete="tel" inputmode="tel" placeholder="+971 5X XXX XXXX" /></label></div>
-          <label>الخدمة<select name="service" required><option value="" selected disabled>اختر خدمة</option><option value="Starter Business Website">موقع الأعمال المبتدئ</option><option value="Professional Business Website">موقع الأعمال الاحترافي</option><option value="Premium Website">الموقع المميز</option><option value="AI Chat Assistant">مساعد الدردشة بالذكاء الاصطناعي</option><option value="Website Care">العناية بالموقع</option><option value="AI Creative Content">محتوى إبداعي</option><option value="AI Automations">الأتمتة بالذكاء الاصطناعي</option><option value="Other / Not sure yet">غير متأكد بعد</option></select></label>
+          <label>الخدمة<select name="service" required><option value="" selected disabled>اختر خدمة</option><option value="Starter Business Website">موقع الأعمال المبتدئ</option><option value="Professional Business Website">موقع الأعمال الاحترافي</option><option value="Premium Website">الموقع المميز</option><option value="AI Chat Assistant">مساعد الدردشة بالذكاء الاصطناعي</option><option value="Website Care">العناية بالموقع</option><option value="AI Creative Content">محتوى إبداعي</option><option value="AI Automations">الأتمتة بالذكاء الاصطناعي</option><optgroup label="أدوات ذكية"><option value="AI WhatsApp Receptionist">موظف استقبال ذكي على واتساب</option><option value="Sheet-Powered Live Website">موقع يتحدّث من Google Sheet</option><option value="Instant Quote Calculator">حاسبة عروض أسعار فورية</option><option value="AI Manager Daily Report">تقرير المدير الذكي اليومي</option><option value="Competitor Watch Report">تقرير مراقبة المنافسين</option><option value="Review Insights &amp; Replies">تحليل التقييمات ومسودات الردود</option><option value="3D &amp; Virtual Tour Experience">تجارب ثلاثية الأبعاد وجولات افتراضية</option></optgroup><option value="Other / Not sure yet">غير متأكد بعد</option></select></label>
           <label>تفاصيل المشروع (اختياري)<textarea name="requirements" maxlength="1200" placeholder="أخبرنا عن نشاطك وأهدافك وما تريد بناءه."></textarea></label>
           <div class="msg" role="status" aria-live="polite"></div>
           <button class="btn btn-primary" type="submit">أرسل الطلب</button>
@@ -405,7 +875,21 @@
         </form>
       </div></section>
     </main>
-    <footer class="foot"><div class="wrap foot-in"><a class="brand" href="/ar/" aria-label="Velorien home"><svg class="vl" viewBox="0 0 1027.6 235" aria-hidden="true" focusable="false"><g transform="scale(1.9583)"><g class="vl-spin"><g fill="currentColor"> <path d="M0 56V0A56 56 0 0 1 56 56Z"/> <path d="M64 0H120A56 56 0 0 1 64 56Z"/> <path d="M120 64V120A56 56 0 0 1 64 64Z"/> <path d="M56 120H0A56 56 0 0 1 56 64Z"/> </g> <rect class="vl-core" x="56" y="56" width="8" height="8" fill="#7C5CFF"/></g></g><g transform="translate(303 67.5)"><g fill="currentColor"><rect x="117.5" y="0" width="13.6" height="100"/><rect x="117.5" y="0" width="61.5" height="13.6"/><rect x="117.5" y="86.4" width="61.5" height="13.6"/><rect x="141.0" y="43.2" width="30" height="13.6"/><rect x="205.8" y="0" width="13.6" height="100"/><rect x="205.8" y="86.4" width="57.6" height="13.6"/><rect x="507.4" y="0" width="13.6" height="100"/><rect x="553.3" y="0" width="13.6" height="100"/><rect x="553.3" y="0" width="61.5" height="13.6"/><rect x="553.3" y="86.4" width="61.5" height="13.6"/><rect x="576.8" y="43.2" width="30" height="13.6"/><rect x="641.6" y="0" width="13.6" height="100"/><rect x="710.9" y="0" width="13.6" height="100"/></g><g fill="none" stroke="currentColor" stroke-width="13.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4"><path d="M6.5 0L47.5 100L88.5 0"/><circle cx="340" cy="50" r="43.2"/><path d="M423.2 100V6.8H454.9A21.6 21.6 0 0 1 454.9 50H423.2"/><path d="M449 50L487 101"/><path d="M648.4 0L717.7 100"/></g><circle cx="340" cy="50" r="7" fill="#7C5CFF"/></g></svg></a><nav aria-label="Footer"><a href="/ar/">الرئيسية</a><a href="/ar/#packages">الباقات</a><a href="/ar/#ai-chat">مساعد الدردشة</a><a href="/" hreflang="en" lang="en" data-lang-switch>English</a></nav><span>© 2026 Velorien Creative Studio · تصميم مواقع في دبي، الإمارات</span></div></footer>
+    <footer class="foot"><div class="wrap foot-in"><a class="brand" href="/ar/" aria-label="Velorien home"><svg class="vl" viewBox="0 0 1027.6 235" aria-hidden="true" focusable="false"><g transform="scale(1.9583)"><g class="vl-spin"><g fill="currentColor"> <path d="M0 56V0A56 56 0 0 1 56 56Z"/> <path d="M64 0H120A56 56 0 0 1 64 56Z"/> <path d="M120 64V120A56 56 0 0 1 64 64Z"/> <path d="M56 120H0A56 56 0 0 1 56 64Z"/> </g> <rect class="vl-core" x="56" y="56" width="8" height="8" fill="#7C5CFF"/></g></g><g transform="translate(303 67.5)"><g fill="currentColor"><rect x="117.5" y="0" width="13.6" height="100"/><rect x="117.5" y="0" width="61.5" height="13.6"/><rect x="117.5" y="86.4" width="61.5" height="13.6"/><rect x="141.0" y="43.2" width="30" height="13.6"/><rect x="205.8" y="0" width="13.6" height="100"/><rect x="205.8" y="86.4" width="57.6" height="13.6"/><rect x="507.4" y="0" width="13.6" height="100"/><rect x="553.3" y="0" width="13.6" height="100"/><rect x="553.3" y="0" width="61.5" height="13.6"/><rect x="553.3" y="86.4" width="61.5" height="13.6"/><rect x="576.8" y="43.2" width="30" height="13.6"/><rect x="641.6" y="0" width="13.6" height="100"/><rect x="710.9" y="0" width="13.6" height="100"/></g><g fill="none" stroke="currentColor" stroke-width="13.6" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4"><path d="M6.5 0L47.5 100L88.5 0"/><circle cx="340" cy="50" r="43.2"/><path d="M423.2 100V6.8H454.9A21.6 21.6 0 0 1 454.9 50H423.2"/><path d="M449 50L487 101"/><path d="M648.4 0L717.7 100"/></g><circle cx="340" cy="50" r="7" fill="#7C5CFF"/></g></svg></a><nav aria-label="Footer"><a href="/ar/">الرئيسية</a><a href="/ar/#work">أعمالنا</a><a href="/ar/#packages">الباقات</a><a href="/ar/#tools">أدوات ذكية</a><a href="/ar/#ai-chat">مساعد الدردشة</a><a href="/" hreflang="en" lang="en" data-lang-switch>English</a></nav><span>© 2026 Velorien Creative Studio · تصميم مواقع في دبي، الإمارات</span></div></footer>
+    <div class="wv" id="workViewer" role="dialog" aria-modal="true" aria-labelledby="wvTitle" hidden>
+      <div class="wv-backdrop" data-wv-close></div>
+      <div class="wv-shell">
+        <div class="wv-bar">
+          <div class="wv-meta"><span class="wv-live"><i></i><span>مباشر</span></span><b id="wvTitle" lang="en" dir="ltr">أعمالنا</b><span class="wv-url" id="wvUrl" dir="ltr"></span></div>
+          <div class="work-dev" role="group" aria-label="حجم العرض"><span class="work-dev-thumb" aria-hidden="true"></span><button type="button" data-mode="desktop" aria-pressed="true" aria-label="عرض الكمبيوتر"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><span>كمبيوتر</span></button><button type="button" data-mode="phone" aria-pressed="false" aria-label="عرض الجوال"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg><span>جوال</span></button></div>
+          <button class="wv-ibtn" type="button" data-wv-step="-1" aria-label="المشروع السابق"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+          <button class="wv-ibtn" type="button" data-wv-step="1" aria-label="المشروع التالي"><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+          <a class="wv-open" id="wvOpen" href="https://efcars.ae/" target="_blank" rel="noopener" aria-label="افتح الموقع في نافذة جديدة"><span>افتح الموقع</span><span class="pkg-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span></a>
+          <button class="wv-ibtn" type="button" data-wv-close aria-label="إغلاق العرض"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+        </div>
+        <div class="wv-stage" id="wvStage"><div class="wv-screen" id="wvScreen"></div><div class="wv-load" aria-hidden="true"><span class="mkx" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i><b></b></span>جارٍ تحميل الموقع</div></div>
+      </div>
+    </div>
     <!-- VELORIEN — AI chat assistant -->
     <button class="vlc-launch" type="button" aria-label="تحدث مع Velorien" aria-expanded="false" aria-controls="vlcPanel"><span class="vlc-ping" aria-hidden="true"></span><span class="mkx" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i><b></b></span><svg class="vlc-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     <div class="vlc-teaser" id="vlcTeaser"><button class="vlc-teaser-open" type="button">لديك سؤال عن الأسعار أو مدة التنفيذ؟ <b>اسألني هنا.</b></button><button class="vlc-teaser-x" type="button" aria-label="إغلاق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
@@ -663,6 +1147,255 @@
             .then(function (r) { if (!r.ok) throw 0; msg.className = 'msg ok'; msg.textContent = 'شكرًا ' + d.name.trim().split(/\s+/)[0] + '، وصلنا طلبك. سنتواصل معك عبر واتساب خلال يوم عمل واحد عادةً.'; f.reset(); if (window.hbvTrack) hbvTrack('generate_lead', { service: d.service, source: 'ar_form' }); })
             .catch(function () { msg.className = 'msg err'; msg.innerHTML = 'تعذّر إرسال الطلب. حاول مرة أخرى أو <a href="https://wa.me/971557858540" target="_blank" rel="noopener" style="text-decoration:underline">راسلنا عبر واتساب</a>.'; })
             .finally(function () { btn.disabled = false; btn.textContent = 'أرسل الطلب'; });
+        });
+      })();
+    </script>
+    <script>
+      /* ============================================================
+         VELORIEN — SELECTED WORK (live site cards)
+         Each card loads the real website in a scaled-down frame when it scrolls near.
+         To add a project: copy one <article class="work-card"> in the #work section and change
+         data-url, data-name, data-host, --wc (accent colour) and the text. Nothing else to edit here.
+         ============================================================ */
+      (function () {
+        const sec = document.getElementById('work');
+        const grid = document.getElementById('workGrid');
+        const wv = document.getElementById('workViewer');
+        if (!sec || !grid || !wv) return;
+        const cards = [...grid.querySelectorAll('.work-card')];
+        const small = matchMedia('(max-width: 680px)');
+        const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const PHONE = { w: 390, h: 844 }, DESK = 1440;
+        const track = (n, p) => { try { if (window.hbvTrack) hbvTrack(n, p || {}); } catch (e) {} };
+        let mode = small.matches ? 'phone' : 'desktop';
+
+        /* ---------- Desktop / Phone toggles ---------- */
+        const thumb = (dev) => {
+          const on = dev.querySelector('[aria-pressed="true"]'), t = dev.querySelector('.work-dev-thumb');
+          if (!on || !t || !on.offsetWidth) return;
+          t.style.setProperty('--tx', on.offsetLeft + 'px');
+          t.style.setProperty('--tw', on.offsetWidth + 'px');
+        };
+        const setPressed = (dev, m) => {
+          dev.querySelectorAll('button[data-mode]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === m)));
+          thumb(dev);
+        };
+
+        /* ---------- live cards ---------- */
+        cards.forEach((c, i) => {
+          c._view = c.querySelector('.work-view');
+          const scr = document.createElement('div');
+          scr.className = 'work-screen';
+          c._view.appendChild(scr);
+          c._scr = scr;
+          c.querySelector('.work-open').addEventListener('click', () => openViewer(i));
+          c.querySelector('.work-visit').addEventListener('click', () => track('portfolio_visit', { site: c.dataset.name }));
+        });
+
+        function fit(c) {
+          if (!c) return;
+          const w = c._view.clientWidth, h = c._view.clientHeight;
+          if (!w || !h) return;
+          let s, nw, nh;
+          if (mode === 'phone') {
+            const pad = Math.max(16, h * 0.07);
+            nw = PHONE.w; nh = PHONE.h;
+            s = Math.min((h - pad * 2) / nh, (w - pad * 2) / nw);
+          } else {
+            nw = DESK; s = w / nw; nh = Math.ceil(h / s);
+          }
+          const sw = Math.round(nw * s), sh = Math.round(nh * s);
+          Object.assign(c._scr.style, { width: sw + 'px', height: sh + 'px', left: Math.round((w - sw) / 2) + 'px', top: (mode === 'phone' ? Math.round((h - sh) / 2) : 0) + 'px' });
+          if (c._frame) Object.assign(c._frame.style, { width: nw + 'px', height: nh + 'px', transform: 'scale(' + s + ')' });
+        }
+
+        function load(c) {
+          if (c._frame) return;
+          const f = document.createElement('iframe');
+          f.title = 'معاينة مباشرة لموقع ' + c.dataset.name;
+          f.setAttribute('tabindex', '-1');
+          f.setAttribute('aria-hidden', 'true');
+          f.setAttribute('scrolling', 'no');
+          f.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+          f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+          f.addEventListener('load', () => { clearTimeout(c._t); c._t = setTimeout(() => c._view.classList.add('is-loaded'), 900); }, { once: true });
+          c._t = setTimeout(() => c._view.classList.add('is-loaded'), 10000);
+          c._frame = f;
+          fit(c);
+          f.src = c.dataset.url;
+          c._scr.appendChild(f);
+        }
+        function unload(c) {
+          if (!c._frame) return;
+          clearTimeout(c._t);
+          c._frame.remove();
+          c._frame = null;
+          c._view.classList.remove('is-loaded');
+        }
+
+        /* load each site as it scrolls near (phones: only the card in view and its neighbours) */
+        const near = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) load(e.target); }), { rootMargin: '450px 0px' });
+        cards.forEach((c) => near.observe(c));
+        let secNear = false;
+        new IntersectionObserver((es) => es.forEach((e) => {
+          secNear = e.isIntersecting;
+          if (!small.matches) return;
+          if (secNear) syncTrack(); else cards.forEach(unload);
+        }), { rootMargin: '100% 0px' }).observe(sec);
+
+        if ('ResizeObserver' in window) {
+          const ro = new ResizeObserver((es) => es.forEach((e) => fit(e.target.closest('.work-card'))));
+          cards.forEach((c) => ro.observe(c._view));
+        } else {
+          addEventListener('resize', () => cards.forEach(fit));
+        }
+
+        /* ---------- phone swipe track ---------- */
+        const count = sec.querySelector('.work-count b');
+        const bars = [...sec.querySelectorAll('.work-bars i')];
+        const prevBtn = sec.querySelector('[data-work-step="-1"]'), nextBtn = sec.querySelector('[data-work-step="1"]');
+        const current = () => {
+          const step = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 1;
+          return Math.max(0, Math.min(cards.length - 1, Math.round(Math.abs(grid.scrollLeft / (step || 1)))));
+        };
+        function syncTrack() {
+          if (!small.matches) return;
+          const idx = current();
+          if (count) count.textContent = String(idx + 1).padStart(2, '0');
+          bars.forEach((b, j) => b.classList.toggle('is-on', j === idx));
+          if (prevBtn) prevBtn.disabled = idx === 0;
+          if (nextBtn) nextBtn.disabled = idx === cards.length - 1;
+          if (!secNear) return;
+          cards.forEach((c, j) => { const d = Math.abs(j - idx); if (d <= 1) load(c); else if (d > 2) unload(c); });
+        }
+        let raf = 0;
+        grid.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; syncTrack(); }); }, { passive: true });
+        sec.querySelectorAll('[data-work-step]').forEach((b) => b.addEventListener('click', () => {
+          const t = cards[Math.max(0, Math.min(cards.length - 1, current() + Number(b.dataset.workStep)))];
+          grid.scrollTo({ left: t.offsetLeft - cards[0].offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
+        }));
+        small.addEventListener('change', () => { cards.forEach(fit); syncTrack(); });
+        syncTrack();
+
+        /* ---------- Desktop / Phone switch for every card ---------- */
+        const dev = sec.querySelector('.work-dev');
+        function applyMode(m, animate) {
+          mode = m;
+          setPressed(dev, m);
+          const swap = () => { sec.classList.toggle('is-phone', m === 'phone'); cards.forEach(fit); };
+          if (!animate || reduce) return swap();
+          sec.classList.add('is-switching');
+          setTimeout(() => { swap(); requestAnimationFrame(() => requestAnimationFrame(() => sec.classList.remove('is-switching'))); }, 300);
+        }
+        dev.querySelectorAll('button[data-mode]').forEach((b) => b.addEventListener('click', () => {
+          if (b.dataset.mode === mode) return;
+          applyMode(b.dataset.mode, true);
+          track('portfolio_device', { mode: b.dataset.mode });
+        }));
+        applyMode(mode, false);
+
+        /* ---------- full-size live viewer ---------- */
+        const stage = document.getElementById('wvStage'), screen = document.getElementById('wvScreen');
+        const wvTitle = document.getElementById('wvTitle'), wvUrl = document.getElementById('wvUrl'), wvOpen = document.getElementById('wvOpen');
+        const wvDev = wv.querySelector('.work-dev'), wvShell = wv.querySelector('.wv-shell'), wvBack = wv.querySelector('.wv-backdrop');
+        let cur = 0, vmode = 'desktop', vframe = null, vt = 0, lastFocus = null;
+
+        function vfit() {
+          if (!vframe) return;
+          const W = stage.clientWidth, H = stage.clientHeight;
+          if (!W || !H) return;
+          let nw, nh, s = 1, bare = true;
+          if (vmode === 'phone' && W >= 520) { nw = PHONE.w; nh = PHONE.h; s = Math.min(1, (H - 48) / nh, (W - 48) / nw); bare = false; }
+          else if (vmode === 'phone' || W >= 1100) { nw = W; nh = H; }
+          else { nw = 1280; s = W / nw; nh = Math.round(H / s); }
+          stage.classList.toggle('is-phone', !bare);
+          stage.classList.toggle('is-bare', bare);
+          const sw = Math.round(nw * s), sh = Math.round(nh * s);
+          Object.assign(screen.style, { width: sw + 'px', height: sh + 'px', left: Math.round((W - sw) / 2) + 'px', top: Math.round((H - sh) / 2) + 'px' });
+          Object.assign(vframe.style, { width: nw + 'px', height: nh + 'px', transform: s === 1 ? 'none' : 'scale(' + s + ')' });
+        }
+        function vload() {
+          const c = cards[cur];
+          clearTimeout(vt);
+          stage.classList.remove('is-loaded');
+          if (vframe) vframe.remove();
+          const f = document.createElement('iframe');
+          f.title = 'موقع ' + c.dataset.name + ' مباشرة';
+          f.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox');
+          f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+          f.addEventListener('load', () => { clearTimeout(vt); vt = setTimeout(() => stage.classList.add('is-loaded'), 400); }, { once: true });
+          vt = setTimeout(() => stage.classList.add('is-loaded'), 10000);
+          vframe = f;
+          vfit();
+          f.src = c.dataset.url;
+          screen.appendChild(f);
+          wvTitle.textContent = c.dataset.name;
+          wvUrl.textContent = c.dataset.host;
+          wvOpen.href = c.dataset.url;
+        }
+        function openViewer(i) {
+          cur = i;
+          lastFocus = document.activeElement;
+          vmode = mode;
+          wv.hidden = false;
+          document.documentElement.classList.add('wv-lock');
+          setPressed(wvDev, vmode);
+          vload();
+          wv.querySelector('.wv-bar [data-wv-close]').focus({ preventScroll: true });
+          if (!reduce) {
+            wvBack.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: 'ease-out' });
+            wvShell.animate([{ opacity: 0, transform: 'translateY(24px) scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 560, easing: 'cubic-bezier(.16,1,.3,1)' });
+          }
+          track('portfolio_open', { site: cards[i].dataset.name });
+        }
+        function closeViewer() {
+          if (wv.hidden) return;
+          const done = () => {
+            wv.hidden = true;
+            document.documentElement.classList.remove('wv-lock');
+            clearTimeout(vt);
+            if (vframe) { vframe.remove(); vframe = null; }
+            stage.classList.remove('is-loaded');
+            [wvBack, wvShell].forEach((el) => el.getAnimations().forEach((a) => a.cancel()));
+            if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+          };
+          if (reduce) return done();
+          wvBack.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220, easing: 'ease-in', fill: 'forwards' });
+          wvShell.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(16px) scale(.98)' }], { duration: 220, easing: 'ease-in', fill: 'forwards' }).onfinish = done;
+        }
+        const step = (d) => { cur = (cur + d + cards.length) % cards.length; vload(); track('portfolio_open', { site: cards[cur].dataset.name }); };
+
+        wv.querySelectorAll('[data-wv-close]').forEach((el) => el.addEventListener('click', closeViewer));
+        wv.querySelectorAll('[data-wv-step]').forEach((el) => el.addEventListener('click', () => step(Number(el.dataset.wvStep))));
+        wvDev.querySelectorAll('button[data-mode]').forEach((b) => b.addEventListener('click', () => { vmode = b.dataset.mode; setPressed(wvDev, vmode); vfit(); }));
+        wvOpen.addEventListener('click', () => track('portfolio_visit', { site: cards[cur].dataset.name, from: 'viewer' }));
+        wv.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') { e.preventDefault(); closeViewer(); return; }
+          if (e.key === 'ArrowLeft') { e.preventDefault(); step(1); return; }
+          if (e.key === 'ArrowRight') { e.preventDefault(); step(-1); return; }
+          if (e.key !== 'Tab') return;
+          const f = [...wv.querySelectorAll('.wv-bar a[href], .wv-bar button')], first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        });
+
+        addEventListener('resize', () => { thumb(dev); if (!wv.hidden) { vfit(); thumb(wvDev); } }, { passive: true });
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => thumb(dev));
+      })();
+
+      /* VELORIEN — "Ask" buttons on smart tools: pick the service in the form, then scroll to it */
+      (function () {
+        var sel = document.querySelector('#arForm select[name="service"]');
+        document.querySelectorAll('.js-ar-pick').forEach(function (a) {
+          a.addEventListener('click', function (e) {
+            if (!sel) return;
+            e.preventDefault();
+            sel.value = a.dataset.service || '';
+            var form = document.getElementById('arForm');
+            form.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+            setTimeout(function () { var n = form.querySelector('input[name="name"]'); if (n && matchMedia('(pointer: fine)').matches) n.focus({ preventScroll: true }); }, 700);
+            if (window.hbvTrack) hbvTrack('select_item', { item_name: a.dataset.service, lang: 'ar' });
+          });
         });
       })();
     </script>
