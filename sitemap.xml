@@ -2,8 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://velorienstudiocreative.com/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://velorienstudiocreative.com/" />
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://velorienstudiocreative.com/us/" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://velorienstudiocreative.com/ar/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://velorienstudiocreative.com/" />
   </url>
@@ -11,6 +12,15 @@
     <loc>https://velorienstudiocreative.com/ar/</loc>
     <lastmod>2026-10-28</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://velorienstudiocreative.com/" />
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://velorienstudiocreative.com/us/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://velorienstudiocreative.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://velorienstudiocreative.com/" />
+  </url>
+  <url>
+    <loc>https://velorienstudiocreative.com/us/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://velorienstudiocreative.com/" />
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://velorienstudiocreative.com/us/" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://velorienstudiocreative.com/ar/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://velorienstudiocreative.com/" />
   </url>
